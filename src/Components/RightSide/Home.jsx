@@ -1,12 +1,14 @@
 import React from 'react';
 import Hero from '../Hero'; 
+import About from '../About';
 
 const Home = () => {
   return (
     <div>
       <Hero /> {/* Add the Hero section here */}
+      <About/>
 
-      <section className="mb-8">
+      <section className="">
         <h2 className="text-3xl font-bold mb-4">About Me</h2>
         <p>
           I'm a web developer with a passion for building user-friendly
