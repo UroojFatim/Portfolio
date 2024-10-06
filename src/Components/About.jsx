@@ -16,7 +16,12 @@ const About = () => {
 
     return (
         <section className="about-section p-8 text-center my-20 " id="about">
-            <h2 className="text-5xl font-bold text-lightTheme-text dark:text-darkTheme-text mb-4">About me</h2>
+            <div className="text-center mb-12">
+                <h2 className="text-5xl font-bold text-lightTheme-text dark:text-darkTheme-text">
+                    About
+                </h2>
+                <span className="inline-block w-24 h-1 bg-lightTheme-accent dark:bg-darkTheme-accent mt-4"></span>
+            </div>
             <div className="flex flex-col md:flex-row justify-around items-start gap-12">
                 {/* Left section: Bio */}
                 <div className="md:w-[35%] text-left animate-fadeIn">
