@@ -1,5 +1,6 @@
 import React from "react";
-import Profile from "../../assets/ProfileImage.jpeg";
+import Profile from "../../assets/ProfileImage.jpeg"; // Keep the existing imports
+import CV from "../../assets/CV.pdf"; // Import the CV file from your public directory
 
 const Sidebar = ({ toggleTheme, isDarkMode }) => {
   return (
@@ -52,10 +53,18 @@ const Sidebar = ({ toggleTheme, isDarkMode }) => {
       </div>
 
       {/* Hire Me Button */}
-      <div className="text-center">
+      <div className="text-center flex flex-col gap-4">
         <button className="border-2 border-lightTheme-accent dark:border-darkTheme-accent hover:dark:bg-transparent hover:dark:text-white  bg-lightTheme-accent dark:bg-darkTheme-accent text-white py-2 px-20 rounded-full hover:opacity-80 transition hover:bg-transparent hover:text-black">
           Hire Me
         </button>
+        {/* Download CV Button */}
+        <a
+          href={CV}
+          download="UroojFatima_CV.pdf"
+          className="border-2 border-lightTheme-accent dark:border-darkTheme-accent hover:dark:bg-darkTheme-accent bg-lightTheme-accent py-2 px-20 rounded-full transition hover:bg-lightTheme-accent hover:text-white text-center"
+        >
+          Download CV
+        </a>
       </div>
     </div>
   );
