@@ -19,16 +19,31 @@ export default {
         },
       },
       keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideInUp: {
+          '0%': { transform: 'translateY(50px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        slideInRight: {
+          '0%': { transform: 'translateX(-50px)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
         slideIn: {
           '0%': { transform: 'translateX(-100%)', opacity: '0' },
           '100%': { transform: 'translateX(0)', opacity: '1' },
         },
       },
       animation: {
+        fadeIn: 'fadeIn 1.2s ease-in-out',
+        slideInUp: 'slideInUp 1s ease-out',
+        slideInRight: 'slideInRight 1s ease-out',
         slideIn: 'slideIn 0.8s ease-out forwards',
       },
     },
   },
-  darkMode: 'class',
+  darkMode: 'class', // Enable dark mode based on a class
   plugins: [],
-}
+};

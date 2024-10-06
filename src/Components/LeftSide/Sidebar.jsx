@@ -1,9 +1,9 @@
 import React from "react";
-import Profile from "../../assets/Profile.jpeg";
+import Profile from "../../assets/ProfileImage.jpeg";
 
 const Sidebar = ({ toggleTheme, isDarkMode }) => {
   return (
-    <div className="w-1/4 bg-lightTheme-bg dark:bg-darkTheme-bg p-6 shadow-lg h-screen fixed left-0 top-0 text-lightTheme-text dark:text-darkTheme-text border-r border-lightTheme-accent dark:border-darkTheme-accent animate-slideIn">
+    <div className="w-1/4 bg-lightTheme-bg dark:bg-darkTheme-bg p-6 shadow-lg h-screen fixed left-0 top-0 text-lightTheme-text dark:text-darkTheme-text border-r-2 border-lightTheme-accent dark:border-darkTheme-accent animate-slideIn">
       {/* Theme Toggle Button */}
       <div className="mt-6 flex item-center gap-2 justify-between">
         <button
