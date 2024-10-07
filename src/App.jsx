@@ -1,6 +1,6 @@
   import React, { useState } from "react";
-  import Sidebar from "./Components/LeftSide/Sidebar";
-  import Home from "./Components/RightSide/Home";
+  import Sidebar from "./Components/Pages/LeftSide/Sidebar";
+  import Home from "./Components/Pages/RightSide/Home";
 
   const App = () => {
     const [isDarkMode, setIsDarkMode] = useState(false);

@@ -1,6 +1,6 @@
 import React from "react";
-import Profile from "../../assets/ProfileImage.jpeg"; // Keep the existing imports
-import CV from "../../assets/CV.pdf"; // Import the CV file from your public directory
+import Profile from "../../../assets/ProfileImage.jpeg";
+import CV from "../../../assets/CV.pdf"; 
 
 const Sidebar = ({ toggleTheme, isDarkMode }) => {
   return (
@@ -61,7 +61,7 @@ const Sidebar = ({ toggleTheme, isDarkMode }) => {
         <a
           href={CV}
           download="UroojFatima_CV.pdf"
-          className="border-2 border-lightTheme-accent dark:border-darkTheme-accent hover:dark:bg-darkTheme-accent bg-lightTheme-accent py-2 px-20 rounded-full transition hover:bg-lightTheme-accent hover:text-white text-center"
+          className="border-2 py-2 px-20 rounded-full transition hover:text-white text-center border-lightTheme-accent hover:bg-lightTheme-accent dark:border-darkTheme-accent dark:hover:bg-darkTheme-accent"
         >
           Download CV
         </a>
