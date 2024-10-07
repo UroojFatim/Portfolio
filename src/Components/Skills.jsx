@@ -17,6 +17,7 @@ import cppIcon from '../assets/skills/c++.png';
 import DSAIcon from '../assets/skills/DSA.png';
 import Express from '../assets/skills/Express.png';
 import OOPIcon from '../assets/skills/OOP.png';
+import ProblemSolving from '../assets/skills/Soft Skills/ProblemSolving.png'
 
 const Skills = () => {
     // Professional skillset icons
@@ -41,7 +42,7 @@ const Skills = () => {
 
     // Soft skillset icons (use any soft skill images that represent communication, leadership, etc.)
     const softSkills = [
-        { name: 'Communication', icon: '../assets/skills/communication.png' },
+        { name: 'Communication', icon: ProblemSolving },
         { name: 'Leadership', icon: '../assets/skills/leadership.png' },
         { name: 'Time Management', icon: '../assets/skills/time.png' },
         { name: 'Problem Solving', icon: '../assets/skills/problem-solving.png' },
@@ -66,7 +67,7 @@ const Skills = () => {
                     {professionalSkills.map((skill, index) => (
                         <div
                             key={index}
-                            className="relative group flex justify-center items-center p-4 border-2 dark:border-[2.5px] border-lightTheme-accent dark:border-darkTheme-accent rounded-lg shadow-xl dark:bg-white dark:shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-none"
+                            className="relative group flex justify-center items-center p-4 border-[2.5px] dark:border-[2.5px] border-lightTheme-accent dark:border-darkTheme-accent rounded-lg shadow-xl dark:bg-white dark:shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-none"
                         >
                             {/* Skill Icon */}
                             <img src={skill.icon} alt={skill.name} className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110" />
