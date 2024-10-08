@@ -46,7 +46,7 @@ const About = () => {
                     <div className="space-y-6">
                         {skills.map((skill, index) => (
                             <div key={index} className="mb-4 flex justify-between">
-                                <p className="w-[10%]  font-semibold text-lightTheme-text dark:text-darkTheme-text mb-2">{skill.name}</p>
+                                <p className="w-[20%] font-semibold text-lightTheme-text dark:text-darkTheme-text mb-2">{skill.name}</p>
                                 <div className="w-[80%] h-4 bg-gray-300 rounded-full">
                                     <div
                                         className={`${skill.color} h-full rounded-full`}

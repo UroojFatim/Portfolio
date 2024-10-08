@@ -16,6 +16,15 @@ import DSAIcon from '../assets/skills/DSA.png';
 import Express from '../assets/skills/Express.png';
 import OOPIcon from '../assets/skills/OOP.png';
 import ProblemSolving from '../assets/skills/Soft Skills/Problem Solving.png';
+import Adoptability from '../assets/skills/Soft Skills/Adoptability.png';
+import Communication from '../assets/skills/Soft Skills/Communication.png';
+import CriticalThinking from '../assets/skills/Soft Skills/Critical Thinking.png';
+import Empathy from '../assets/skills/Soft Skills/Empathy.png';
+import Interpersonal from '../assets/skills/Soft Skills/Interpersonal.png';
+import Listening from '../assets/skills/Soft Skills/Listening.png';
+import MultiTasking from '../assets/skills/Soft Skills/Multi Tasking.png';
+import TimeManagement from '../assets/skills/Soft Skills/Time Management.png';
+import Leadership from '../assets/skills/Soft Skills/Leadership.png';
 
 const Skills = () => {
     // Professional skillset icons
@@ -40,11 +49,16 @@ const Skills = () => {
 
     // Soft skillset icons (use any soft skill images that represent communication, leadership, etc.)
     const softSkills = [
-        { name: 'Communication', icon: ProblemSolving },
-        { name: 'Leadership', icon: '../assets/skills/leadership.png' },
-        { name: 'Time Management', icon: '../assets/skills/time.png' },
-        { name: 'Problem Solving', icon: '../assets/skills/problem-solving.png' },
-        { name: 'Creativity', icon: '../assets/skills/creativity.png' },
+        { name: 'Problem Solving', icon: ProblemSolving },
+        { name: 'Communication', icon: Communication },
+        { name: 'Critical Thinking', icon: CriticalThinking },
+        { name: 'Adoptability', icon: Adoptability },
+        { name: 'Empathy', icon: Empathy },
+        { name: 'Interpersonal', icon: Interpersonal },
+        { name: 'Leadership', icon: Leadership },
+        { name: 'Listening', icon: Listening },
+        { name: 'Multi Tasking', icon: MultiTasking },
+        { name: 'Time Management', icon: TimeManagement },
     ];
 
     return (
@@ -61,11 +75,11 @@ const Skills = () => {
                 <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
                     Professional skillset
                 </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 mt-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 m-8 ">
                     {professionalSkills.map((skill, index) => (
                         <div
                             key={index}
-                            className="relative group flex justify-center items-center p-4 border-[2.5px] dark:border-[2.5px] border-lightTheme-accent dark:border-darkTheme-accent rounded-lg shadow-xl dark:bg-white dark:shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-none"
+                            className="relative group flex justify-center items-center p-4 border-[2.5px] dark:border-[2.5px] border-lightTheme-accent dark:border-darkTheme-accent rounded-lg shadow-2xl  dark:shadow-xl overflow-hidden hover:shadow-none scale-105 transition-transform duration-300 hover:scale-100"
                         >
                             {/* Skill Icon */}
                             <img src={skill.icon} alt={skill.name} className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110" />
@@ -87,13 +101,21 @@ const Skills = () => {
                 <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
                     Soft skillset
                 </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 mt-8">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 m-8">
                     {softSkills.map((skill, index) => (
                         <div
                             key={index}
-                            className="flex justify-center items-center p-4 border-2 border-orange-300 rounded-lg shadow-md dark:shadow-lg hover:shadow-none transition-transform duration-300 hover:scale-105"
+                            className="relative group flex justify-center items-center p-4 border-[2.5px] border-lightTheme-accent dark:border-darkTheme-accent rounded-lg shadow-md dark:shadow-lg hover:shadow-none transition-transform duration-300 hover:scale-105 overflow-hidden"
                         >
-                            <img src={skill.icon} alt={skill.name} className="w-20 h-20 object-contain" />
+                            <img src={skill.icon} alt={skill.name} className="w-20 h-20 object-contain transition-transform duration-300 group-hover:scale-110"/>
+
+                            {/* Background Overlay with Skill Name */}
+                            <div className="absolute inset-0 bg-lightTheme-accent dark:bg-darkTheme-accent opacity-0 transform translate-y-full group-hover:translate-y-0 group-hover:opacity-95 transition-all duration-500 ease-in-out"></div>
+
+                            {/* Sliding Text (Skill Name) */}
+                            <div className="absolute bottom-0 w-full h-full flex justify-center items-center text-white font-semibold text-xl opacity-0 group-hover:opacity-100 transition-opacity duration-900 transform translate-y-full group-hover:translate-y-0">
+                                {skill.name}
+                            </div>
                         </div>
                     ))}
                 </div>

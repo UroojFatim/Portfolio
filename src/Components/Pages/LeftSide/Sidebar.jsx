@@ -2,14 +2,23 @@ import React from "react";
 import Profile from "../../../assets/ProfileImage.jpeg";
 import CV from "../../../assets/CV.pdf"; 
 
-const Sidebar = ({ toggleTheme, isDarkMode }) => {
+const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar }) => {
   return (
-    <div className="w-1/4 bg-lightTheme-bg dark:bg-darkTheme-bg p-6 shadow-lg h-screen fixed left-0 top-0 text-lightTheme-text dark:text-darkTheme-text border-r-4 border-lightTheme-accent dark:border-darkTheme-accent animate-slideIn">
+    <div
+      className={`fixed top-0 left-0 w-full z-10 bg-lightTheme-bg dark:bg-darkTheme-bg p-6 shadow-lg h-screen text-lightTheme-text dark:text-darkTheme-text border-r-4 border-lightTheme-accent dark:border-darkTheme-accent transition-transform duration-300 transform md:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:w-1/4`}
+    >
+      {/* Close Button for Mobile */}
+      <div className="md:hidden flex justify-end mb-4">
+        <button onClick={toggleSidebar} className="text-2xl text-lightTheme-text dark:text-darkTheme-text">
+          ✕ {/* Close icon */}
+        </button>
+      </div>
+
       {/* Theme Toggle Button */}
       <div className="mt-6 flex item-center gap-2 justify-between">
         <button
           onClick={toggleTheme}
-          className="py-1 px-6 rounded-xl border-2 border-lightTheme-accent dark:border-darkTheme-accent text-lightTheme-text dark:text-darkTheme-text"
+          className="px-3 md:py-1 md:px-6 rounded-xl border-2 border-lightTheme-accent dark:border-darkTheme-accent text-lightTheme-text dark:text-darkTheme-text"
         >
           {isDarkMode ? "Light" : "Dark"}
         </button>
@@ -19,20 +28,17 @@ const Sidebar = ({ toggleTheme, isDarkMode }) => {
         </div>
       </div>
 
-      {/* Image */}
+      {/* Profile Image and Info */}
       <div className="text-center my-6 flex-col space-y-2">
         <img
           src={Profile}
           alt="Profile"
           className="w-[60%] h-40 mx-auto rounded-2xl"
         />
-        {/* Name */}
         <h1 className="text-2xl font-bold">Urooj Fatima</h1>
-        {/* Title */}
         <p className="text-gray-600 dark:text-gray-300">Web Developer</p>
       </div>
 
-      {/* Details */}
       <div className="text-center mb-6">
         <p className="text-gray-700 dark:text-gray-400">
           A passionate developer who loves coding and creating innovative solutions.
@@ -52,12 +58,11 @@ const Sidebar = ({ toggleTheme, isDarkMode }) => {
         </a>
       </div>
 
-      {/* Hire Me Button */}
+      {/* Hire Me and Download CV Buttons */}
       <div className="text-center flex flex-col gap-4">
-        <button className="border-2 border-lightTheme-accent dark:border-darkTheme-accent hover:dark:bg-transparent hover:dark:text-white  bg-lightTheme-accent dark:bg-darkTheme-accent text-white py-2 px-20 rounded-full hover:opacity-80 transition hover:bg-transparent hover:text-black">
+        <button className="border-2 border-lightTheme-accent dark:border-darkTheme-accent hover:dark:bg-transparent hover:dark:text-white bg-lightTheme-accent dark:bg-darkTheme-accent text-white py-2 px-20 rounded-full hover:opacity-80 transition hover:bg-transparent hover:text-black">
           Hire Me
         </button>
-        {/* Download CV Button */}
         <a
           href={CV}
           download="UroojFatima_CV.pdf"
