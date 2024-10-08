@@ -1,6 +1,4 @@
 import React from 'react';
-
-// Example images; replace these paths with actual icons/images
 import wordpressIcon from '../assets/skills/WordPress.png';
 import reactIcon from '../assets/skills/React.png';
 import nextjsIcon from '../assets/skills/Next.PNG';
@@ -17,7 +15,7 @@ import cppIcon from '../assets/skills/C++.png';
 import DSAIcon from '../assets/skills/DSA.png';
 import Express from '../assets/skills/Express.png';
 import OOPIcon from '../assets/skills/OOP.png';
-import ProblemSolving from '../assets/skills/Soft Skills/Problem Solving.png'
+import ProblemSolving from '../assets/skills/Soft Skills/Problem Solving.png';
 
 const Skills = () => {
     // Professional skillset icons
