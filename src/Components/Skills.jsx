@@ -75,7 +75,7 @@ const Skills = () => {
                 <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
                     Professional skillset
                 </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 m-8 ">
+                <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-8 m-8 ">
                     {professionalSkills.map((skill, index) => (
                         <div
                             key={index}
@@ -101,7 +101,7 @@ const Skills = () => {
                 <h3 className="text-2xl font-semibold text-gray-700 dark:text-gray-300">
                     Soft skillset
                 </h3>
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 m-8">
+                <div className="grid grid-cols-1 sm:grid-cols-3 md:grid-cols-4 gap-8 m-8 items-center justify-center ">
                     {softSkills.map((skill, index) => (
                         <div
                             key={index}

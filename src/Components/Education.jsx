@@ -7,7 +7,7 @@ const Education = () => {
             institution: "Mohammad Ali Jinnah University",
             degree: "Under-Graduation",
             field: "BE-Software Engineering",
-            cgpa: "CGPA: 3.67",
+            cgpa: "CGPA: 3.75",
             description: "Currently in the 4th semester of BE in Software Engineering, actively absorbing a wealth of knowledge and skills, with a passion for continuous learning and growth in the dynamic field of software development.",
             yearRange: "2022-Continue"
         },
@@ -30,7 +30,7 @@ const Education = () => {
     ];
 
     return (
-        <section className="education-section py-16" id="education">
+        <section className="education-section py-16 px-1 md:px-5" id="education">
             <div className="text-center mb-12">
                 <h2 className="text-5xl font-bold text-lightTheme-text dark:text-darkTheme-text">
                     Education
@@ -42,7 +42,7 @@ const Education = () => {
                 {educationData.map((edu, index) => (
                     <div
                         key={index}
-                        className={`flex flex-col md:flex-row md:items-center justify-between md:space-x-6 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
+                        className={`flex flex-col space-y-4 md:flex-row md:items-center justify-between md:space-x-6 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
                     >
                         {/* Timeline Icon */}
                         <div className="relative flex items-center">

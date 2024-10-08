@@ -15,7 +15,7 @@ const About = () => {
     ];
 
     return (
-        <section className="about-section p-8 text-center my-20 " id="about">
+        <section className="about-section md:p-8 text-center md:my-20 " id="about">
             <div className="text-center mb-12">
                 <h2 className="text-5xl font-bold text-lightTheme-text dark:text-darkTheme-text">
                     About
@@ -41,13 +41,13 @@ const About = () => {
                 </div>
 
                 {/* Right section: Skills */}
-                <div className="md:w-[60%] animate-slideInUp">
+                <div className="md:w-[60%] w-full animate-slideInUp ">
                     <h3 className="text-3xl font-semibold text-lightTheme-text dark:text-darkTheme-text mb-6">SKILLS</h3>
-                    <div className="space-y-6">
+                    <div className="space-y-6 ">
                         {skills.map((skill, index) => (
-                            <div key={index} className="mb-4 flex justify-between">
-                                <p className="w-[20%] font-semibold text-lightTheme-text dark:text-darkTheme-text mb-2">{skill.name}</p>
-                                <div className="w-[80%] h-4 bg-gray-300 rounded-full">
+                            <div key={index} className="mb-4 flex justify-between ">
+                                <p className="w-[15%] font-semibold text-lightTheme-text dark:text-darkTheme-text mb-2">{skill.name}</p>
+                                <div className="w-[75%] h-4 bg-gray-300 rounded-full">
                                     <div
                                         className={`${skill.color} h-full rounded-full`}
                                         style={{ width: skill.level }}
