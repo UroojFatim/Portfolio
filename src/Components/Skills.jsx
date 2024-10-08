@@ -3,7 +3,7 @@ import wordpressIcon from '../assets/skills/WordPress.png';
 import reactIcon from '../assets/skills/React.png';
 import nextjsIcon from '../assets/skills/Next.PNG';
 import nodejsIcon from '../assets/skills/Node.png';
-import mongoIcon from '../assets/skills/MongoDb.PNG';
+import mongoIcon from '../assets/skills/MongoDb.png';
 import jsIcon from '../assets/skills/Js.png';
 import tailwindIcon from '../assets/skills/Tailwind css.PNG';
 import gitIcon from '../assets/skills/Git.png';
@@ -35,7 +35,7 @@ const Skills = () => {
         { name: 'OOP', icon: OOPIcon },
         { name: 'WordPress', icon: wordpressIcon },
         { name: 'HTML', icon: htmlIcon },
-        { name: 'CSS', icon: cssIcon },
+        { name: 'CSS', icon: cssIcon }
     ];
 
     // Soft skillset icons (use any soft skill images that represent communication, leadership, etc.)
