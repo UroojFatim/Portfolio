@@ -1,23 +1,23 @@
 import React from 'react';
 
 // Example images; replace these paths with actual icons/images
-import wordpressIcon from '../assets/skills/WordPress.PNG';
-import reactIcon from '../assets/skills/React.PNG';
+import wordpressIcon from '../assets/skills/WordPress.png';
+import reactIcon from '../assets/skills/React.png';
 import nextjsIcon from '../assets/skills/Next.PNG';
 import nodejsIcon from '../assets/skills/Node.png';
-import mongoIcon from '../assets/skills/MongoDb.png';
-import jsIcon from '../assets/skills/js.png';
-import tailwindIcon from '../assets/skills/Tailwind css.png';
-import gitIcon from '../assets/skills/git.png';
-import pythonIcon from '../assets/skills/python.png';
-import sqlIcon from '../assets/skills/sql.png';
-import htmlIcon from '../assets/skills/html.png';
-import cssIcon from '../assets/skills/css.png';
-import cppIcon from '../assets/skills/c++.png';
+import mongoIcon from '../assets/skills/MongoDb.PNG';
+import jsIcon from '../assets/skills/Js.png';
+import tailwindIcon from '../assets/skills/Tailwind css.PNG';
+import gitIcon from '../assets/skills/Git.png';
+import pythonIcon from '../assets/skills/Python.png';
+import sqlIcon from '../assets/skills/SQL.png';
+import htmlIcon from '../assets/skills/HTML.png';
+import cssIcon from '../assets/skills/Css.png';
+import cppIcon from '../assets/skills/C++.png';
 import DSAIcon from '../assets/skills/DSA.png';
 import Express from '../assets/skills/Express.png';
 import OOPIcon from '../assets/skills/OOP.png';
-import ProblemSolving from '../assets/skills/Soft Skills/ProblemSolving.png'
+import ProblemSolving from '../assets/skills/Soft Skills/Problem Solving.png'
 
 const Skills = () => {
     // Professional skillset icons
