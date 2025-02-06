@@ -1,7 +1,8 @@
 // src/Components/Pages/RightSide/Projects.js
 
+
 import React from 'react';
-import Project1Image from '../assets/Profile.jpeg'; // Replace with your project images
+import Project1Image from '../assets/projects/PlantPalace.JPG'; 
 import Project2Image from '../assets/Profile.jpeg';
 import Project3Image from '../assets/Profile.jpeg';
 // Import more project images as needed
@@ -17,10 +18,10 @@ const projects = [
   },
   {
     id: 2,
-    title: 'Project Two',
+    title: 'PlantPalace',
     description: 'A brief description of Project Two.',
     image: Project2Image,
-    demoLink: 'https://example.com/project-two',
+    demoLink: 'https://plant-palace-beta.vercel.app/',
     repoLink: 'https://github.com/yourusername/project-two',
   },
   {

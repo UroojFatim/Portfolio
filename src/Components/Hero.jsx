@@ -1,5 +1,6 @@
 import React from 'react';
-import ProfileImage from '../assets/ProfileImage.jpeg'; // Adjust the path as necessary
+import ProfileImage from '../assets/ProfileImage.jpeg';
+import Typewriter from "typewriter-effect";
 
 const Hero = () => {
     return (
@@ -19,9 +20,15 @@ const Hero = () => {
                     Urooj Fatima
                 </h1>
                 <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300">
-                    WordPress Developer
+                    <Typewriter
+                        options={{
+                            strings: ["Aspiring Full-Stack Developer", "MERN Stack Developer", "WordPress Developer", "AI Enthusiast"],
+                            autoStart: true,
+                            loop: true,
+                        }}
+                    />
                 </p>
-                
+
                 <div className="text-sm sm:text-base lg:text-lg">
                     <p><strong>AGE:</strong> 20</p>
                     <p><strong>ADDRESS:</strong> Karachi</p>
