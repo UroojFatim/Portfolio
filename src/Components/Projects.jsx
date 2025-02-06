@@ -2,9 +2,9 @@
 
 
 import React from 'react';
-import Project1Image from '../assets/projects/PlantPalace.JPG'; 
-import Project2Image from '../assets/Profile.jpeg';
-import Project3Image from '../assets/Profile.jpeg';
+import Project1Image from '../assets/Profile.jpeg';
+import Project2Image from '../assets/projects/PlantPalace.JPG'; 
+import Project3Image from '../assets/projects/Theater.JPG';
 // Import more project images as needed
 
 const projects = [
@@ -18,19 +18,19 @@ const projects = [
   },
   {
     id: 2,
-    title: 'PlantPalace',
-    description: 'A brief description of Project Two.',
+    title: 'PlantPalace – Modern E-Commerce for Plant Lovers 🌿',
+    description: 'PlantPalace is a fast, responsive e-commerce site built with Vite and React, offering a smooth shopping experience for plant enthusiasts. Users can easily browse, search, and purchase plants with a sleek, modern interface and secure checkout.',
     image: Project2Image,
     demoLink: 'https://plant-palace-beta.vercel.app/',
-    repoLink: 'https://github.com/yourusername/project-two',
+    repoLink: 'https://github.com/UroojFatim/PlantPalace',
   },
   {
     id: 3,
-    title: 'Project Three',
-    description: 'A brief description of Project Three.',
+    title: 'Theater Website – A Dynamic Platform for Movie Lovers 🎬',
+    description: 'Theater Website is a dynamic, user-friendly platform built with React.js, designed to showcase movie listings, showtimes, and theater locations. It offers a seamless experience for moviegoers to explore upcoming films, check schedules, and book tickets online.',
     image: Project3Image,
-    demoLink: 'https://example.com/project-three',
-    repoLink: 'https://github.com/yourusername/project-three',
+    demoLink: 'https://theater-snowy.vercel.app/',
+    repoLink: 'https://github.com/UroojFatim/Theater',
   },
   // Add more projects as needed
 ];
@@ -47,7 +47,7 @@ const Projects = () => {
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
         {projects.map((project) => (
           <div 
             key={project.id} 
