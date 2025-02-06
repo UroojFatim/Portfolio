@@ -23,9 +23,9 @@ const Hero = () => {
                 </p>
                 
                 <div className="text-sm sm:text-base lg:text-lg">
-                    <p><strong>AGE:</strong> 19</p>
+                    <p><strong>AGE:</strong> 20</p>
                     <p><strong>ADDRESS:</strong> Karachi</p>
-                    <p><strong>E-MAIL:</strong> eshalmerab1@gmail.com</p>
+                    <p><strong>E-MAIL:</strong> urooj.fatim2004@gmail.com</p>
                     <p><strong>PHONE:</strong> +92 344 8302253</p>
                 </div>
 

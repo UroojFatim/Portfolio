@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { FaRegCalendarAlt } from 'react-icons/fa'; // Icon for the timeline milestone
 
 const Education = () => {
@@ -29,8 +29,36 @@ const Education = () => {
         }
     ];
 
+    const [isVisible, setIsVisible] = useState(false);
+    const sectionRef = useRef(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                    observer.unobserve(entry.target); // Unobserve once the animation has been triggered
+                }
+            });
+        });
+
+        if (sectionRef.current) {
+            observer.observe(sectionRef.current);
+        }
+
+        return () => {
+            if (sectionRef.current) {
+                observer.unobserve(sectionRef.current);
+            }
+        };
+    }, []);
+
     return (
-        <section className="education-section py-16 px-1 md:px-5" id="education">
+        <section
+            ref={sectionRef}
+            className={`education-section py-16 px-1 md:px-5 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+            id="education"
+        >
             <div className="text-center mb-12">
                 <h2 className="text-5xl font-bold text-lightTheme-text dark:text-darkTheme-text">
                     Education
@@ -42,7 +70,7 @@ const Education = () => {
                 {educationData.map((edu, index) => (
                     <div
                         key={index}
-                        className={`flex flex-col space-y-4 md:flex-row md:items-center justify-between md:space-x-6 ${index % 2 === 1 ? 'md:flex-row-reverse' : ''}`}
+                        className={`flex flex-col space-y-4 md:flex-row md:items-center justify-between md:space-x-6 transition-transform duration-500 transform ${isVisible ? 'translate-y-0' : 'translate-y-10 opacity-0'}`}
                     >
                         {/* Timeline Icon */}
                         <div className="relative flex items-center">

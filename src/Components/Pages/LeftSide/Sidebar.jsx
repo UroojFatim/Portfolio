@@ -23,7 +23,7 @@ const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar }) => {
           {isDarkMode ? "Light" : "Dark"}
         </button>
         <div className="text-xs">
-          <p className="text-gray-700 dark:text-gray-300">Email: eshalmerab1@gmail.com</p>
+          <p className="text-gray-700 dark:text-gray-300">Email: urooj.fatim2004@gmail.com</p>
           <p className="text-gray-700 dark:text-gray-300">Phone: +92 344 8302253</p>
         </div>
       </div>
@@ -36,7 +36,7 @@ const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar }) => {
           className="w-40 h-40 mx-auto rounded-full"
         />
         <h1 className="text-2xl font-bold">Urooj Fatima</h1>
-        <p className="text-gray-600 dark:text-gray-300">Web Developer</p>
+        <p className="text-gray-600 dark:text-gray-300">Aspiring Full-Stack Developer</p>
       </div>
 
       <div className="text-center mb-6">

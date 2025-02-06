@@ -24,15 +24,19 @@ const About = () => {
             </div>
             <div className="flex flex-col md:flex-row justify-around items-start gap-12">
                 {/* Left section: Bio */}
-                <div className="md:w-[35%] text-left animate-fadeIn">
+                <div className="md:w-[30%] text-left animate-fadeIn flex flex-col gap-9">
                     <h3 className="text-3xl font-semibold">
                        It's <span className=" text-lightTheme-accent dark:text-darkTheme-accent mb-6">Urooj Fatima</span>
                     </h3>
                     <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                    As a dynamic Software Engineering student specializing in Full Stack Development, I thrive on learning and mastering a diverse array of technologies. 
-                        In just a year, I've delved into HTML, CSS, JavaScript, WordPress, Next.js, Tailwind CSS, Shopify, PHP, MySQL, and beyond. My insatiable curiosity 
-                        and dedication have propelled me to not only acquire technical expertise but also pursue additional soft skills and project management courses.
-                        Driven by a passion for innovation and continuous growth, I’ve already brought to life three e-commerce websites and a job portal.
+                    <ul className='list-disc list-inside flex flex-col gap-3'>
+                        <li>Passionate Full Stack Developer</li>
+                        <li>Lifelong Learner</li>
+                        <li>Effective Communicator</li>
+                        <li>Adaptable Problem Solver</li>
+                        <li>Personality Development Enthusiast</li>
+                        <li>Tech Enthusiast</li>
+                    </ul>
                     
                     </p>
                     <button className="border-2 border-lightTheme-accent dark:border-darkTheme-accent hover:dark:bg-transparent hover:dark:text-white  bg-lightTheme-accent dark:bg-darkTheme-accent text-white py-2 px-20 rounded-full hover:opacity-80 transition hover:bg-transparent hover:text-black">
@@ -41,7 +45,7 @@ const About = () => {
                 </div>
 
                 {/* Right section: Skills */}
-                <div className="md:w-[60%] w-full animate-slideInUp ">
+                <div className="md:w-[65%] w-full animate-slideInUp ">
                     <h3 className="text-3xl font-semibold text-lightTheme-text dark:text-darkTheme-text mb-6">SKILLS</h3>
                     <div className="space-y-6 ">
                         {skills.map((skill, index) => (
