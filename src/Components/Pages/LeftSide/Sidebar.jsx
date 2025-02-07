@@ -47,22 +47,22 @@ const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar }) => {
 
       {/* Social Icons */}
       <div className="flex justify-center space-x-4 mb-6">
-        <a href="https://facebook.com" target="_blank" className="text-blue-500 dark:text-orange-400">
+        <a href="https://www.facebook.com/profile.php?id=100080339196603" target="_blank" className="text-blue-500 dark:text-orange-400">
           <i className="fab fa-facebook"></i>
         </a>
-        <a href="https://instagram.com" target="_blank" className="text-pink-500 dark:text-orange-400">
+        <a href="https://www.instagram.com/urooj_fatima142/" target="_blank" className="text-pink-500 dark:text-orange-400">
           <i className="fab fa-instagram"></i>
         </a>
-        <a href="https://linkedin.com" target="_blank" className="text-blue-700 dark:text-orange-400">
+        <a href="https://www.linkedin.com/in/urooj-fatima-588ba2296/" target="_blank" className="text-blue-700 dark:text-orange-400">
           <i className="fab fa-linkedin"></i>
         </a>
       </div>
 
       {/* Hire Me and Download CV Buttons */}
       <div className="text-center flex flex-col gap-4 mx-5">
-        <button className="border-2 border-lightTheme-accent dark:border-darkTheme-accent hover:dark:bg-transparent hover:dark:text-white bg-lightTheme-accent dark:bg-darkTheme-accent text-white px-14 py-2 md:px-20 rounded-full hover:opacity-80 transition hover:bg-transparent hover:text-black">
+        <a href="https://www.upwork.com/freelancers/~018b2cb9ef43a154ba?mp_source=share" target ="_blank" className="border-2 border-lightTheme-accent dark:border-darkTheme-accent hover:dark:bg-transparent hover:dark:text-white bg-lightTheme-accent dark:bg-darkTheme-accent text-white px-14 py-2 md:px-20 rounded-full hover:opacity-80 transition hover:bg-transparent hover:text-black">
           Hire Me
-        </button>
+        </a >
         <a
           href={CV}
           download="UroojFatima_CV.pdf"
