@@ -1,6 +1,7 @@
 import React from 'react';
 import ProfileImage from '../assets/ProfileImage.jpeg';
 import Typewriter from "typewriter-effect";
+import { Link } from "react-scroll";
 
 const Hero = () => {
     return (
@@ -38,16 +39,22 @@ const Hero = () => {
 
                 {/* Action Buttons */}
                 <div className="flex justify-center lg:justify-start space-x-4 mt-4">
-                    <button className="border-2 border-black dark:border-white bg-yellow-500 text-white w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full hover:opacity-80 transition transform hover:scale-105">
-                        Resume
-                    </button>
-                    <button className="border-2 border-black dark:border-white bg-orange-500 text-white w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full hover:opacity-80 transition transform hover:scale-105">
-                        Portfolio
-                    </button>
-                    <button className="border-2 border-black dark:border-white bg-teal-500 text-white w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full hover:opacity-80 transition transform hover:scale-105">
-                        Services
-                    </button>
-                </div>
+                    <Link to="about" smooth={true} duration={500}>
+                        <button className="border-2 border-black dark:border-white bg-yellow-500 text-white w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full hover:opacity-80 transition transform hover:scale-105">
+                            About
+                        </button>
+                    </Link>
+                    <Link to="portfolio" smooth={true} duration={500}>
+                        <button className="border-2 border-black dark:border-white bg-orange-500 text-white w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full hover:opacity-80 transition transform hover:scale-105">
+                            Portfolio
+                        </button>
+                    </Link>
+                    <Link to="services" smooth={true} duration={500}>
+                        <button className="border-2 border-black dark:border-white bg-teal-500 text-white w-20 h-20 sm:w-24 sm:h-24 lg:w-28 lg:h-28 rounded-full hover:opacity-80 transition transform hover:scale-105">
+                            Services
+                        </button>
+                    </Link>
+                </div>  
             </div>
         </section>
     );

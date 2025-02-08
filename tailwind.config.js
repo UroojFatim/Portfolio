@@ -13,7 +13,7 @@ export default {
           accent: '#0ea5e9', // sky blue
         },
         darkTheme: {
-          bg: '#000000',
+          bg: '#1B1212',
           text: '#ffffff',
           accent: '#f97316', // orange
         },
