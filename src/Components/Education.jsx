@@ -57,7 +57,7 @@ const Education = () => {
         <section
             ref={sectionRef}
             className={`education-section py-16 px-1 md:px-5 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-            id="services"
+            id="education"
         >
             <div className="text-center mb-12">
                 <h2 className="text-5xl font-bold text-lightTheme-text dark:text-darkTheme-text">
