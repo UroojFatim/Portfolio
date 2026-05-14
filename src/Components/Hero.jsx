@@ -23,7 +23,7 @@ const Hero = () => {
                 <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 dark:text-gray-300">
                     <Typewriter
                         options={{
-                            strings: ["Aspiring Full-Stack Developer", "MERN Stack Developer", "WordPress Developer", "AI Enthusiast"],
+                            strings: ["Full-Stack Developer", "MERN Stack Developer", "WordPress Developer", "AI Enthusiast"],
                             autoStart: true,
                             loop: true,
                         }}
@@ -31,7 +31,7 @@ const Hero = () => {
                 </p>
 
                 <div className="text-sm sm:text-base lg:text-lg">
-                    <p><strong>AGE:</strong> 20</p>
+                    <p><strong>AGE:</strong> 21</p>
                     <p><strong>ADDRESS:</strong> Karachi</p>
                     <p><strong>E-MAIL:</strong> urooj.fatim2004@gmail.com</p>
                     <p><strong>PHONE:</strong> +92 344 8302253</p>

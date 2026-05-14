@@ -36,7 +36,7 @@ const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar }) => {
           className="w-40 h-40 mx-auto rounded-full"
         />
         <h1 className="text-2xl font-bold">Urooj Fatima</h1>
-        <p className="text-gray-600 dark:text-gray-300">Aspiring Full-Stack Developer</p>
+        <p className="text-gray-600 dark:text-gray-300">Full-Stack Developer</p>
       </div>
 
       <div className="text-center mb-6">
