@@ -1,146 +1,174 @@
-import React from 'react';
-import Project1Image from '../assets/projects/PlantPalace.JPG'; 
-import Project2Image from '../assets/projects/Theater.JPG';
-import Project3Image from '../assets/projects/EveChicBoutique.JPG';
-import Project4Image from '../assets/projects/JobSphere.JPG';
-import Project5Image from '../assets/projects/PickBazar.JPG';
-import Project6Image from '../assets/projects/QuizWebsite.JPG';
-import Project7Image from '../assets/projects/DailyTimes.JPG';
-import Project8Image from '../assets/projects/ColorDetector.JPG';
-import Project9Image from '../assets/projects/LibraryManagementSystem.JPG';
-import Project10Image from '../assets/projects/AirLineReservationSystem.JPG';
+import React, { useEffect, useMemo, useState } from 'react';
+import { projects } from '../data/projects';
+import ScrollReveal from './ScrollReveal';
 
-const projects = [  
-  {
-    id: 1,
-    title: 'PlantPalace – Modern E-Commerce for Plant Lovers 🌿',
-    description: 'PlantPalace is a fast, responsive e-commerce site built with Vite and React, offering a smooth shopping experience for plant enthusiasts. Users can easily browse, search, and purchase plants with a sleek, modern interface and secure checkout.',
-    image: Project1Image,
-    demoLink: 'https://plant-palace-beta.vercel.app/',
-    repoLink: 'https://github.com/UroojFatim/PlantPalace',
-  },
-  {
-    id: 2,
-    title: 'Theater Website – A Dynamic Platform for Movie Lovers 🎬',
-    description: 'Theater Website is a dynamic, user-friendly platform built with React.js, designed to showcase movie listings, showtimes, and theater locations. It offers a seamless experience for moviegoers to explore upcoming films, check schedules, and book tickets online.',
-    image: Project2Image,
-    demoLink: 'https://theater-snowy.vercel.app/',
-    repoLink: 'https://github.com/UroojFatim/Theater',
-  },
-  {
-    id: 3,
-    title: 'EvichicBoutique – Stylish & Elegant E-Commerce Platform 🛍️',
-    description: 'EvichicBoutique is a sleek and modern e-commerce website built with HTML, CSS, Bootstrap, and PHP, offering a seamless shopping experience. Designed for fashion enthusiasts, it provides a stylish interface for browsing products, adding items to the cart, and managing orders efficiently.',
-    image: Project3Image,
-    repoLink: 'https://github.com/UroojFatim/EveChic_Boutique',
-  },
-  {
-    id: 4,
-    title: 'JobSphere – A Comprehensive Job Portal 💼',
-    description: 'JobSphere is a full-stack job portal designed to connect job seekers with employers, providing a seamless and efficient hiring experience. Built with modern web technologies, it enables users to search and apply for jobs, while employers can post openings and manage applications. The platform ensures a smooth user experience with an intuitive UI and powerful backend functionalities.',
-    image: Project4Image,
-    repoLink: 'https://github.com/UroojFatim/Job-Sphere',
-  },
-  {
-    id: 5,
-    title: 'PickBazar – Modern E-Commerce Platform Built with Next.js 🛒',
-    description: 'PickBazar is a high-performance e-commerce website developed using Next.js and deployed on Vercel. Designed for a seamless shopping experience, it offers a fast, responsive, and user-friendly interface with optimized performance. With advanced search, filtering, and cart management, PickBazar ensures a smooth and efficient online shopping journey.',
-    image: Project5Image,
-    demoLink: 'https://pickbazar-e-commerce-template.vercel.app/',
-    repoLink: 'https://github.com/EponymousBearer/pickbazar_e-commerce_template',
-  },
-  {
-    id: 6,
-    title: 'PsyAssess – AI-Powered Personality Assessment for Job Seekers 🧠💼  z',
-    description: "PsyAssess is an advanced personality assessment platform built using Django, designed to evaluate job seekers through psychology-based tests curated by professional psychologists. Developed collaboratively with Tasmiya Ansari, Sakina Qasim, and two psychology experts, this platform helps employers gain deeper insights into candidates' personalities, strengths, and work styles before hiring.",
-    image: Project6Image,
-    repoLink: 'https://github.com/UroojFatim/Personality_Assessment_Website',
-  },
-  {
-    id: 7,
-    title: 'DailyTimes – A Modern News & Articles Platform 📰',
-    description: 'DailyTimes is a Proof of Concept (POC) news and articles website designed to showcase a sleek, user-friendly, and content-rich platform for delivering the latest news and insights. Built with scalability in mind, it offers an intuitive reading experience with fast loading times and seamless navigation.',
-    image: Project7Image,
-    demoLink: 'https://daily-times-alpha.vercel.app/',
-    repoLink: 'https://github.com/UroojFatim/DailyTimes',
-  },  
-  {
-    id: 8,
-    title: 'WebCome – Color Detection for the Visually Impaired 🎨🦮  ',
-    description: 'WebCome is an assistive technology tool built using Python and OpenCV, designed to help visually impaired individuals identify colors in real-time. By utilizing a webcam, the system detects the dominant color in the field of view and provides audio feedback, enhancing accessibility and independence.',
-    image: Project8Image,
-    repoLink: 'https://github.com/UroojFatim/ColorDetector',
-  },
-  {
-    id: 9,
-    title: 'Library Management System – Efficient Book Management in C++ 📚',
-    description: 'The Library Management System is a console-based application built using C++, designed to help manage library operations efficiently. It allows librarians to add, delete, search, and issue books while keeping track of borrowers and returns. With a simple and interactive interface, this system streamlines book management and enhances library operations.',
-    image: Project9Image,
-    repoLink: 'https://github.com/UroojFatim/Library-Management-System',
-  },
-  {
-    id: 10,
-    title: 'Airline Reservation System – CEP Project in C++ (DSA & OOP) ✈️',
-    description: 'The Airline Reservation System is a Comprehensive Evaluation Project (CEP) built using C++, integrating Data Structures & Algorithms (DSA) and Object-Oriented Programming (OOP) principles. This system allows users to book, cancel, and manage flight reservations efficiently while maintaining passenger records using optimized data structures.',
-    image: Project10Image,
-    repoLink: 'https://github.com/UroojFatim/CEP-Project',
-  },   
+const FILTERS = [
+  'All',
+  'MERN Stack',
+  'Next.js',
+  'AI/ML',
+  'SaaS',
+  'E-Commerce',
+  'In Progress',
 ];
 
+const statusStyles = {
+  Live: 'bg-emerald-500/15 text-emerald-300 border-emerald-500/30',
+  'In Progress': 'bg-amber-500/15 text-amber-300 border-amber-500/30',
+  Completed: 'bg-sky-500/15 text-sky-200 border-sky-500/30',
+};
+
 const Projects = () => {
+  const [activeFilter, setActiveFilter] = useState('All');
+  const [displayedProjects, setDisplayedProjects] = useState(projects);
+  const [transitionStage, setTransitionStage] = useState('idle');
+
+  const filteredProjects = useMemo(() => {
+    if (activeFilter === 'All') return projects;
+    return projects.filter((project) => project.tags?.includes(activeFilter));
+  }, [activeFilter]);
+
+  useEffect(() => {
+    let exitTimer;
+    let enterTimer;
+
+    if (transitionStage === 'idle') return undefined;
+
+    if (transitionStage === 'exit') {
+      exitTimer = setTimeout(() => {
+        setDisplayedProjects(filteredProjects);
+        setTransitionStage('enter');
+      }, 180);
+    }
+
+    if (transitionStage === 'enter') {
+      enterTimer = window.requestAnimationFrame(() => {
+        setTransitionStage('idle');
+      });
+    }
+
+    return () => {
+      clearTimeout(exitTimer);
+      if (enterTimer) window.cancelAnimationFrame(enterTimer);
+    };
+  }, [filteredProjects, transitionStage]);
+
+  const handleFilterChange = (filter) => {
+    if (filter === activeFilter) return;
+    setActiveFilter(filter);
+    setTransitionStage('exit');
+  };
+
+  const cardClassForStage = (stage) => {
+    if (stage === 'exit') return 'project-card-exit';
+    if (stage === 'enter') return 'project-card-enter';
+    return 'project-card-idle';
+  };
+
   return (
-    <section id="portfolio" className="projects-section p-6 sm:p-10 lg:p-16 text-center my-10 lg:my-20"
-  >
-    <div className="mb-12">
-      <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-lightTheme-text dark:text-darkTheme-text">
-        Projects
-      </h2>
-      <span className="inline-block w-20 sm:w-28 h-1 bg-lightTheme-accent dark:bg-darkTheme-accent mt-4 mx-auto"></span>
-    </div>
-    <div className="grid grid-cols-1 sm:grid-cols-2 2xl:grid-cols-3 gap-8">
-      {projects.map((project) => (
-        <div
-          key={project.id}
-          className="bg-lightTheme-bg dark:bg-darkTheme-bg border-2 border-lightTheme-accent dark:border-darkTheme-accent shadow-lg rounded-2xl overflow-hidden transform hover:scale-105 transition duration-300"
-        >
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full  object-fit"
-          />
-          <div className="p-5">
-            <h3 className="lg:text-xl font-semibold text-lightTheme-text dark:text-darkTheme-text mb-2">
-              {project.title}
-            </h3>
-            <p className="text-xs lg:text-sm text-gray-700 dark:text-gray-300 mb-4">
-              {project.description}
-            </p>
-            <div className="flex justify-center space-x-4">
-              {project.demoLink && (
-                <a
-                  href={project.demoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="border-2 border-lightTheme-accent dark:border-darkTheme-accent hover:dark:bg-transparent hover:dark:text-white bg-lightTheme-accent dark:bg-darkTheme-accent text-white px-3 py-1 md:px-6 md:py-2 rounded-full hover:opacity-80 transition hover:bg-transparent hover:text-black text-sm lg:text-base"
-                >
-                  Live Demo
-                </a>
-              )}
-              <a
-                href={project.repoLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="border-2 border-lightTheme-accent dark:border-darkTheme-accent px-3 py-1 md:px-6 md:py-2 rounded-full transition hover:text-white text-center hover:bg-lightTheme-accent dark:hover:bg-darkTheme-accent text-sm lg:text-base"
-              >
-                GitHub
-              </a>
-            </div>
-          </div>
+    <section
+      id="projects"
+      className="projects-section py-16 px-6 max-w-7xl mx-auto"
+    >
+      <div className="mb-8">
+        <h2 className="section-heading">Projects</h2>
+      </div>
+
+      <div className="max-w-6xl mx-auto mb-10">
+        <div className="project-filter-bar">
+          {FILTERS.map((filter) => (
+            <button
+              key={filter}
+              type="button"
+              onClick={() => handleFilterChange(filter)}
+              aria-pressed={activeFilter === filter}
+              className={`project-filter-btn min-h-11 ${activeFilter === filter ? 'active' : ''}`}
+            >
+              {filter}
+            </button>
+          ))}
         </div>
-      ))}
-    </div>
-  </section>
-  
+      </div>
+
+      {displayedProjects.length === 0 ? (
+        <p className="text-sm text-gray-400 max-w-md mx-auto text-center">
+          No projects match this filter.
+        </p>
+      ) : (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {displayedProjects.map((project, index) => {
+            const stageClass = cardClassForStage(transitionStage);
+            return (
+              <ScrollReveal key={project.id} delay={index * 40}>
+              <article
+                className={`glass-card hover-glow p-6 relative overflow-hidden border border-white/10 transition-opacity duration-300 ${stageClass}`}
+              >
+                <div className="absolute top-4 right-4">
+                  <span className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-semibold text-blue-200">
+                    {project.tags?.[0] ?? 'Project'}
+                  </span>
+                </div>
+
+                <div className="pr-24">
+                  <h3 className="text-2xl font-bold text-white text-left">{project.name}</h3>
+                  {project.client && (
+                    <div className="mt-2 inline-flex rounded-full border px-3 py-1 text-xs font-semibold border-white/10 text-gray-300">
+                      {project.client}
+                    </div>
+                  )}
+                </div>
+
+                <div className={`mt-4 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold ${statusStyles[project.status] ?? statusStyles.Completed}`}>
+                  <span aria-hidden="true">{project.status === 'Live' ? '🟢' : project.status === 'In Progress' ? '🟡' : '✅'}</span>
+                  <span>{project.status}</span>
+                </div>
+
+                <p className="mt-4 text-sm leading-6 text-gray-300 text-left">
+                  {project.desc}
+                </p>
+
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {project.stack.map((tech) => (
+                    <span
+                      key={tech}
+                      className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-100"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="mt-6 flex flex-wrap gap-3">
+                  {project.demo && (
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Open live site for ${project.name}`}
+                      className="inline-flex min-h-11 items-center justify-center rounded-full border border-blue-500 px-4 py-2 text-sm font-semibold text-blue-200 transition hover:bg-blue-500/10"
+                    >
+                      Live
+                    </a>
+                  )}
+                  {project.github && (
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      aria-label={`Open GitHub repo for ${project.name}`}
+                      className="inline-flex min-h-11 items-center justify-center rounded-full border border-blue-500 px-4 py-2 text-sm font-semibold text-blue-200 transition hover:bg-blue-500/10"
+                    >
+                      GitHub
+                    </a>
+                  )}
+                </div>
+              </article>
+              </ScrollReveal>
+            );
+          })}
+        </div>
+      )}
+    </section>
   );
 };
 
