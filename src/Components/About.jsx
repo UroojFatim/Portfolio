@@ -1,65 +1,113 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import ScrollReveal from './ScrollReveal';
 
-const About = () => {
-    const skills = [
-        { name: 'React', level: '70%', color: 'bg-cyan-400' },
-        { name: 'Next.js', level: '60%', color: 'bg-purple-500' },
-        { name: 'Mongodb', level: '75%', color: 'bg-lime-500' },
-        { name: 'Express', level: '50%', color: 'bg-rose-700' },
-        { name: 'Node.js', level: '50%', color: 'bg-amber-800' },
-        { name: 'SQL', level: '75%', color: 'bg-orange-400' },
-        { name: 'JavaScript', level: '80%', color: 'bg-yellow-400' },
-        { name: 'Python', level: '71%', color: 'bg-green-500' },
-        { name: 'WordPress', level: '64%', color: 'bg-pink-400' },
-        { name: 'HTML, CSS, (Tailwind CSS)', level: '95%', color: 'bg-blue-600' },
-    ];
+const StatCard = ({ label, value, suffix = '', decimals = 0, trigger }) => {
+    const [count, setCount] = useState(0);
+    const rafRef = useRef();
+
+    useEffect(() => {
+        if (!trigger) return;
+        const start = performance.now();
+        const duration = 1200;
+        const from = 0;
+        const to = value;
+
+        const step = (now) => {
+            const elapsed = now - start;
+            const progress = Math.min(elapsed / duration, 1);
+            const current = from + (to - from) * progress;
+            setCount(Number(current.toFixed(decimals)));
+            if (progress < 1) rafRef.current = requestAnimationFrame(step);
+        };
+        rafRef.current = requestAnimationFrame(step);
+        return () => cancelAnimationFrame(rafRef.current);
+    }, [trigger]);
 
     return (
-        <section className="about-section md:p-8 text-center md:my-20 " id="about">
-            <div className="text-center mb-12">
-                <h2 className="text-5xl font-bold text-lightTheme-text dark:text-darkTheme-text">
-                    About
-                </h2>
-                <span className="inline-block w-24 h-1 bg-lightTheme-accent dark:bg-darkTheme-accent mt-4"></span>
+        <div className="glass-card p-6 hover-glow transition w-full">
+            <div className="text-3xl font-bold text-white">
+                {count}{suffix}
             </div>
-            <div className="flex flex-col md:flex-row justify-around items-start gap-12">
-                {/* Left section: Bio */}
-                <div className="md:w-[30%] text-left animate-fadeIn flex flex-col gap-9">
-                    <h3 className="text-3xl font-semibold">
-                       It's <span className=" text-lightTheme-accent dark:text-darkTheme-accent mb-6">Urooj Fatima</span>
-                    </h3>
-                    <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-                    <ul className='list-disc list-inside flex flex-col gap-3'>
-                        <li>Passionate Full Stack Developer</li>
-                        <li>Lifelong Learner</li>
-                        <li>Effective Communicator</li>
-                        <li>Adaptable Problem Solver</li>
-                        <li>Personality Development Enthusiast</li>
-                        <li>Tech Enthusiast</li>
-                    </ul>
-                    
-                    </p>
-                    <button className="border-2 border-lightTheme-accent dark:border-darkTheme-accent hover:dark:bg-transparent hover:dark:text-white  bg-lightTheme-accent dark:bg-darkTheme-accent text-white py-2 px-20 rounded-full hover:opacity-80 transition hover:bg-transparent hover:text-black">
-                        ABOUT ME
-                    </button>
+            <div className="text-sm text-gray-300 mt-2">{label}</div>
+        </div>
+    );
+};
+
+const About = () => {
+    const statsRef = useRef();
+    const [visible, setVisible] = useState(false);
+
+    useEffect(() => {
+        const el = statsRef.current;
+        if (!el) return;
+        const obs = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) setVisible(true);
+            });
+        }, { threshold: 0.3 });
+        obs.observe(el);
+        return () => obs.disconnect();
+    }, []);
+
+    return (
+        <section id="about" className="py-16 px-6 max-w-6xl mx-auto">
+            <div className="mb-8">
+                <h2 className="section-heading">About</h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Left: Stat cards */}
+                <div className="space-y-4" ref={statsRef}>
+                    <ScrollReveal delay={0}>
+                        <StatCard label="Projects Shipped" value={5} suffix="+" trigger={visible} />
+                    </ScrollReveal>
+                    <ScrollReveal delay={80}>
+                        <StatCard label="Users Served" value={250} suffix="+" trigger={visible} />
+                    </ScrollReveal>
+                    <ScrollReveal delay={160}>
+                        <StatCard label="Years Experience" value={1} suffix="+" trigger={visible} />
+                    </ScrollReveal>
+                    <ScrollReveal delay={240}>
+                        <StatCard label="CGPA" value={3.48} decimals={2} trigger={visible} />
+                    </ScrollReveal>
                 </div>
 
-                {/* Right section: Skills */}
-                <div className="md:w-[65%] w-full animate-slideInUp ">
-                    <h3 className="text-3xl font-semibold text-lightTheme-text dark:text-darkTheme-text mb-6">SKILLS</h3>
-                    <div className="space-y-6 ">
-                        {skills.map((skill, index) => (
-                            <div key={index} className="mb-4 flex justify-between ">
-                                <p className="w-[15%] font-semibold text-lightTheme-text dark:text-darkTheme-text mb-2">{skill.name}</p>
-                                <div className="w-[75%] h-4 bg-gray-300 rounded-full">
-                                    <div
-                                        className={`${skill.color} h-full rounded-full`}
-                                        style={{ width: skill.level }}
-                                    ></div>
+                {/* Right: Bio + Education */}
+                <div className="space-y-6">
+                    <ScrollReveal delay={80}>
+                    <div className="glass-card hover-glow p-6">
+                        <h3 className="text-2xl font-semibold text-white">Biography</h3>
+                        <p className="mt-3 text-gray-300">
+                            Full Stack Developer with 2+ year of production experience building scalable SaaS platforms, AI-driven applications, and e-commerce systems. Expertise in MERN stack, Next.js, TypeScript, and cloud-integrated architectures. Delivered 5+ live products serving 250+ active users across US and UAE clients.
+                        </p>
+                    </div>
+                    </ScrollReveal>
+
+                    <ScrollReveal delay={160}>
+                    <div className="glass-card hover-glow p-6">
+                        <h3 className="text-2xl font-semibold text-white">Education</h3>
+                        <div className="mt-4">
+                            <div className="mb-4">
+                                <div className="flex items-center justify-between">
+                                    <div>
+                                        <div className="font-semibold">B.E. Software Engineering — MAJU</div>
+                                        <div className="text-sm text-gray-300">(2022–2026) | CGPA: 3.48</div>
+                                    </div>
                                 </div>
                             </div>
-                        ))}
+
+                            <div className="mb-4">
+                                <div className="font-semibold">FSC Pre-Engineering — Govt. Degree Girls Science College, Karachi</div>
+                                <div className="text-sm text-gray-300">(2022)</div>
+                            </div>
+
+                            <div>
+                                <div className="font-semibold">Matric Science — M.E Model School</div>
+                                <div className="text-sm text-gray-300">(2020)</div>
+                            </div>
+                        </div>
                     </div>
+                    </ScrollReveal>
                 </div>
             </div>
         </section>

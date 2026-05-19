@@ -1,107 +1,71 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { FaRegCalendarAlt } from 'react-icons/fa'; // Icon for the timeline milestone
+import React from 'react';
+import { FaUniversity, FaSchool, FaBook } from 'react-icons/fa';
+import ScrollReveal from './ScrollReveal';
 
 const Education = () => {
     const educationData = [
         {
-            institution: "Mohammad Ali Jinnah University",
-            degree: "Under-Graduation",
-            field: "BE-Software Engineering",
-            cgpa: "CGPA: 3.75",
-            description: "Currently in the 4th semester of BE in Software Engineering, actively absorbing a wealth of knowledge and skills, with a passion for continuous learning and growth in the dynamic field of software development.",
-            yearRange: "2022-Continue"
+            icon: FaUniversity,
+            degree: 'B.E. Software Engineering',
+            institution: 'Mohammad Ali Jinnah University (MAJU)',
+            duration: 'Sep 2022 – July 2026 | CGPA: 3.48',
+            location: 'Karachi, Pakistan',
+            badge: 'Currently Enrolled',
+            badgeClass: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-200',
         },
         {
-            institution: "Baldia Degree for Girls",
-            degree: "Intermediate",
-            field: "Pre-Engineering",
-            grade: "Grade: A+",
-            description: "Successfully completed Intermediate in Pre-Engineering with outstanding performance, showcasing expertise in advanced mathematics and science disciplines essential for engineering studies.",
-            yearRange: "2020-2022"
+            icon: FaSchool,
+            degree: 'FSC — Pre-Engineering',
+            institution: 'Govt. Degree Girls Science, Arts & Commerce College, Baldia Town',
+            duration: 'Completed: June 2022',
+            location: 'Karachi, Pakistan',
+            badge: 'Completed',
+            badgeClass: 'border-blue-500/30 bg-blue-500/10 text-blue-100',
         },
         {
-            institution: "M.E Model High School",
-            degree: "Matriculation",
-            field: "Science",
-            grade: "Grade: A+",
-            description: "Attained top honors in Science Matriculation, demonstrating mastery in core subjects such as Physics, Chemistry, and Biology, poised to excel in advanced academic endeavors.",
-            yearRange: "2018-2020"
+            icon: FaBook,
+            degree: 'Matriculation — Science',
+            institution: 'M.E Model School',
+            duration: 'Completed: April 2020',
+            location: 'Karachi, Pakistan',
+            badge: 'Completed',
+            badgeClass: 'border-blue-500/30 bg-blue-500/10 text-blue-100',
         }
     ];
 
-    const [isVisible, setIsVisible] = useState(false);
-    const sectionRef = useRef(null);
-
-    useEffect(() => {
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    setIsVisible(true);
-                    observer.unobserve(entry.target); // Unobserve once the animation has been triggered
-                }
-            });
-        });
-
-        if (sectionRef.current) {
-            observer.observe(sectionRef.current);
-        }
-
-        return () => {
-            if (sectionRef.current) {
-                observer.unobserve(sectionRef.current);
-            }
-        };
-    }, []);
-
     return (
-        <section
-            ref={sectionRef}
-            className={`education-section py-16 px-1 md:px-5 transition-opacity duration-500 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
-            id="education"
-        >
-            <div className="text-center mb-12">
-                <h2 className="text-5xl font-bold text-lightTheme-text dark:text-darkTheme-text">
-                    Education
-                </h2>
-                <span className="inline-block w-24 h-1 bg-lightTheme-accent dark:bg-darkTheme-accent mt-4"></span>
+        <section id="education" className="py-16 px-6 max-w-6xl mx-auto">
+            <div className="mb-8">
+                <h2 className="section-heading">Education</h2>
             </div>
 
-            <div className="relative flex flex-col space-y-12">
+            <div className="relative space-y-6 md:pl-10">
+                <div className="absolute left-4 top-2 bottom-2 hidden border-l-2 border-dotted border-blue-500/70 md:block" aria-hidden="true" />
                 {educationData.map((edu, index) => (
-                    <div
-                        key={index}
-                        className={`flex flex-col space-y-4 md:flex-row md:items-center justify-between md:space-x-6 transition-transform duration-500 transform ${isVisible ? 'translate-y-0' : 'translate-y-10 opacity-0'}`}
-                    >
-                        {/* Timeline Icon */}
-                        <div className="relative flex items-center">
-                            <FaRegCalendarAlt className="text-3xl text-lightTheme-accent dark:text-darkTheme-accent md:absolute left-0 md:translate-x-0" />
-                            <div className="h-full md:w-1 md:bg-gray-300 absolute top-10 bottom-10 left-4 md:left-8"></div>
-                        </div>
+                    <ScrollReveal key={index} delay={index * 80} threshold={0.12}>
+                        <div className="relative">
+                            <span className="absolute left-[-2.35rem] top-7 hidden h-4 w-4 rounded-full bg-blue-500 shadow-[0_0_0_6px_rgba(37,99,235,0.12)] md:block" aria-hidden="true" />
+                            <article className="glass-card hover-glow border-l-4 border-blue-500 rounded-2xl p-6">
+                                <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
+                                    <div className="flex items-start gap-4">
+                                        <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-blue-500/20 bg-blue-500/10 text-2xl text-blue-200">
+                                            <edu.icon />
+                                        </div>
+                                        <div>
+                                            <h3 className="text-2xl font-bold text-white">{edu.degree}</h3>
+                                            <p className="mt-1 text-lg font-semibold text-blue-300">{edu.institution}</p>
+                                            <p className="mt-2 text-sm text-gray-400">{edu.duration}</p>
+                                            <p className="text-sm text-gray-400">{edu.location}</p>
+                                        </div>
+                                    </div>
 
-                        {/* Timeline Content */}
-                        <div className="bg-white dark:bg-gray-800 p-6 shadow-lg rounded-lg w-full md:w-2/3">
-                            <h3 className="text-2xl font-semibold text-lightTheme-text dark:text-darkTheme-text">
-                                {edu.institution}
-                            </h3>
-                            <p className="text-xl font-medium text-lightTheme-text dark:text-darkTheme-text mt-1">
-                                {edu.degree}
-                            </p>
-                            <p className="text-lg text-gray-500 dark:text-gray-400">
-                                {edu.field}
-                            </p>
-                            <p className="text-lg text-gray-500 dark:text-gray-400">
-                                {edu.cgpa || edu.grade}
-                            </p>
-                            <p className="mt-4 text-gray-600 dark:text-gray-300">
-                                {edu.description}
-                            </p>
+                                    <span className={`inline-flex min-h-11 items-center justify-center rounded-full border px-4 py-2 text-sm font-semibold ${edu.badgeClass}`}>
+                                        {edu.badge}
+                                    </span>
+                                </div>
+                            </article>
                         </div>
-
-                        {/* Year */}
-                        <div className="text-lg font-semibold text-gray-500 dark:text-gray-400 mt-4 md:mt-0">
-                            {edu.yearRange}
-                        </div>
-                    </div>
+                    </ScrollReveal>
                 ))}
             </div>
         </section>

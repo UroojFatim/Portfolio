@@ -1,35 +1,66 @@
-import React from "react";
+// import React from "react";
 import Profile from "../../../assets/ProfileImage.jpeg";
 import CV from "../../../assets/CV.pdf"; 
+import { Link } from 'react-scroll';
 
-const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar }) => {
+const navItems = [
+  { label: 'Home', to: 'home' },
+  { label: 'About', to: 'about' },
+  // { label: 'Education', to: 'education' },
+  { label: 'Certifications', to: 'certifications' },
+  { label: 'Skills', to: 'skills' },
+  { label: 'Experience', to: 'experience' },
+  { label: 'Services', to: 'services' },
+  { label: 'Projects', to: 'projects' },
+  { label: 'Contact', to: 'contact' },
+];
+
+const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar, activeSection }) => {
   return (
     <div
-      className={`fixed top-0 left-0 w-full z-10 bg-lightTheme-bg dark:bg-darkTheme-bg p-6 shadow-lg h-screen text-lightTheme-text dark:text-darkTheme-text border-r-4 border-lightTheme-accent dark:border-darkTheme-accent transition-transform duration-300 transform md:translate-x-0 ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} md:w-[30%] lg:w-1/4`}
+      className={`fixed top-0 right-0 left-auto w-[92vw] max-w-sm z-40 p-6 shadow-lg h-screen text-white transition-transform duration-300 transform ${sidebarOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden bg-black/95 backdrop-blur-md border-l border-white/10`}
     >
       {/* Close Button for Mobile */}
       <div className="md:hidden flex justify-end mb-4">
-        <button onClick={toggleSidebar} className="text-2xl text-lightTheme-text dark:text-darkTheme-text">
+        <button onClick={toggleSidebar} className="min-h-11 min-w-11 inline-flex items-center justify-center rounded-xl text-2xl text-white border border-white/10 bg-white/5">
           ✕ {/* Close icon */}
         </button>
       </div>
 
       {/* Theme Toggle Button */}
-      <div className="mt-6 flex md:flex-col xl:flex-row  item-center gap-2 justify-between">
-        <button
-          onClick={toggleTheme}
-          className="px-4 py-1 lg:px-6 rounded-xl border-2 border-lightTheme-accent dark:border-darkTheme-accent text-lightTheme-text dark:text-darkTheme-text"
-        >
-          {isDarkMode ? "Light" : "Dark"}
-        </button>
-        <div className="text-xs">
-          <p className="text-gray-700 dark:text-gray-300">Email: urooj.fatim2004@gmail.com</p>
-          <p className="text-gray-700 dark:text-gray-300">Phone: +92 344 8302253</p>
+      <div className="mt-6 flex flex-col gap-2 items-start">
+        <div className="w-full flex justify-between items-center">
+          <button
+            onClick={toggleTheme}
+            className="min-h-11 px-4 py-2 rounded-xl border border-white/10 text-white bg-black/20"
+          >
+            {isDarkMode ? "Light" : "Dark"}
+          </button>
+          <button onClick={toggleSidebar} className="min-h-11 min-w-11 inline-flex items-center justify-center rounded-xl text-xl border border-white/10 bg-white/5">✕</button>
+        </div>
+        <div className="text-xs text-gray-300">
+          <p>Email: urooj.fatim2004@gmail.com</p>
+          <p>Phone: +92 344 8302253</p>
         </div>
       </div>
 
+      <div className="mt-8 space-y-2">
+        {navItems.map((item) => (
+          <Link
+            key={item.to}
+            to={item.to}
+            smooth={true}
+            duration={500}
+            onClick={toggleSidebar}
+            className={`flex min-h-11 items-center rounded-xl border px-4 py-3 text-sm font-semibold transition ${activeSection === item.to ? 'border-blue-500/50 bg-blue-500/10 text-blue-100' : 'border-white/10 bg-white/5 text-white/85'}`}
+          >
+            {item.label}
+          </Link>
+        ))}
+      </div>
+
       {/* Profile Image and Info */}
-      <div className="text-center m-6 flex-col space-y-2">
+      <div className="text-center m-6 flex-col space-y-2 z-10">
         <img
           src={Profile}
           alt="Profile"
@@ -46,29 +77,27 @@ const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar }) => {
       </div>
 
       {/* Social Icons */}
-      <div className="flex justify-center space-x-4 mb-6">
-        <a href="https://www.facebook.com/profile.php?id=100080339196603" target="_blank" className="text-blue-500 dark:text-orange-400">
-          <i className="fab fa-facebook"></i>
+      <div className="flex justify-center space-x-4 mb-6 text-2xl">
+        <a href="https://github.com/UroojFatim" target="_blank" className="text-gray-200">
+          <i className="fab fa-github"></i>
         </a>
-        <a href="https://www.instagram.com/urooj_fatima142/" target="_blank" className="text-pink-500 dark:text-orange-400">
-          <i className="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/urooj-fatima-588ba2296/" target="_blank" className="text-blue-700 dark:text-orange-400">
+        <a href="https://www.linkedin.com/in/urooj-fatima-588ba2296/" target="_blank" className="text-blue-400">
           <i className="fab fa-linkedin"></i>
         </a>
       </div>
 
       {/* Hire Me and Download CV Buttons */}
-      <div className="text-center flex flex-col gap-4 mx-5">
-        <a href="https://www.upwork.com/freelancers/~018b2cb9ef43a154ba?mp_source=share" target ="_blank" className="border-2 border-lightTheme-accent dark:border-darkTheme-accent hover:dark:bg-transparent hover:dark:text-white bg-lightTheme-accent dark:bg-darkTheme-accent text-white px-14 py-2 md:px-20 rounded-full hover:opacity-80 transition hover:bg-transparent hover:text-black">
+      <div className="text-center flex flex-col gap-4 mx-5 mt-6 z-10">
+        <a href="https://www.upwork.com/freelancers/~018b2cb9ef43a154ba?mp_source=share" target ="_blank" className="w-full min-h-11 text-center px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white transition inline-flex items-center justify-center">
           Hire Me
         </a >
         <a
           href={CV}
-          download="UroojFatima_CV.pdf"
-          className="border-2 px-14 py-2 lg:px-20 rounded-full transition hover:text-white text-center border-lightTheme-accent hover:bg-lightTheme-accent dark:border-darkTheme-accent dark:hover:bg-darkTheme-accent"
+          target="_blank"
+          rel="noreferrer"
+          className="w-full min-h-11 text-center px-6 py-3 rounded-full border border-white/10 text-white hover:bg-white/5 transition inline-flex items-center justify-center"
         >
-          Download CV
+          Download Resume
         </a>
       </div>
     </div>

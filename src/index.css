@@ -1,3 +1,109 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Global font & theme variables */
+:root{
+	--bg:#080d1a;
+	--accent:#2563eb;
+	--muted:rgba(255,255,255,0.6);
+}
+
+@layer base{
+	html,body,#root{height:100%;}
+	body{
+		background:var(--bg);
+		color:#ffffff;
+		font-family:'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+		-webkit-font-smoothing:antialiased;
+		-moz-osx-font-smoothing:grayscale;
+	}
+	h1,h2,h3,h4{font-family:'Syne', ui-sans-serif, system-ui, -apple-system;}
+}
+
+/* Glass card utility */
+.glass-card{
+	background:rgba(255,255,255,0.03);
+	border:1px solid rgba(255,255,255,0.06);
+	backdrop-filter:blur(6px);
+	border-radius:1rem;
+	transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease, opacity .2s ease;
+}
+
+/* Hover glow */
+.hover-glow:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(37,99,235,0.12);border-color:rgba(37,99,235,0.5)!important}
+
+/* Scroll reveal */
+.reveal-base{opacity:0;transform:translateY(24px);transition:all .7s ease}
+.reveal-visible{opacity:1;transform:translateY(0)}
+
+/* Section heading */
+.section-heading{
+	font-size:1.75rem;
+	font-weight:700;
+	text-align:left;
+	position:relative;
+	display:inline-block;
+}
+.section-heading::after{
+	content:'';
+	display:block;
+	height:6px;
+	width:60%;
+	background:var(--accent);
+	margin-top:6px;
+	border-radius:4px;
+	opacity:0.9;
+}
+
+/* Thin blue scrollbar */
+*::-webkit-scrollbar{width:8px;height:8px}
+*::-webkit-scrollbar-track{background:transparent}
+*::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--accent),#60a5fa);border-radius:999px}
+
+/* Hero animated mesh / particles */
+.hero-mesh{
+	position: absolute;
+	inset:0;
+	z-index:0;
+	background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+	background-size: 20px 20px;
+	opacity:0.4;
+	animation:mesh-move 12s linear infinite;
+}
+@keyframes mesh-move{
+	0%{transform:translate(0,0) scale(1)}
+	50%{transform:translate(-30px,20px) scale(1.02)}
+	100%{transform:translate(0,0) scale(1)}
+}
+
+/* Floating particle blur */
+.float-particles::before{
+	content:'';
+	position:absolute;left:-10%;top:-10%;width:120%;height:120%;background:radial-gradient(closest-side, rgba(37,99,235,0.06), transparent 40%);filter:blur(40px);opacity:0.7;animation:floaty 8s ease-in-out infinite alternate;pointer-events:none;
+}
+@keyframes floaty{from{transform:translateY(0)}to{transform:translateY(-12px)}}
+
+/* Cursor */
+.blinking-cursor{opacity:1;animation:blink 1s steps(2,end) infinite}
+@keyframes blink{from{opacity:1}to{opacity:0}}
+
+/* Skill badge styles */
+.skill-group-heading{font-size:1.25rem;font-weight:700;color:#e6eefb;margin-bottom:8px}
+.skill-badges{display:flex;flex-wrap:wrap;gap:10px}
+.skill-badge{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:8px 14px;border-radius:999px;color:#cfe8ff;font-weight:600;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
+.skill-badge:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(37,99,235,0.18);border-color:rgba(37,99,235,0.6);color:#fff}
+
+/* Projects filter + card UI */
+.project-filter-bar{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.project-filter-btn{position:relative;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);color:#d7e8ff;font-weight:600;transition:color .2s ease,background .2s ease,border-color .2s ease,transform .2s ease}
+.project-filter-btn:hover{transform:translateY(-2px);border-color:rgba(37,99,235,0.45);background:rgba(37,99,235,0.08)}
+.project-filter-btn::after{content:'';position:absolute;left:14px;right:14px;bottom:6px;height:2px;border-radius:999px;background:linear-gradient(90deg,#2563eb,#60a5fa);transform:scaleX(0);transform-origin:center;transition:transform .22s ease}
+.project-filter-btn.active{color:#fff;background:rgba(37,99,235,0.12);border-color:rgba(37,99,235,0.45)}
+.project-filter-btn.active::after{transform:scaleX(1)}
+
+.project-card-enter{opacity:0;transform:translateY(16px) scale(.98)}
+.project-card-exit{opacity:0;transform:translateY(16px) scale(.98)}
+.project-card-idle{opacity:1;transform:translateY(0) scale(1)}
+
+
