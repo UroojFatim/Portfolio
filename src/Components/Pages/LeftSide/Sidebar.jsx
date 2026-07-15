@@ -4,14 +4,11 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaSun, FaMoon, FaTimes } from 'react-
 import { SiUpwork } from 'react-icons/si';
 
 const navItems = [
-  { label: 'Home', to: 'home' },
-  { label: 'About', to: 'about' },
   { label: 'Certifications', to: 'certifications' },
   { label: 'Skills', to: 'skills' },
   { label: 'Experience', to: 'experience' },
   { label: 'Services', to: 'services' },
   { label: 'Projects', to: 'projects' },
-  { label: 'Contact', to: 'contact' },
 ];
 
 const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar, activeSection }) => {

@@ -4,11 +4,11 @@ import ScrollReveal from './ScrollReveal';
 
 const Contact = () => {
   return (
-    <section id="contact" className="mx-auto max-w-container-max px-6 py-16 sm:py-20">
+    <section id="contact" className="mx-auto max-w-container-max px-4 py-16 sm:px-6 sm:py-20 md:px-10">
       <ScrollReveal>
-        <div className="glass-card grid overflow-hidden rounded-[2.5rem] shadow-2xl lg:grid-cols-2">
+        <div className="glass-card grid overflow-hidden rounded-[2.5rem] shadow-2xl sm:rounded-[4rem] lg:grid-cols-2">
           {/* Info side */}
-          <div className="bg-gradient-to-br from-primary-container/25 to-secondary-container/15 p-10 md:p-14">
+          <div className="bg-gradient-to-br from-primary-container/25 to-secondary-container/15 p-8 sm:p-12 md:p-20">
             <h2 className="text-display-xl-mobile font-display leading-tight text-on-surface">
               Let&apos;s Build Something Amazing Together
             </h2>
@@ -39,7 +39,7 @@ const Contact = () => {
           </div>
 
           {/* CTA side */}
-          <div className="flex flex-col items-center justify-center gap-4 bg-background/40 p-10 md:p-14">
+          <div className="flex flex-col items-center justify-center gap-4 bg-background/40 p-8 sm:p-12 md:p-20">
             <a
               href="mailto:urooj.fatim2004@gmail.com"
               className="flex min-h-11 w-full max-w-sm items-center justify-center gap-3 rounded-2xl bg-primary px-6 py-5 text-lg font-bold text-on-primary shadow-glow transition hover:brightness-110"

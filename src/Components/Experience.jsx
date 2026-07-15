@@ -31,53 +31,48 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="mx-auto max-w-container-max px-6 py-16 sm:py-20">
-      <div className="mb-10">
-        <span className="section-eyebrow">Career Path</span>
-        <h2 className="section-heading">Experience</h2>
+    <section id="experience" className="mx-auto max-w-container-max px-4 py-16 sm:px-6 sm:py-20 md:px-10">
+      <div className="mb-10 text-center sm:mb-16">
+        <span className="section-eyebrow text-secondary">Career Path</span>
+        <h2 className="section-heading">Work Experience</h2>
       </div>
 
-      <div className="relative pl-0 md:pl-12">
-        <div className="absolute bottom-1 left-3 top-1 hidden w-px bg-gradient-to-b from-primary via-primary/40 to-transparent md:block" aria-hidden="true" />
+      <div className="mx-auto max-w-4xl space-y-10 sm:space-y-12">
+        {experiences.map((item, index) => (
+          <ScrollReveal key={index} delay={index * 80}>
+            <div className="relative flex flex-col gap-4 sm:gap-6 md:flex-row">
+              <div className="md:w-1/4">
+                <span className="text-xs font-bold uppercase tracking-widest text-primary sm:text-sm">{item.period}</span>
+                <div className="mt-2 text-xs font-medium text-on-surface-variant">{item.location}</div>
+              </div>
+              <div className="glass-card hover-glow relative rounded-3xl p-6 sm:p-8 md:w-3/4">
+                <span
+                  className="absolute left-6 top-8 hidden h-4 w-4 -translate-x-[3.25rem] rounded-full bg-primary shadow-[0_0_0_6px_rgb(var(--color-primary-container)/0.35)] md:block"
+                  aria-hidden="true"
+                />
+                <h3 className="text-headline-md font-bold font-display text-on-surface">{item.role}</h3>
+                <div className="mb-5 mt-1 font-bold text-primary sm:mb-6">{item.company}</div>
 
-        <div className="space-y-8">
-          {experiences.map((item, index) => (
-            <ScrollReveal key={index} delay={index * 80}>
-              <article className="relative">
-                <span className="absolute left-[-1.65rem] top-6 hidden h-4 w-4 rounded-full bg-primary shadow-[0_0_0_6px_rgb(var(--color-primary-container)/0.35)] md:block" aria-hidden="true" />
-                <div className="glass-card hover-glow p-5 sm:p-6 md:p-7">
-                  <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
-                    <div>
-                      <h3 className="text-xl font-bold font-display text-on-surface md:text-2xl">{item.company}</h3>
-                      <p className="mt-1 font-medium text-primary">{item.role}</p>
-                    </div>
-                    <div className="text-sm text-on-surface-variant md:text-right">
-                      <div>{item.period}</div>
-                      <div>{item.location}</div>
-                    </div>
-                  </div>
+                <ul className="space-y-3 pl-5 text-sm leading-relaxed text-on-surface-variant">
+                  {item.bullets.map((bullet, bulletIndex) => (
+                    <li key={bulletIndex} className="list-disc">{bullet}</li>
+                  ))}
+                </ul>
 
-                  <ul className="mt-5 space-y-3 pl-5 text-on-surface-variant sm:pl-6">
-                    {item.bullets.map((bullet, bulletIndex) => (
-                      <li key={bulletIndex} className="list-disc">{bullet}</li>
-                    ))}
-                  </ul>
-
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    {item.stack.map((tech, techIndex) => (
-                      <span
-                        key={techIndex}
-                        className="rounded-full border border-primary/25 bg-primary-container/15 px-3 py-1 text-sm font-medium text-on-surface"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+                <div className="mt-6 flex flex-wrap gap-2">
+                  {item.stack.map((tech, techIndex) => (
+                    <span
+                      key={techIndex}
+                      className="rounded-lg border border-secondary/20 bg-secondary-container/30 px-3 py-1.5 text-[11px] font-medium text-secondary"
+                    >
+                      {tech}
+                    </span>
+                  ))}
                 </div>
-              </article>
-            </ScrollReveal>
-          ))}
-        </div>
+              </div>
+            </div>
+          </ScrollReveal>
+        ))}
       </div>
     </section>
   );

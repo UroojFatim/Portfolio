@@ -19,7 +19,7 @@ const iconFor = {
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <footer className="mx-auto max-w-container-max border-t border-outline-variant/30 px-6 py-12">
+    <footer className="mx-auto max-w-container-max border-t border-outline-variant/30 px-4 py-12 sm:px-6 md:px-10">
       <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
         <div className="text-center md:text-left">
           <div className="text-xl font-bold font-display text-on-surface">Urooj Fatima</div>

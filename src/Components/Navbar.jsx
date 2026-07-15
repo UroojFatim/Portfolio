@@ -4,14 +4,11 @@ import { FaCode, FaSun, FaMoon, FaBars } from 'react-icons/fa';
 import CV from '../assets/CV.pdf';
 
 const navItems = [
-  { label: 'Home', to: 'home' },
-  { label: 'About', to: 'about' },
   { label: 'Certifications', to: 'certifications' },
   { label: 'Skills', to: 'skills' },
   { label: 'Experience', to: 'experience' },
   { label: 'Services', to: 'services' },
   { label: 'Projects', to: 'projects' },
-  { label: 'Contact', to: 'contact' },
 ];
 
 const Navbar = ({ toggleSidebar, activeSection, isScrolled, toggleTheme, isDarkMode }) => {
@@ -24,11 +21,11 @@ const Navbar = ({ toggleSidebar, activeSection, isScrolled, toggleTheme, isDarkM
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-container-max items-center justify-between px-4 sm:px-6 md:px-10">
-        <Link to="home" smooth duration={500} className="flex cursor-pointer items-center gap-2.5">
-          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-container/60 text-primary">
-            <FaCode className="text-base" />
+        <Link to="home" smooth duration={500} className="flex cursor-pointer items-center gap-2 sm:gap-2.5">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-primary-container/60 text-primary sm:h-9 sm:w-9">
+            <FaCode className="text-sm sm:text-base" />
           </span>
-          <span className="text-lg font-bold font-display text-on-surface sm:text-xl">Urooj Fatima</span>
+          <span className="whitespace-nowrap text-base font-bold font-display text-on-surface sm:text-lg md:text-xl">Urooj Fatima</span>
         </Link>
 
         <div className="hidden items-center gap-8 md:flex">

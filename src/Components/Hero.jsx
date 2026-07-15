@@ -4,6 +4,7 @@ import { Link } from "react-scroll";
 import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaDatabase, FaReact } from 'react-icons/fa';
 import { SiUpwork } from 'react-icons/si';
 import CV from '../assets/CV.pdf';
+import TerminalCard from './TerminalCard';
 
 const Hero = () => {
     const roles = [
@@ -42,7 +43,7 @@ const Hero = () => {
     ];
 
     return (
-        <section id="home" className="relative overflow-hidden px-5 py-14 sm:px-8 sm:py-20 lg:py-24">
+        <section id="home" className="relative overflow-hidden px-4 py-14 sm:px-6 sm:py-20 md:px-10 lg:py-24">
             <div className="mx-auto grid max-w-container-max items-center gap-14 lg:grid-cols-2 lg:gap-16">
                 {/* Left Content */}
                 <div className="text-center lg:text-left">
@@ -108,6 +109,11 @@ const Hero = () => {
                             </div>
                         ))}
                     </div>
+
+                    {/* Mobile/tablet: code widget shown inline since the profile visual is desktop-only */}
+                    <div className="mt-8 lg:hidden">
+                        <TerminalCard className="mx-auto max-w-md" />
+                    </div>
                 </div>
 
                 {/* Right Visual */}
@@ -130,6 +136,10 @@ const Hero = () => {
                         <div className="glass-card floating absolute right-2 top-1/2 z-20 rounded-2xl p-4 shadow-xl" style={{ animationDelay: '0.5s' }}>
                             <FaReact className="text-3xl text-tertiary" />
                         </div>
+                    </div>
+
+                    <div className="mt-6">
+                        <TerminalCard />
                     </div>
                 </div>
             </div>

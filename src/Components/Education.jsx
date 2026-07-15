@@ -39,7 +39,7 @@ const Education = () => {
     return (
         <section id="education" className="mx-auto max-w-container-max px-6 py-16 sm:py-20">
             <div className="mb-10">
-                <span className="section-eyebrow">Academics</span>
+                <span className="section-eyebrow text-primary">Academics</span>
                 <h2 className="section-heading">Education</h2>
             </div>
 

@@ -93,7 +93,7 @@ const App = () => {
       />
       <div className="flex">
         <Sidebar toggleTheme={toggleTheme} isDarkMode={isDarkMode} sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} activeSection={activeSection} />
-        <main className="min-h-screen flex-1 p-4 text-on-surface sm:p-6">
+        <main className="min-h-screen flex-1 text-on-surface">
           <Home />
         </main>
       </div>

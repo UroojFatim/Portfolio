@@ -1,6 +1,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { FaRobot, FaCloud, FaShoppingCart, FaCode, FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
+import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import { projects } from '../data/projects';
+import ProjectArt from './ProjectArt';
 import ScrollReveal from './ScrollReveal';
 
 const FILTERS = [
@@ -14,16 +15,9 @@ const FILTERS = [
 ];
 
 const statusStyles = {
-  Live: 'border-emerald-500/30 bg-emerald-500/10 text-emerald-500 dark:text-emerald-300',
-  'In Progress': 'border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-300',
-  Completed: 'border-sky-500/30 bg-sky-500/10 text-sky-600 dark:text-sky-300',
-};
-
-const placeholderIcon = (tags = []) => {
-  if (tags.includes('AI/ML')) return FaRobot;
-  if (tags.includes('SaaS')) return FaCloud;
-  if (tags.includes('E-Commerce')) return FaShoppingCart;
-  return FaCode;
+  Live: 'bg-emerald-500/90 text-white',
+  'In Progress': 'bg-amber-500/90 text-white',
+  Completed: 'bg-secondary/90 text-on-secondary',
 };
 
 const Projects = () => {
@@ -74,14 +68,14 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="mx-auto max-w-container-max px-6 py-16 sm:py-20">
-      <div className="mb-10">
-        <span className="section-eyebrow">Portfolio</span>
-        <h2 className="section-heading">Projects</h2>
-      </div>
+    <section id="projects" className="mx-auto max-w-container-max px-4 py-16 sm:px-6 sm:py-20 md:px-10">
+      <div className="mb-10 flex flex-col gap-6 sm:mb-16 md:flex-row md:items-end md:justify-between">
+        <div>
+          <span className="section-eyebrow text-primary">Portfolio</span>
+          <h2 className="section-heading">Featured Projects</h2>
+        </div>
 
-      <div className="glass-card mx-auto mb-10 max-w-fit rounded-2xl">
-        <div className="project-filter-bar">
+        <div className="glass-card flex h-fit flex-wrap gap-1.5 rounded-xl p-1.5">
           {FILTERS.map((filter) => (
             <button
               key={filter}
@@ -101,16 +95,15 @@ const Projects = () => {
           No projects match this filter.
         </p>
       ) : (
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-1 gap-8 sm:gap-10 md:grid-cols-2 lg:grid-cols-3">
           {displayedProjects.map((project, index) => {
             const stageClass = cardClassForStage(transitionStage);
-            const PlaceholderIcon = placeholderIcon(project.tags);
             return (
               <ScrollReveal key={project.id} delay={index * 40}>
                 <article
-                  className={`glass-card hover-glow group overflow-hidden transition-opacity duration-300 ${stageClass}`}
+                  className={`glass-card group flex h-full flex-col overflow-hidden rounded-[2rem] transition-opacity duration-300 ${stageClass}`}
                 >
-                  <div className="relative h-44 overflow-hidden">
+                  <div className="relative h-48 overflow-hidden sm:h-56">
                     {project.image ? (
                       <img
                         src={project.image}
@@ -118,29 +111,30 @@ const Projects = () => {
                         className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                     ) : (
-                      <div className="flex h-full w-full items-center justify-center bg-gradient-to-br from-primary-container/40 to-secondary-container/30">
-                        <PlaceholderIcon className="text-5xl text-primary/70" />
+                      <div className="h-full w-full transition-transform duration-700 group-hover:scale-110">
+                        <ProjectArt kind={project.artKind} />
                       </div>
                     )}
-                    <span className="absolute right-4 top-4 rounded-full bg-background/80 px-3 py-1 text-[11px] font-bold uppercase tracking-wider text-on-surface backdrop-blur-md">
-                      {project.tags?.[0] || 'Project'}
-                    </span>
+                    <div
+                      className={`absolute right-4 top-4 rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-wider backdrop-blur-md sm:right-5 sm:top-5 sm:px-4 ${
+                        statusStyles[project.status] ?? statusStyles.Completed
+                      }`}
+                    >
+                      {project.status}
+                    </div>
                   </div>
 
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold font-display text-on-surface">{project.name}</h3>
+                  <div className="flex flex-1 flex-col p-6 sm:p-8">
+                    <h3 className="text-headline-md font-bold font-display leading-tight text-on-surface">
+                      {project.name}
+                    </h3>
                     {project.client && (
-                      <div className="mt-2 inline-flex rounded-full border border-outline-variant/40 px-3 py-1 text-xs font-semibold text-on-surface-variant">
+                      <div className="mt-2 inline-flex w-fit rounded-full border border-outline-variant/40 px-3 py-1 text-xs font-semibold text-on-surface-variant">
                         {project.client}
                       </div>
                     )}
 
-                    <div className={`mt-3 inline-flex items-center gap-2 rounded-full border px-3 py-1 text-xs font-semibold ${statusStyles[project.status] ?? statusStyles.Completed}`}>
-                      <span aria-hidden="true">{project.status === 'Live' ? '🟢' : project.status === 'In Progress' ? '🟡' : '✅'}</span>
-                      <span>{project.status}</span>
-                    </div>
-
-                    <p className="mt-4 text-sm leading-6 text-on-surface-variant">
+                    <p className="mt-3 line-clamp-3 text-sm leading-relaxed text-on-surface-variant">
                       {project.desc}
                     </p>
 
@@ -148,23 +142,28 @@ const Projects = () => {
                       {project.stack.map((tech) => (
                         <span
                           key={tech}
-                          className="rounded-full border border-primary/20 bg-primary-container/15 px-3 py-1 text-xs font-medium text-on-surface"
+                          className="rounded-lg border border-secondary/20 bg-secondary-container/30 px-3 py-1.5 text-[11px] font-medium text-secondary"
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
 
-                    <div className="mt-6 flex flex-wrap gap-3">
+                    <div className="mt-6 flex flex-wrap gap-3 pt-2">
+                      {!project.demo && !project.github && (
+                        <span className="flex min-h-11 flex-1 items-center justify-center rounded-xl border border-outline-variant/30 bg-surface-container-high/60 py-3 text-sm font-bold text-on-surface-variant">
+                          Private Project
+                        </span>
+                      )}
                       {project.demo && (
                         <a
                           href={project.demo}
                           target="_blank"
                           rel="noreferrer"
                           aria-label={`Open live site for ${project.name}`}
-                          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-primary/40 px-4 py-2 text-sm font-semibold text-primary transition hover:bg-primary-container/20"
+                          className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-on-surface/5 bg-surface-container-high py-3 text-sm font-bold text-on-surface transition-all hover:bg-surface-bright"
                         >
-                          <FaExternalLinkAlt className="text-xs" /> Live
+                          Live Demo <FaExternalLinkAlt className="text-xs" />
                         </a>
                       )}
                       {project.github && (
@@ -173,9 +172,9 @@ const Projects = () => {
                           target="_blank"
                           rel="noreferrer"
                           aria-label={`Open GitHub repo for ${project.name}`}
-                          className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full border border-outline-variant/50 px-4 py-2 text-sm font-semibold text-on-surface transition hover:bg-on-surface/5"
+                          className="flex min-h-11 flex-1 items-center justify-center gap-2 rounded-xl border border-on-surface/5 bg-surface-container-high py-3 text-sm font-bold text-on-surface transition-all hover:bg-surface-bright"
                         >
-                          <FaGithub className="text-xs" /> GitHub
+                          GitHub <FaGithub className="text-xs" />
                         </a>
                       )}
                     </div>

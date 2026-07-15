@@ -69,13 +69,13 @@ export default {
         code: ['14px', { lineHeight: '1.5', fontWeight: '400' }],
       },
       borderRadius: {
-        sm: '0.25rem',
-        DEFAULT: '0.5rem',
-        md: '0.75rem',
-        lg: '1rem',
-        xl: '1.5rem',
-        '2xl': '2rem',
-        '3xl': '2.5rem',
+        // Matches stitch/code.html's own tailwind.config: only these four are
+        // remapped, 2xl/3xl are left at Tailwind's stock 1rem/1.5rem so the
+        // rounded-[2rem|2.5rem|3.5rem|4rem] arbitrary values used across
+        // sections read the same as the reference design.
+        DEFAULT: '0.25rem',
+        lg: '0.5rem',
+        xl: '0.75rem',
         full: '9999px',
       },
       spacing: {

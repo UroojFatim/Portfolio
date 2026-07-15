@@ -50,9 +50,9 @@ const About = () => {
     }, []);
 
     return (
-        <section id="about" className="mx-auto max-w-container-max px-6 py-16 sm:py-20">
+        <section id="about" className="mx-auto max-w-container-max px-4 py-16 sm:px-6 sm:py-20 md:px-10">
             <div className="mb-10">
-                <span className="section-eyebrow">Get to know me</span>
+                <span className="section-eyebrow text-primary">Get to know me</span>
                 <h2 className="section-heading">About</h2>
             </div>
 
