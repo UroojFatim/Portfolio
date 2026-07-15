@@ -2,10 +2,16 @@ import React from 'react';
 import { FaCode, FaCloud, FaShoppingCart, FaRobot, FaTachometerAlt, FaPaintBrush } from 'react-icons/fa';
 import ScrollReveal from './ScrollReveal';
 
+const accents = ['primary', 'secondary', 'tertiary'];
+const accentClass = {
+  primary: { icon: 'text-primary', bg: 'bg-primary-container/20', list: 'text-primary' },
+  secondary: { icon: 'text-secondary', bg: 'bg-secondary-container/30', list: 'text-secondary' },
+  tertiary: { icon: 'text-tertiary', bg: 'bg-tertiary-container/25', list: 'text-tertiary' },
+};
+
 const services = [
   {
     icon: FaCode,
-    iconColor: 'text-blue-400',
     title: 'Full Stack Web Development',
     bullets: [
       'End-to-end web apps with React.js / Next.js frontend',
@@ -17,7 +23,6 @@ const services = [
   },
   {
     icon: FaCloud,
-    iconColor: 'text-purple-400',
     title: 'SaaS Product Development',
     bullets: [
       'Multi-tenant SaaS architecture from scratch',
@@ -29,7 +34,6 @@ const services = [
   },
   {
     icon: FaShoppingCart,
-    iconColor: 'text-emerald-400',
     title: 'E-Commerce Solutions',
     bullets: [
       'Custom online stores with product & inventory management',
@@ -41,7 +45,6 @@ const services = [
   },
   {
     icon: FaRobot,
-    iconColor: 'text-orange-400',
     title: 'AI-Powered Applications',
     bullets: [
       'RAG chatbots with custom knowledge bases',
@@ -53,7 +56,6 @@ const services = [
   },
   {
     icon: FaTachometerAlt,
-    iconColor: 'text-pink-400',
     title: 'Dashboard & CRM Development',
     bullets: [
       'Custom CRM systems with lead & pipeline management',
@@ -65,7 +67,6 @@ const services = [
   },
   {
     icon: FaPaintBrush,
-    iconColor: 'text-cyan-400',
     title: 'Frontend UI Development',
     bullets: [
       'Pixel-perfect, responsive UI from Figma or reference designs',
@@ -79,32 +80,34 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="py-16 px-6 max-w-7xl mx-auto">
+    <section id="services" className="mx-auto max-w-container-max px-6 py-16 sm:py-20">
       <div className="mb-4">
+        <span className="section-eyebrow">Offerings</span>
         <h2 className="section-heading">What I Can Build For You</h2>
-        <p className="mt-4 max-w-3xl text-sm sm:text-base text-gray-300">
+        <p className="mt-4 max-w-3xl text-sm text-on-surface-variant sm:text-base">
           Available for freelance projects, remote full-time roles, and contract work worldwide
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 mt-10">
+      <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
         {services.map((service, index) => {
           const Icon = service.icon;
+          const accent = accentClass[accents[index % accents.length]];
           return (
             <ScrollReveal key={service.title} delay={index * 70}>
-              <article className="glass-card hover-glow h-full rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-6 transition-transform duration-300 hover:-translate-y-1">
+              <article className="glass-card hover-glow h-full rounded-3xl p-6 transition-transform duration-300">
                 <div className="flex items-start gap-4">
-                  <div className={`flex h-14 w-14 items-center justify-center rounded-2xl border border-white/10 bg-white/5 text-4xl ${service.iconColor}`}>
+                  <div className={`flex h-14 w-14 items-center justify-center rounded-2xl ${accent.bg} text-4xl ${accent.icon}`}>
                     <Icon />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="text-2xl font-bold text-white leading-tight">{service.title}</h3>
+                    <h3 className="text-2xl font-bold font-display leading-tight text-on-surface">{service.title}</h3>
                   </div>
                 </div>
 
-                <ul className="mt-5 space-y-3 text-sm text-gray-300 list-disc pl-5">
+                <ul className="mt-5 space-y-3 pl-5 text-sm text-on-surface-variant">
                   {service.bullets.map((bullet) => (
-                    <li key={bullet}>{bullet}</li>
+                    <li key={bullet} className="list-disc">{bullet}</li>
                   ))}
                 </ul>
 
@@ -124,7 +127,7 @@ const Services = () => {
       <div className="mt-10 flex justify-center">
         <a
           href="#contact"
-          className="inline-flex min-h-11 items-center justify-center rounded-full bg-blue-600 px-6 py-3 font-semibold text-white transition hover:bg-blue-500"
+          className="inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 py-3 font-bold text-on-primary shadow-glow transition hover:brightness-110"
         >
           Let&apos;s Work Together →
         </a>

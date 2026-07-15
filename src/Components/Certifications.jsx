@@ -15,24 +15,25 @@ const certifications = [
 
 const Certifications = () => {
   return (
-    <section id="certifications" className="py-16 px-6 max-w-6xl mx-auto">
-      <div className="mb-8">
+    <section id="certifications" className="mx-auto max-w-container-max px-6 py-16 sm:py-20">
+      <div className="mb-10">
+        <span className="section-eyebrow">Credentials</span>
         <h2 className="section-heading">Certifications</h2>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
         {certifications.map((cert, index) => {
           const Icon = cert.icon ?? FaCertificate;
           return (
             <ScrollReveal key={index} delay={index * 60}>
-              <article className="glass-card hover-glow p-5 flex items-start gap-4 h-full">
-                <div className="shrink-0 h-12 w-12 rounded-2xl bg-blue-500/10 border border-blue-500/20 text-blue-200 flex items-center justify-center text-xl">
+              <article className="glass-card hover-glow flex h-full items-start gap-4 p-5">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border border-primary/20 bg-primary-container/20 text-xl text-primary">
                   <Icon />
                 </div>
                 <div className="min-w-0">
-                  <h3 className="text-lg font-bold text-white leading-tight">{cert.name}</h3>
-                  <p className="mt-1 text-sm text-gray-300">{cert.issuer}</p>
-                  <p className="mt-2 inline-flex rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-semibold text-blue-100">
+                  <h3 className="text-lg font-bold leading-tight text-on-surface">{cert.name}</h3>
+                  <p className="mt-1 text-sm text-on-surface-variant">{cert.issuer}</p>
+                  <p className="mt-2 inline-flex rounded-full border border-outline-variant/40 bg-surface-container-low px-3 py-1 text-xs font-semibold text-on-surface-variant">
                     {cert.date}
                   </p>
                 </div>

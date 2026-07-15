@@ -1,10 +1,17 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Sidebar from "./Components/Pages/LeftSide/Sidebar";
 import Home from "./Components/Pages/RightSide/Home";
 import Navbar from "./Components/Navbar";
 
+const getInitialTheme = () => {
+  if (typeof window === 'undefined') return false;
+  const stored = window.localStorage.getItem('theme');
+  if (stored) return stored === 'dark';
+  return window.matchMedia('(prefers-color-scheme: dark)').matches;
+};
+
 const App = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(getInitialTheme);
   const [sidebarOpen, setSidebarOpen] = useState(false); // State for sidebar visibility
   const [activeSection, setActiveSection] = useState('home');
   const [isScrolled, setIsScrolled] = useState(false);
@@ -12,7 +19,6 @@ const App = () => {
   const trackedSections = useMemo(() => ([
     'home',
     'about',
-    'education',
     'certifications',
     'skills',
     'experience',
@@ -21,14 +27,15 @@ const App = () => {
     'contact',
   ]), []);
 
+  // Keep the <html class="dark"> flag and localStorage in sync with state.
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', isDarkMode);
+    window.localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+  }, [isDarkMode]);
+
   // Function to toggle the theme
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
-    if (!isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
+    setIsDarkMode((prev) => !prev);
   };
 
   // Function to toggle sidebar on mobile
@@ -73,22 +80,27 @@ const App = () => {
   };
 
   return (
-    <div className={`flex flex-col min-h-screen ${isDarkMode ? 'dark' : ''}`}>
+    <div className="relative flex min-h-screen flex-col">
+      <div className="mesh-bg" aria-hidden="true" />
+      <div className="noise" aria-hidden="true" />
+
       <Navbar
         toggleSidebar={toggleSidebar}
         activeSection={activeSection}
         isScrolled={isScrolled}
+        toggleTheme={toggleTheme}
+        isDarkMode={isDarkMode}
       />
       <div className="flex">
         <Sidebar toggleTheme={toggleTheme} isDarkMode={isDarkMode} sidebarOpen={sidebarOpen} toggleSidebar={toggleSidebar} activeSection={activeSection} />
-        <main className="flex-1 p-4 sm:p-6 min-h-screen text-white">
+        <main className="min-h-screen flex-1 p-4 text-on-surface sm:p-6">
           <Home />
         </main>
       </div>
 
       <a
         href="mailto:urooj.fatim2004@gmail.com"
-        className="fixed bottom-5 right-5 z-50 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-[0_0_0_0_rgba(37,99,235,0.45)] animate-pulse hover:bg-blue-500"
+        className="fixed bottom-5 right-5 z-50 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-on-primary shadow-glow transition hover:brightness-110 animate-pulse"
       >
         Hire Me
       </a>
@@ -97,7 +109,7 @@ const App = () => {
         <button
           type="button"
           onClick={scrollToTop}
-          className="fixed bottom-20 right-5 z-50 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-blue-500 bg-black/70 px-4 py-3 text-sm font-semibold text-blue-100 shadow-lg backdrop-blur-md transition hover:bg-blue-500/10"
+          className="glass-card fixed bottom-20 right-5 z-50 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-4 py-3 text-sm font-semibold text-on-surface shadow-lg transition hover:border-primary/40"
           aria-label="Back to top"
         >
           ↑

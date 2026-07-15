@@ -2,108 +2,344 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global font & theme variables */
-:root{
-	--bg:#080d1a;
-	--accent:#2563eb;
-	--muted:rgba(255,255,255,0.6);
+/* ==========================================================================
+   Design tokens — "Lumina Tech" system (see /stitch/DESIGN.md)
+   Light values are a hand-tuned light complement of the stitch dark palette;
+   *-fixed roles stay identical across themes by design.
+   ========================================================================== */
+:root {
+  --color-background: 250 249 252;
+  --color-on-background: 28 27 31;
+  --color-surface: 255 255 255;
+  --color-surface-dim: 221 216 224;
+  --color-surface-bright: 255 255 255;
+  --color-surface-container-lowest: 255 255 255;
+  --color-surface-container-low: 247 242 250;
+  --color-surface-container: 241 236 244;
+  --color-surface-container-high: 235 230 238;
+  --color-surface-container-highest: 229 223 232;
+  --color-surface-variant: 231 224 236;
+  --color-surface-tint: 103 80 164;
+  --color-on-surface: 28 27 31;
+  --color-on-surface-variant: 73 69 78;
+  --color-inverse-surface: 50 47 53;
+  --color-inverse-on-surface: 244 238 244;
+  --color-inverse-primary: 207 188 255;
+  --color-outline: 122 117 127;
+  --color-outline-variant: 202 196 207;
+  --color-primary: 103 80 164;
+  --color-on-primary: 255 255 255;
+  --color-primary-container: 233 221 255;
+  --color-on-primary-container: 34 0 93;
+  --color-secondary: 98 91 113;
+  --color-on-secondary: 255 255 255;
+  --color-secondary-container: 232 222 248;
+  --color-on-secondary-container: 30 25 43;
+  --color-tertiary: 124 88 0;
+  --color-on-tertiary: 255 255 255;
+  --color-tertiary-container: 255 223 147;
+  --color-on-tertiary-container: 39 25 0;
+  --color-error: 186 26 26;
+  --color-on-error: 255 255 255;
+  --color-error-container: 255 218 214;
+  --color-on-error-container: 65 0 2;
+  --color-primary-fixed: 233 221 255;
+  --color-primary-fixed-dim: 207 188 255;
+  --color-on-primary-fixed: 34 0 93;
+  --color-on-primary-fixed-variant: 79 55 138;
+  --color-secondary-fixed: 233 221 255;
+  --color-secondary-fixed-dim: 205 192 233;
+  --color-on-secondary-fixed: 31 22 53;
+  --color-on-secondary-fixed-variant: 75 66 99;
+  --color-tertiary-fixed: 255 223 147;
+  --color-tertiary-fixed-dim: 231 195 101;
+  --color-on-tertiary-fixed: 36 26 0;
+  --color-on-tertiary-fixed-variant: 89 68 0;
+
+  --glass-bg: 255 255 255;
+  --glass-bg-alpha: 0.55;
+  --glass-border-alpha: 0.6;
+  --noise-opacity: 0.025;
 }
 
-@layer base{
-	html,body,#root{height:100%;}
-	body{
-		background:var(--bg);
-		color:#ffffff;
-		font-family:'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-		-webkit-font-smoothing:antialiased;
-		-moz-osx-font-smoothing:grayscale;
-	}
-	h1,h2,h3,h4{font-family:'Syne', ui-sans-serif, system-ui, -apple-system;}
+.dark {
+  --color-background: 20 18 24;
+  --color-on-background: 230 224 233;
+  --color-surface: 20 18 24;
+  --color-surface-dim: 20 18 24;
+  --color-surface-bright: 59 56 62;
+  --color-surface-container-lowest: 15 13 19;
+  --color-surface-container-low: 29 27 32;
+  --color-surface-container: 33 31 36;
+  --color-surface-container-high: 43 41 47;
+  --color-surface-container-highest: 54 52 58;
+  --color-surface-variant: 54 52 58;
+  --color-surface-tint: 207 188 255;
+  --color-on-surface: 230 224 233;
+  --color-on-surface-variant: 203 196 210;
+  --color-inverse-surface: 230 224 233;
+  --color-inverse-on-surface: 50 47 53;
+  --color-inverse-primary: 103 80 164;
+  --color-outline: 148 142 156;
+  --color-outline-variant: 73 69 81;
+  --color-primary: 207 188 255;
+  --color-on-primary: 56 30 114;
+  --color-primary-container: 103 80 164;
+  --color-on-primary-container: 224 210 255;
+  --color-secondary: 205 192 233;
+  --color-on-secondary: 52 43 75;
+  --color-secondary-container: 77 68 101;
+  --color-on-secondary-container: 191 178 218;
+  --color-tertiary: 231 195 101;
+  --color-on-tertiary: 62 46 0;
+  --color-tertiary-container: 201 167 77;
+  --color-on-tertiary-container: 80 61 0;
+  --color-error: 255 180 171;
+  --color-on-error: 105 0 5;
+  --color-error-container: 147 0 10;
+  --color-on-error-container: 255 218 214;
+  --color-primary-fixed: 233 221 255;
+  --color-primary-fixed-dim: 207 188 255;
+  --color-on-primary-fixed: 34 0 93;
+  --color-on-primary-fixed-variant: 79 55 138;
+  --color-secondary-fixed: 233 221 255;
+  --color-secondary-fixed-dim: 205 192 233;
+  --color-on-secondary-fixed: 31 22 53;
+  --color-on-secondary-fixed-variant: 75 66 99;
+  --color-tertiary-fixed: 255 223 147;
+  --color-tertiary-fixed-dim: 231 195 101;
+  --color-on-tertiary-fixed: 36 26 0;
+  --color-on-tertiary-fixed-variant: 89 68 0;
+
+  --glass-bg: 255 255 255;
+  --glass-bg-alpha: 0.03;
+  --glass-border-alpha: 0.08;
+  --noise-opacity: 0.05;
 }
 
-/* Glass card utility */
-.glass-card{
-	background:rgba(255,255,255,0.03);
-	border:1px solid rgba(255,255,255,0.06);
-	backdrop-filter:blur(6px);
-	border-radius:1rem;
-	transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease, opacity .2s ease;
+@layer base {
+  html, body, #root { height: 100%; }
+  html { color-scheme: light dark; }
+  .dark { color-scheme: dark; }
+
+  body {
+    background: rgb(var(--color-background));
+    color: rgb(var(--color-on-surface));
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  h1, h2, h3, h4 { font-family: 'Geist', ui-sans-serif, system-ui, -apple-system; }
+
+  ::selection { background: rgb(var(--color-primary-container)); color: rgb(var(--color-on-primary-container)); }
 }
 
-/* Hover glow */
-.hover-glow:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(37,99,235,0.12);border-color:rgba(37,99,235,0.5)!important}
-
-/* Scroll reveal */
-.reveal-base{opacity:0;transform:translateY(24px);transition:all .7s ease}
-.reveal-visible{opacity:1;transform:translateY(0)}
-
-/* Section heading */
-.section-heading{
-	font-size:1.75rem;
-	font-weight:700;
-	text-align:left;
-	position:relative;
-	display:inline-block;
-}
-.section-heading::after{
-	content:'';
-	display:block;
-	height:6px;
-	width:60%;
-	background:var(--accent);
-	margin-top:6px;
-	border-radius:4px;
-	opacity:0.9;
+/* ==========================================================================
+   Glassmorphism + surfaces
+   ========================================================================== */
+.glass-card {
+  background: rgb(var(--glass-bg) / var(--glass-bg-alpha));
+  border: 1px solid rgb(var(--color-outline-variant) / var(--glass-border-alpha));
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 1.5rem;
+  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, border-color 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
 }
 
-/* Thin blue scrollbar */
-*::-webkit-scrollbar{width:8px;height:8px}
-*::-webkit-scrollbar-track{background:transparent}
-*::-webkit-scrollbar-thumb{background:linear-gradient(180deg,var(--accent),#60a5fa);border-radius:999px}
-
-/* Hero animated mesh / particles */
-.hero-mesh{
-	position: absolute;
-	inset:0;
-	z-index:0;
-	background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
-	background-size: 20px 20px;
-	opacity:0.4;
-	animation:mesh-move 12s linear infinite;
-}
-@keyframes mesh-move{
-	0%{transform:translate(0,0) scale(1)}
-	50%{transform:translate(-30px,20px) scale(1.02)}
-	100%{transform:translate(0,0) scale(1)}
+.hover-glow:hover {
+  transform: translateY(-4px);
+  border-color: rgb(var(--color-primary) / 0.35) !important;
+  box-shadow: 0 20px 45px -18px rgb(var(--color-primary-container) / 0.45);
 }
 
-/* Floating particle blur */
-.float-particles::before{
-	content:'';
-	position:absolute;left:-10%;top:-10%;width:120%;height:120%;background:radial-gradient(closest-side, rgba(37,99,235,0.06), transparent 40%);filter:blur(40px);opacity:0.7;animation:floaty 8s ease-in-out infinite alternate;pointer-events:none;
+/* Scroll reveal (used by ScrollReveal.jsx) */
+.reveal-base {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-@keyframes floaty{from{transform:translateY(0)}to{transform:translateY(-12px)}}
+.reveal-visible { opacity: 1; transform: translateY(0); }
 
-/* Cursor */
-.blinking-cursor{opacity:1;animation:blink 1s steps(2,end) infinite}
-@keyframes blink{from{opacity:1}to{opacity:0}}
+/* Section heading: eyebrow-style accent label handled per-section; this is the h2 itself */
+.section-heading {
+  font-size: 1.75rem;
+  font-weight: 700;
+  font-family: 'Geist', ui-sans-serif, system-ui;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: rgb(var(--color-on-surface));
+  position: relative;
+  display: inline-block;
+}
+.section-heading::after {
+  content: '';
+  display: block;
+  height: 4px;
+  width: 56px;
+  background: linear-gradient(90deg, rgb(var(--color-primary)), rgb(var(--color-secondary)));
+  margin-top: 10px;
+  border-radius: 999px;
+}
+.section-eyebrow {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgb(var(--color-primary));
+  display: block;
+  margin-bottom: 0.75rem;
+}
 
-/* Skill badge styles */
-.skill-group-heading{font-size:1.25rem;font-weight:700;color:#e6eefb;margin-bottom:8px}
-.skill-badges{display:flex;flex-wrap:wrap;gap:10px}
-.skill-badge{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);padding:8px 14px;border-radius:999px;color:#cfe8ff;font-weight:600;transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease}
-.skill-badge:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(37,99,235,0.18);border-color:rgba(37,99,235,0.6);color:#fff}
+/* Thin themed scrollbar */
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-track { background: transparent; }
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgb(var(--color-primary)), rgb(var(--color-secondary)));
+  border-radius: 999px;
+}
 
-/* Projects filter + card UI */
-.project-filter-bar{display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
-.project-filter-btn{position:relative;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);color:#d7e8ff;font-weight:600;transition:color .2s ease,background .2s ease,border-color .2s ease,transform .2s ease}
-.project-filter-btn:hover{transform:translateY(-2px);border-color:rgba(37,99,235,0.45);background:rgba(37,99,235,0.08)}
-.project-filter-btn::after{content:'';position:absolute;left:14px;right:14px;bottom:6px;height:2px;border-radius:999px;background:linear-gradient(90deg,#2563eb,#60a5fa);transform:scaleX(0);transform-origin:center;transition:transform .22s ease}
-.project-filter-btn.active{color:#fff;background:rgba(37,99,235,0.12);border-color:rgba(37,99,235,0.45)}
-.project-filter-btn.active::after{transform:scaleX(1)}
+/* ==========================================================================
+   Backgrounds: mesh gradient + noise
+   ========================================================================== */
+.mesh-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-color: rgb(var(--color-background));
+  background-image:
+    radial-gradient(at 10% 0%, rgb(var(--color-primary-container) / 0.35) 0, transparent 45%),
+    radial-gradient(at 85% 10%, rgb(var(--color-tertiary-container) / 0.22) 0, transparent 45%),
+    radial-gradient(at 0% 60%, rgb(var(--color-secondary-container) / 0.28) 0, transparent 50%),
+    radial-gradient(at 95% 90%, rgb(var(--color-primary-container) / 0.2) 0, transparent 45%);
+  transition: background-color 0.3s ease;
+}
+.noise {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: var(--noise-opacity);
+  pointer-events: none;
+  background-image: url("https://grainy-gradients.vercel.app/noise.svg");
+}
 
-.project-card-enter{opacity:0;transform:translateY(16px) scale(.98)}
-.project-card-exit{opacity:0;transform:translateY(16px) scale(.98)}
-.project-card-idle{opacity:1;transform:translateY(0) scale(1)}
+/* Hero mesh + floating particles (scoped to hero section, sits above global mesh-bg) */
+.hero-mesh {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: radial-gradient(rgb(var(--color-on-surface) / 0.035) 1px, transparent 1px);
+  background-size: 22px 22px;
+  opacity: 0.5;
+  border-radius: inherit;
+  animation: mesh-move 14s linear infinite;
+}
+@keyframes mesh-move {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-24px, 18px) scale(1.02); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+.float-particles::before {
+  content: '';
+  position: absolute;
+  left: -10%; top: -10%;
+  width: 120%; height: 120%;
+  background: radial-gradient(closest-side, rgb(var(--color-primary) / 0.18), transparent 45%);
+  filter: blur(50px);
+  opacity: 0.8;
+  animation: floaty 8s ease-in-out infinite alternate;
+  pointer-events: none;
+}
+@keyframes floaty { from { transform: translateY(0); } to { transform: translateY(-14px); } }
 
+.floating { animation: floating 6s ease-in-out infinite; }
+@keyframes floating {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-14px) rotate(2deg); }
+}
 
+/* Gradient headline text */
+.text-gradient {
+  background: linear-gradient(135deg, rgb(var(--color-primary)) 0%, rgb(var(--color-secondary)) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Typewriter cursor */
+.blinking-cursor { opacity: 1; animation: blink 1s steps(2, end) infinite; }
+@keyframes blink { from { opacity: 1; } to { opacity: 0; } }
+
+/* ==========================================================================
+   Skill badges (used in Services tech tags)
+   ========================================================================== */
+.skill-group-heading {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: rgb(var(--color-on-surface));
+  margin-bottom: 8px;
+}
+.skill-badges { display: flex; flex-wrap: wrap; gap: 10px; }
+.skill-badge {
+  background: rgb(var(--color-primary-container) / 0.18);
+  border: 1px solid rgb(var(--color-primary) / 0.2);
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: rgb(var(--color-on-surface));
+  font-weight: 600;
+  font-size: 0.8125rem;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+.skill-badge:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px -10px rgb(var(--color-primary) / 0.35);
+  border-color: rgb(var(--color-primary) / 0.5);
+}
+
+/* ==========================================================================
+   Projects: filter bar + card transitions
+   ========================================================================== */
+.project-filter-bar { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; padding: 6px; }
+.project-filter-btn {
+  position: relative;
+  padding: 10px 18px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: rgb(var(--color-on-surface-variant));
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+.project-filter-btn:hover { color: rgb(var(--color-on-surface)); background: rgb(var(--color-on-surface) / 0.05); }
+.project-filter-btn.active {
+  color: rgb(var(--color-on-primary));
+  background: rgb(var(--color-primary));
+  box-shadow: 0 8px 20px -8px rgb(var(--color-primary) / 0.6);
+}
+
+.project-card-enter { opacity: 0; transform: translateY(16px) scale(0.98); }
+.project-card-exit { opacity: 0; transform: translateY(16px) scale(0.98); }
+.project-card-idle { opacity: 1; transform: translateY(0) scale(1); }
+
+/* ==========================================================================
+   Tech marquee (Skills section)
+   ========================================================================== */
+.marquee { display: flex; overflow: hidden; user-select: none; gap: 2rem; }
+.marquee-content {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-around;
+  min-width: 100%;
+  gap: 3.5rem;
+  animation: scroll 28s linear infinite;
+}
+@keyframes scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-100%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-content { animation: none; }
+  .floating, .float-particles::before, .hero-mesh { animation: none; }
+  .reveal-base { opacity: 1; transform: none; transition: none; }
+}

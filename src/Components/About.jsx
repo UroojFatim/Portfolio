@@ -24,11 +24,11 @@ const StatCard = ({ label, value, suffix = '', decimals = 0, trigger }) => {
     }, [trigger]);
 
     return (
-        <div className="glass-card p-6 hover-glow transition w-full">
-            <div className="text-3xl font-bold text-white">
+        <div className="glass-card hover-glow w-full p-6">
+            <div className="text-3xl font-bold text-primary">
                 {count}{suffix}
             </div>
-            <div className="text-sm text-gray-300 mt-2">{label}</div>
+            <div className="mt-2 text-sm text-on-surface-variant">{label}</div>
         </div>
     );
 };
@@ -50,12 +50,13 @@ const About = () => {
     }, []);
 
     return (
-        <section id="about" className="py-16 px-6 max-w-6xl mx-auto">
-            <div className="mb-8">
+        <section id="about" className="mx-auto max-w-container-max px-6 py-16 sm:py-20">
+            <div className="mb-10">
+                <span className="section-eyebrow">Get to know me</span>
                 <h2 className="section-heading">About</h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                 {/* Left: Stat cards */}
                 <div className="space-y-4" ref={statsRef}>
                     <ScrollReveal delay={0}>
@@ -65,7 +66,7 @@ const About = () => {
                         <StatCard label="Users Served" value={250} suffix="+" trigger={visible} />
                     </ScrollReveal>
                     <ScrollReveal delay={160}>
-                        <StatCard label="Years Experience" value={1} suffix="+" trigger={visible} />
+                        <StatCard label="Years Experience" value={2} suffix="+" trigger={visible} />
                     </ScrollReveal>
                     <ScrollReveal delay={240}>
                         <StatCard label="CGPA" value={3.48} decimals={2} trigger={visible} />
@@ -75,38 +76,34 @@ const About = () => {
                 {/* Right: Bio + Education */}
                 <div className="space-y-6">
                     <ScrollReveal delay={80}>
-                    <div className="glass-card hover-glow p-6">
-                        <h3 className="text-2xl font-semibold text-white">Biography</h3>
-                        <p className="mt-3 text-gray-300">
-                            Full Stack Developer with 2+ year of production experience building scalable SaaS platforms, AI-driven applications, and e-commerce systems. Expertise in MERN stack, Next.js, TypeScript, and cloud-integrated architectures. Delivered 5+ live products serving 250+ active users across US and UAE clients.
-                        </p>
-                    </div>
+                        <div className="glass-card hover-glow p-6">
+                            <h3 className="text-2xl font-bold font-display text-on-surface">Biography</h3>
+                            <p className="mt-3 text-on-surface-variant">
+                                Full Stack Developer with 2+ years of production experience building scalable SaaS platforms, AI-driven applications, and e-commerce systems. Expertise in MERN stack, Next.js, TypeScript, and cloud-integrated architectures. Delivered 5+ live products serving 250+ active users across US and UAE clients.
+                            </p>
+                        </div>
                     </ScrollReveal>
 
                     <ScrollReveal delay={160}>
-                    <div className="glass-card hover-glow p-6">
-                        <h3 className="text-2xl font-semibold text-white">Education</h3>
-                        <div className="mt-4">
-                            <div className="mb-4">
-                                <div className="flex items-center justify-between">
-                                    <div>
-                                        <div className="font-semibold">B.E. Software Engineering — MAJU</div>
-                                        <div className="text-sm text-gray-300">(2022–2026) | CGPA: 3.48</div>
-                                    </div>
+                        <div className="glass-card hover-glow p-6">
+                            <h3 className="text-2xl font-bold font-display text-on-surface">Education</h3>
+                            <div className="mt-4">
+                                <div className="mb-4">
+                                    <div className="font-semibold text-on-surface">B.E. Software Engineering — MAJU</div>
+                                    <div className="text-sm text-on-surface-variant">(2022–2026) | CGPA: 3.48</div>
+                                </div>
+
+                                <div className="mb-4">
+                                    <div className="font-semibold text-on-surface">FSC Pre-Engineering — Govt. Degree Girls Science College, Karachi</div>
+                                    <div className="text-sm text-on-surface-variant">(2022)</div>
+                                </div>
+
+                                <div>
+                                    <div className="font-semibold text-on-surface">Matric Science — M.E Model School</div>
+                                    <div className="text-sm text-on-surface-variant">(2020)</div>
                                 </div>
                             </div>
-
-                            <div className="mb-4">
-                                <div className="font-semibold">FSC Pre-Engineering — Govt. Degree Girls Science College, Karachi</div>
-                                <div className="text-sm text-gray-300">(2022)</div>
-                            </div>
-
-                            <div>
-                                <div className="font-semibold">Matric Science — M.E Model School</div>
-                                <div className="text-sm text-gray-300">(2020)</div>
-                            </div>
                         </div>
-                    </div>
                     </ScrollReveal>
                 </div>
             </div>

@@ -1,12 +1,11 @@
-// import React from "react";
-import Profile from "../../../assets/ProfileImage.jpeg";
-import CV from "../../../assets/CV.pdf"; 
+import CV from "../../../assets/CV.pdf";
 import { Link } from 'react-scroll';
+import { FaGithub, FaLinkedin, FaEnvelope, FaSun, FaMoon, FaTimes } from 'react-icons/fa';
+import { SiUpwork } from 'react-icons/si';
 
 const navItems = [
   { label: 'Home', to: 'home' },
   { label: 'About', to: 'about' },
-  // { label: 'Education', to: 'education' },
   { label: 'Certifications', to: 'certifications' },
   { label: 'Skills', to: 'skills' },
   { label: 'Experience', to: 'experience' },
@@ -17,90 +16,95 @@ const navItems = [
 
 const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar, activeSection }) => {
   return (
-    <div
-      className={`fixed top-0 right-0 left-auto w-[92vw] max-w-sm z-40 p-6 shadow-lg h-screen text-white transition-transform duration-300 transform ${sidebarOpen ? 'translate-x-0' : 'translate-x-full'} md:hidden bg-black/95 backdrop-blur-md border-l border-white/10`}
-    >
-      {/* Close Button for Mobile */}
-      <div className="md:hidden flex justify-end mb-4">
-        <button onClick={toggleSidebar} className="min-h-11 min-w-11 inline-flex items-center justify-center rounded-xl text-2xl text-white border border-white/10 bg-white/5">
-          ✕ {/* Close icon */}
-        </button>
-      </div>
-
-      {/* Theme Toggle Button */}
-      <div className="mt-6 flex flex-col gap-2 items-start">
-        <div className="w-full flex justify-between items-center">
-          <button
-            onClick={toggleTheme}
-            className="min-h-11 px-4 py-2 rounded-xl border border-white/10 text-white bg-black/20"
-          >
-            {isDarkMode ? "Light" : "Dark"}
-          </button>
-          <button onClick={toggleSidebar} className="min-h-11 min-w-11 inline-flex items-center justify-center rounded-xl text-xl border border-white/10 bg-white/5">✕</button>
-        </div>
-        <div className="text-xs text-gray-300">
-          <p>Email: urooj.fatim2004@gmail.com</p>
-          <p>Phone: +92 344 8302253</p>
-        </div>
-      </div>
-
-      <div className="mt-8 space-y-2">
-        {navItems.map((item) => (
-          <Link
-            key={item.to}
-            to={item.to}
-            smooth={true}
-            duration={500}
-            onClick={toggleSidebar}
-            className={`flex min-h-11 items-center rounded-xl border px-4 py-3 text-sm font-semibold transition ${activeSection === item.to ? 'border-blue-500/50 bg-blue-500/10 text-blue-100' : 'border-white/10 bg-white/5 text-white/85'}`}
-          >
-            {item.label}
-          </Link>
-        ))}
-      </div>
-
-      {/* Profile Image and Info */}
-      <div className="text-center m-6 flex-col space-y-2 z-10">
-        <img
-          src={Profile}
-          alt="Profile"
-          className="w-40 h-40 mx-auto rounded-full"
+    <>
+      {sidebarOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-on-background/40 backdrop-blur-sm md:hidden"
+          onClick={toggleSidebar}
+          aria-hidden="true"
         />
-        <h1 className="text-2xl font-bold">Urooj Fatima</h1>
-        <p className="text-gray-600 dark:text-gray-300">Full-Stack Developer</p>
-      </div>
+      )}
+      <div
+        className={`fixed right-0 top-0 z-50 h-screen w-[88vw] max-w-sm transform border-l border-outline-variant/40 bg-surface p-6 text-on-surface shadow-2xl transition-transform duration-300 md:hidden ${
+          sidebarOpen ? 'translate-x-0' : 'translate-x-full'
+        }`}
+      >
+        <div className="flex items-center justify-between">
+          <span className="text-lg font-bold font-display">Menu</span>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={toggleTheme}
+              aria-label={isDarkMode ? 'Switch to light theme' : 'Switch to dark theme'}
+              className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface-variant"
+            >
+              {isDarkMode ? <FaSun /> : <FaMoon />}
+            </button>
+            <button
+              onClick={toggleSidebar}
+              aria-label="Close menu"
+              className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface"
+            >
+              <FaTimes />
+            </button>
+          </div>
+        </div>
 
-      <div className="text-center mb-6">
-        <p className="text-gray-700 dark:text-gray-400">
-          A passionate developer who loves coding and creating innovative solutions.
+        <nav className="mt-8 space-y-2">
+          {navItems.map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              smooth
+              duration={500}
+              onClick={toggleSidebar}
+              className={`flex min-h-11 items-center rounded-xl border px-4 py-3 text-sm font-semibold transition ${
+                activeSection === item.to
+                  ? 'border-primary/40 bg-primary-container/40 text-on-primary-container'
+                  : 'border-outline-variant/40 bg-surface-container-low text-on-surface-variant'
+              }`}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        <div className="mt-8 flex items-center justify-center gap-4 text-xl">
+          <a href="https://github.com/UroojFatim" target="_blank" rel="noreferrer" aria-label="GitHub" className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface-variant hover:text-primary">
+            <FaGithub />
+          </a>
+          <a href="https://www.linkedin.com/in/uroojfatima-588ba2296" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface-variant hover:text-primary">
+            <FaLinkedin />
+          </a>
+          <a href="https://www.upwork.com/freelancers/~018b2cb9ef43a154ba?mp_source=share" target="_blank" rel="noreferrer" aria-label="Upwork" className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface-variant hover:text-primary">
+            <SiUpwork />
+          </a>
+          <a href="mailto:urooj.fatim2004@gmail.com" aria-label="Email" className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface-variant hover:text-primary">
+            <FaEnvelope />
+          </a>
+        </div>
+
+        <div className="mt-8 space-y-3">
+          <a
+            href="mailto:urooj.fatim2004@gmail.com"
+            className="flex min-h-11 w-full items-center justify-center rounded-full bg-primary px-6 py-3 text-center text-sm font-bold text-on-primary transition hover:brightness-110"
+          >
+            Hire Me
+          </a>
+          <a
+            href={CV}
+            target="_blank"
+            rel="noreferrer"
+            className="glass-card flex min-h-11 w-full items-center justify-center rounded-full px-6 py-3 text-center text-sm font-bold text-on-surface"
+          >
+            Download Resume
+          </a>
+        </div>
+
+        <p className="mt-8 text-center text-xs text-on-surface-variant">
+          urooj.fatim2004@gmail.com · +92 344 8302253
         </p>
       </div>
-
-      {/* Social Icons */}
-      <div className="flex justify-center space-x-4 mb-6 text-2xl">
-        <a href="https://github.com/UroojFatim" target="_blank" className="text-gray-200">
-          <i className="fab fa-github"></i>
-        </a>
-        <a href="https://www.linkedin.com/in/urooj-fatima-588ba2296/" target="_blank" className="text-blue-400">
-          <i className="fab fa-linkedin"></i>
-        </a>
-      </div>
-
-      {/* Hire Me and Download CV Buttons */}
-      <div className="text-center flex flex-col gap-4 mx-5 mt-6 z-10">
-        <a href="https://www.upwork.com/freelancers/~018b2cb9ef43a154ba?mp_source=share" target ="_blank" className="w-full min-h-11 text-center px-6 py-3 rounded-full bg-blue-600 hover:bg-blue-500 text-white transition inline-flex items-center justify-center">
-          Hire Me
-        </a >
-        <a
-          href={CV}
-          target="_blank"
-          rel="noreferrer"
-          className="w-full min-h-11 text-center px-6 py-3 rounded-full border border-white/10 text-white hover:bg-white/5 transition inline-flex items-center justify-center"
-        >
-          Download Resume
-        </a>
-      </div>
-    </div>
+    </>
   );
 };
 

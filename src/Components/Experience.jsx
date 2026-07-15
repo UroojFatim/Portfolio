@@ -31,49 +31,50 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="py-16 px-6 max-w-6xl mx-auto">
-      <div className="mb-8">
+    <section id="experience" className="mx-auto max-w-container-max px-6 py-16 sm:py-20">
+      <div className="mb-10">
+        <span className="section-eyebrow">Career Path</span>
         <h2 className="section-heading">Experience</h2>
       </div>
 
-      <div className="relative pl-0 md:pl-10">
-        <div className="absolute left-3 top-1 bottom-1 hidden w-px bg-blue-500/70 md:block" aria-hidden="true" />
+      <div className="relative pl-0 md:pl-12">
+        <div className="absolute bottom-1 left-3 top-1 hidden w-px bg-gradient-to-b from-primary via-primary/40 to-transparent md:block" aria-hidden="true" />
 
         <div className="space-y-8">
           {experiences.map((item, index) => (
             <ScrollReveal key={index} delay={index * 80}>
-            <article className="relative">
-              <span className="absolute left-[-1.15rem] top-6 hidden h-4 w-4 rounded-full bg-blue-500 shadow-[0_0_0_6px_rgba(37,99,235,0.12)] md:block" aria-hidden="true" />
-              <div className="glass-card hover-glow p-5 sm:p-6 md:p-7">
-                <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
-                  <div>
-                    <h3 className="text-xl md:text-2xl font-bold text-white">{item.company}</h3>
-                    <p className="text-blue-200 font-medium mt-1">{item.role}</p>
+              <article className="relative">
+                <span className="absolute left-[-1.65rem] top-6 hidden h-4 w-4 rounded-full bg-primary shadow-[0_0_0_6px_rgb(var(--color-primary-container)/0.35)] md:block" aria-hidden="true" />
+                <div className="glass-card hover-glow p-5 sm:p-6 md:p-7">
+                  <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between">
+                    <div>
+                      <h3 className="text-xl font-bold font-display text-on-surface md:text-2xl">{item.company}</h3>
+                      <p className="mt-1 font-medium text-primary">{item.role}</p>
+                    </div>
+                    <div className="text-sm text-on-surface-variant md:text-right">
+                      <div>{item.period}</div>
+                      <div>{item.location}</div>
+                    </div>
                   </div>
-                  <div className="text-sm text-gray-300 md:text-right">
-                    <div>{item.period}</div>
-                    <div>{item.location}</div>
+
+                  <ul className="mt-5 space-y-3 pl-5 text-on-surface-variant sm:pl-6">
+                    {item.bullets.map((bullet, bulletIndex) => (
+                      <li key={bulletIndex} className="list-disc">{bullet}</li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
+                    {item.stack.map((tech, techIndex) => (
+                      <span
+                        key={techIndex}
+                        className="rounded-full border border-primary/25 bg-primary-container/15 px-3 py-1 text-sm font-medium text-on-surface"
+                      >
+                        {tech}
+                      </span>
+                    ))}
                   </div>
                 </div>
-
-                <ul className="mt-5 space-y-3 text-gray-300 list-disc pl-5 sm:pl-6">
-                  {item.bullets.map((bullet, bulletIndex) => (
-                    <li key={bulletIndex}>{bullet}</li>
-                  ))}
-                </ul>
-
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {item.stack.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-sm font-medium text-blue-100"
-                    >
-                      {tech}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </article>
+              </article>
             </ScrollReveal>
           ))}
         </div>

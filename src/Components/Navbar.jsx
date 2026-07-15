@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link } from 'react-scroll';
+import { FaCode, FaSun, FaMoon, FaBars } from 'react-icons/fa';
+import CV from '../assets/CV.pdf';
 
 const navItems = [
   { label: 'Home', to: 'home' },
   { label: 'About', to: 'about' },
-//   { label: 'Education', to: 'education' },
   { label: 'Certifications', to: 'certifications' },
   { label: 'Skills', to: 'skills' },
   { label: 'Experience', to: 'experience' },
@@ -13,30 +14,65 @@ const navItems = [
   { label: 'Contact', to: 'contact' },
 ];
 
-const Navbar = ({ toggleSidebar, activeSection, isScrolled }) => {
+const Navbar = ({ toggleSidebar, activeSection, isScrolled, toggleTheme, isDarkMode }) => {
   return (
-    <header className={`sticky top-0 z-30 border-b border-white/5 transition-all duration-300 ${isScrolled ? 'backdrop-blur-md bg-black/60 shadow-lg shadow-black/20' : 'backdrop-blur-sm bg-black/30'}`}>
-      <nav className="max-w-6xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <div className="text-xl sm:text-2xl font-bold text-white">Urooj Fatima</div>
-        </div>
+    <header
+      className={`sticky top-0 z-40 border-b transition-all duration-300 ${
+        isScrolled
+          ? 'border-outline-variant/40 bg-background/80 shadow-lg shadow-on-background/5 backdrop-blur-xl'
+          : 'border-transparent bg-background/40 backdrop-blur-md'
+      }`}
+    >
+      <nav className="mx-auto flex h-16 max-w-container-max items-center justify-between px-4 sm:px-6 md:px-10">
+        <Link to="home" smooth duration={500} className="flex cursor-pointer items-center gap-2.5">
+          <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary-container/60 text-primary">
+            <FaCode className="text-base" />
+          </span>
+          <span className="text-lg font-bold font-display text-on-surface sm:text-xl">Urooj Fatima</span>
+        </Link>
 
-        <div className="hidden md:flex items-center gap-6 text-white">
+        <div className="hidden items-center gap-8 md:flex">
           {navItems.map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              smooth={true}
+              smooth
               duration={500}
-              className={`cursor-pointer min-h-11 inline-flex items-center transition-colors ${activeSection === item.to ? 'text-blue-300' : 'text-white/85 hover:text-white'}`}
+              className={`min-h-11 cursor-pointer text-sm font-medium tracking-wide transition-colors inline-flex items-center ${
+                activeSection === item.to ? 'text-primary' : 'text-on-surface-variant hover:text-on-surface'
+              }`}
             >
               {item.label}
             </Link>
           ))}
         </div>
 
-        <div className="md:hidden">
-          <button onClick={toggleSidebar} className="min-h-11 min-w-11 inline-flex items-center justify-center rounded-xl p-2 text-2xl text-white border border-white/10 bg-white/5">☰</button>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <button
+            type="button"
+            onClick={toggleTheme}
+            aria-label={isDarkMode ? 'Switch to light theme' : 'Switch to dark theme'}
+            className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface-variant transition hover:text-primary"
+          >
+            {isDarkMode ? <FaSun /> : <FaMoon />}
+          </button>
+
+          <a
+            href={CV}
+            target="_blank"
+            rel="noreferrer"
+            className="hidden min-h-11 items-center justify-center rounded-lg bg-primary-container px-5 text-sm font-bold text-on-primary-container transition hover:brightness-110 sm:inline-flex"
+          >
+            Resume
+          </a>
+
+          <button
+            onClick={toggleSidebar}
+            aria-label="Open menu"
+            className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface md:hidden"
+          >
+            <FaBars />
+          </button>
         </div>
       </nav>
     </header>
