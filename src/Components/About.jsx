@@ -58,7 +58,7 @@ const About = () => {
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
                 {/* Left: Stat cards */}
-                <div className="space-y-4" ref={statsRef}>
+                <div className="min-w-0 space-y-4" ref={statsRef}>
                     <ScrollReveal delay={0}>
                         <StatCard label="Projects Shipped" value={5} suffix="+" trigger={visible} />
                     </ScrollReveal>
@@ -74,32 +74,32 @@ const About = () => {
                 </div>
 
                 {/* Right: Bio + Education */}
-                <div className="space-y-6">
+                <div className="min-w-0 space-y-6">
                     <ScrollReveal delay={80}>
-                        <div className="glass-card hover-glow p-6">
+                        <div className="glass-card hover-glow w-full min-w-0 p-6">
                             <h3 className="text-2xl font-bold font-display text-on-surface">Biography</h3>
-                            <p className="mt-3 text-on-surface-variant">
+                            <p className="mt-3 break-words text-on-surface-variant">
                                 Full Stack Developer with 2+ years of production experience building scalable SaaS platforms, AI-driven applications, and e-commerce systems. Expertise in MERN stack, Next.js, TypeScript, and cloud-integrated architectures. Delivered 5+ live products serving 250+ active users across US and UAE clients.
                             </p>
                         </div>
                     </ScrollReveal>
 
                     <ScrollReveal delay={160}>
-                        <div className="glass-card hover-glow p-6">
+                        <div className="glass-card hover-glow w-full min-w-0 p-6">
                             <h3 className="text-2xl font-bold font-display text-on-surface">Education</h3>
                             <div className="mt-4">
-                                <div className="mb-4">
-                                    <div className="font-semibold text-on-surface">B.E. Software Engineering — MAJU</div>
+                                <div className="mb-4 min-w-0">
+                                    <div className="break-words font-semibold text-on-surface">B.E. Software Engineering — MAJU</div>
                                     <div className="text-sm text-on-surface-variant">(2022–2026) | CGPA: 3.48</div>
                                 </div>
 
-                                <div className="mb-4">
-                                    <div className="font-semibold text-on-surface">FSC Pre-Engineering — Govt. Degree Girls Science College, Karachi</div>
+                                <div className="mb-4 min-w-0">
+                                    <div className="break-words font-semibold text-on-surface">FSC Pre-Engineering — Govt. Degree Girls Science College, Karachi</div>
                                     <div className="text-sm text-on-surface-variant">(2022)</div>
                                 </div>
 
-                                <div>
-                                    <div className="font-semibold text-on-surface">Matric Science — M.E Model School</div>
+                                <div className="min-w-0">
+                                    <div className="break-words font-semibold text-on-surface">Matric Science — M.E Model School</div>
                                     <div className="text-sm text-on-surface-variant">(2020)</div>
                                 </div>
                             </div>

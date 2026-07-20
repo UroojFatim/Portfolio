@@ -6,7 +6,7 @@ const Contact = () => {
   return (
     <section id="contact" className="mx-auto max-w-container-max px-4 py-16 sm:px-6 sm:py-20 md:px-10">
       <ScrollReveal>
-        <div className="glass-card grid overflow-hidden rounded-[2.5rem] shadow-2xl sm:rounded-[4rem] lg:grid-cols-2">
+        <div className="glass-card grid grid-cols-1 overflow-hidden rounded-[2.5rem] shadow-2xl sm:rounded-[4rem] lg:grid-cols-2">
           {/* Info side */}
           <div className="bg-gradient-to-br from-primary-container/25 to-secondary-container/15 p-8 sm:p-12 md:p-20">
             <h2 className="text-display-xl-mobile font-display leading-tight text-on-surface">
@@ -17,22 +17,22 @@ const Contact = () => {
             </p>
 
             <div className="mt-10 space-y-6">
-              <div className="flex items-center gap-5">
-                <div className="glass-card flex h-14 w-14 items-center justify-center rounded-2xl text-2xl text-primary">
+              <div className="flex items-center gap-4 sm:gap-5">
+                <div className="glass-card flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-xl text-primary sm:h-14 sm:w-14 sm:text-2xl">
                   <FaEnvelope />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <div className="text-xs font-bold uppercase tracking-widest text-primary">Email Me</div>
-                  <div className="text-lg font-bold text-on-surface">urooj.fatim2004@gmail.com</div>
+                  <div className="break-all text-base font-bold text-on-surface sm:text-lg">urooj.fatim2004@gmail.com</div>
                 </div>
               </div>
-              <div className="flex items-center gap-5">
-                <div className="glass-card flex h-14 w-14 items-center justify-center rounded-2xl text-2xl text-secondary">
+              <div className="flex items-center gap-4 sm:gap-5">
+                <div className="glass-card flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl text-xl text-secondary sm:h-14 sm:w-14 sm:text-2xl">
                   <FaMapMarkerAlt />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <div className="text-xs font-bold uppercase tracking-widest text-secondary">Location</div>
-                  <div className="text-lg font-bold text-on-surface">Karachi, Pakistan</div>
+                  <div className="break-words text-base font-bold text-on-surface sm:text-lg">Karachi, Pakistan</div>
                 </div>
               </div>
             </div>

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 
 const LINES = [
-  { tokens: [['const', 'kw'], [' developer', 'var'], [' = ', 'op'], ['{', 'punc']] },
-  { tokens: [["  name: ", 'key'], ["'Urooj Fatima'", 'str'], [',', 'punc']], indent: 1 },
-  { tokens: [["  role: ", 'key'], ["'Full Stack Engineer'", 'str'], [',', 'punc']], indent: 1 },
-  { tokens: [["  stack: ", 'key'], ["['React', 'Node.js', 'MongoDB']", 'str'], [',', 'punc']], indent: 1 },
-  { tokens: [["  focus: ", 'key'], ["'SaaS + AI Products'", 'str'], [',', 'punc']], indent: 1 },
-  { tokens: [["  status: ", 'key'], ["'shipping'", 'str']], indent: 1 },
+  { tokens: [['const', 'kw'], [' dev', 'var'], [' = ', 'op'], ['{', 'punc']] },
+  { tokens: [["  name: ", 'key'], ["'Urooj F.'", 'str'], [',', 'punc']] },
+  { tokens: [["  role: ", 'key'], ["'Full Stack'", 'str'], [',', 'punc']] },
+  { tokens: [["  stack: ", 'key'], ["['React','Node']", 'str'], [',', 'punc']] },
+  { tokens: [["  focus: ", 'key'], ["'SaaS + AI'", 'str'], [',', 'punc']] },
+  { tokens: [["  status: ", 'key'], ["'shipping'", 'str']] },
   { tokens: [['}', 'punc'], [';', 'punc']] },
 ];
 
@@ -80,14 +80,14 @@ const TerminalCard = ({ className = '' }) => {
   }
 
   return (
-    <div className={`glass-card overflow-hidden rounded-2xl text-left shadow-xl ${className}`}>
-      <div className="flex items-center gap-2 border-b border-outline-variant/20 bg-on-surface/5 px-4 py-3">
-        <span className="h-2.5 w-2.5 rounded-full bg-rose-400/70" />
-        <span className="h-2.5 w-2.5 rounded-full bg-amber-400/70" />
-        <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/70" />
-        <span className="ml-3 font-mono text-[11px] text-on-surface-variant">profile.js</span>
+    <div className={`glass-card w-full min-w-0 max-w-full overflow-hidden rounded-2xl text-left shadow-xl ${className}`}>
+      <div className="flex min-w-0 items-center gap-2 border-b border-outline-variant/20 bg-on-surface/5 px-4 py-3">
+        <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-rose-400/70" />
+        <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-amber-400/70" />
+        <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-emerald-400/70" />
+        <span className="ml-3 truncate font-mono text-[11px] text-on-surface-variant">profile.js</span>
       </div>
-      <pre className="overflow-x-auto px-5 py-4 font-mono text-[12.5px] leading-6 sm:text-sm">
+      <pre className="max-w-full overflow-x-auto px-5 py-4 font-mono text-[12.5px] leading-6 sm:text-sm">
         {renderedLines.map((tokens, i) => (
           <div key={i} className="whitespace-pre">
             {tokens.map(([text, kind], j) => (

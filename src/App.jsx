@@ -43,6 +43,39 @@ const App = () => {
     setSidebarOpen(!sidebarOpen);
   };
 
+  // Prevent body scroll while the mobile menu is open.
+  useEffect(() => {
+    if (sidebarOpen) {
+      const previousOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = previousOverflow;
+      };
+    }
+    return undefined;
+  }, [sidebarOpen]);
+
+  // Close the mobile menu automatically if the viewport grows past the
+  // mobile breakpoint (e.g. rotating a tablet to landscape) so it can't get
+  // stuck open behind the desktop nav.
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024 && sidebarOpen) setSidebarOpen(false);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [sidebarOpen]);
+
+  // Close the mobile menu on Escape for keyboard users.
+  useEffect(() => {
+    if (!sidebarOpen) return undefined;
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') setSidebarOpen(false);
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [sidebarOpen]);
+
   useEffect(() => {
     const handleScroll = () => {
       const scrolled = window.scrollY > 24;
@@ -80,7 +113,7 @@ const App = () => {
   };
 
   return (
-    <div className="relative flex min-h-screen flex-col">
+    <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
       <div className="mesh-bg" aria-hidden="true" />
       <div className="noise" aria-hidden="true" />
 

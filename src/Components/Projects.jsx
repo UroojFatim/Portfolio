@@ -108,7 +108,9 @@ const Projects = () => {
                       <img
                         src={project.image}
                         alt={`${project.name} screenshot`}
-                        className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        loading="lazy"
+                        decoding="async"
+                        className="h-full w-full max-w-full object-cover transition-transform duration-700 group-hover:scale-110"
                       />
                     ) : (
                       <div className="h-full w-full transition-transform duration-700 group-hover:scale-110">

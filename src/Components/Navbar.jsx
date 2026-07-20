@@ -28,7 +28,7 @@ const Navbar = ({ toggleSidebar, activeSection, isScrolled, toggleTheme, isDarkM
           <span className="whitespace-nowrap text-base font-bold font-display text-on-surface sm:text-lg md:text-xl">Urooj Fatima</span>
         </Link>
 
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-5 lg:flex xl:gap-8">
           {navItems.map((item) => (
             <Link
               key={item.to}
@@ -66,7 +66,7 @@ const Navbar = ({ toggleSidebar, activeSection, isScrolled, toggleTheme, isDarkM
           <button
             onClick={toggleSidebar}
             aria-label="Open menu"
-            className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface md:hidden"
+            className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface lg:hidden"
           >
             <FaBars />
           </button>

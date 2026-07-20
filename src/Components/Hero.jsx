@@ -44,15 +44,19 @@ const Hero = () => {
 
     return (
         <section id="home" className="relative overflow-hidden px-4 py-14 sm:px-6 sm:py-20 md:px-10 lg:py-24">
-            <div className="mx-auto grid max-w-container-max items-center gap-14 lg:grid-cols-2 lg:gap-16">
+            <div className="mx-auto grid max-w-container-max grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-16">
                 {/* Left Content */}
-                <div className="text-center lg:text-left">
+                <div className="min-w-0 text-center lg:text-left">
                     <span className="glass-card mb-8 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold text-on-surface-variant">
                         <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
                         Available for Opportunities
                     </span>
 
-                    <h1 className="text-display-xl-mobile font-display leading-tight text-on-surface md:text-display-xl">
+                    {/* Steps back down at lg because that's where the layout goes
+                        two-column and the left column narrows — jumping straight
+                        to the 64px size there was tight enough to risk wrapping
+                        on ~1024px tablets; xl+ has room for it again. */}
+                    <h1 className="text-display-xl-mobile font-display leading-tight text-on-surface md:text-display-xl lg:text-display-xl-mobile xl:text-display-xl">
                         Urooj Fatima
                     </h1>
 
@@ -124,7 +128,9 @@ const Hero = () => {
                         <img
                             src={ProfileImage}
                             alt="Urooj Fatima"
-                            className="relative z-10 h-full w-full rounded-3xl border-4 border-surface object-cover shadow-xl"
+                            decoding="async"
+                            fetchpriority="high"
+                            className="relative z-10 h-full w-full max-w-full rounded-3xl border-4 border-surface object-cover shadow-xl"
                         />
 
                         <div className="glass-card floating absolute left-6 top-6 z-20 rounded-2xl p-4 shadow-xl" style={{ animationDelay: '0.2s' }}>
