@@ -68,7 +68,7 @@ const Projects = () => {
   };
 
   return (
-    <section id="projects" className="mx-auto max-w-container-max px-4 py-16 sm:px-6 sm:py-20 md:px-10">
+    <section id="projects" className="scroll-mt-24 mx-auto max-w-container-max px-4 py-16 sm:px-6 sm:py-20 md:px-10">
       <div className="mb-10 flex flex-col gap-6 sm:mb-16 md:flex-row md:items-end md:justify-between">
         <div>
           <span className="section-eyebrow text-primary">Portfolio</span>

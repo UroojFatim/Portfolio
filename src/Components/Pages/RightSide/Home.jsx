@@ -15,11 +15,11 @@ const Home = () => {
     <div className="space-y-16 sm:space-y-20">
       <Hero />
       <About />
-      <Certifications />
       <Skills />
       <Experience />
-      <Services />
       <Projects />
+      <Services />
+      <Certifications />
       <Contact />
       <Footer />
     </div>

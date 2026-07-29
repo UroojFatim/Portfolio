@@ -19,11 +19,11 @@ const App = () => {
   const trackedSections = useMemo(() => ([
     'home',
     'about',
-    'certifications',
     'skills',
     'experience',
-    'services',
     'projects',
+    'services',
+    'certifications',
     'contact',
   ]), []);
 

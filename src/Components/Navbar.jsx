@@ -1,15 +1,22 @@
 import React from 'react';
-import { Link } from 'react-scroll';
 import { FaCode, FaSun, FaMoon, FaBars } from 'react-icons/fa';
 import CV from '../assets/CV.pdf';
 
 const navItems = [
-  { label: 'Certifications', to: 'certifications' },
   { label: 'Skills', to: 'skills' },
   { label: 'Experience', to: 'experience' },
-  { label: 'Services', to: 'services' },
   { label: 'Projects', to: 'projects' },
+  { label: 'Services', to: 'services' },
+  { label: 'Certifications', to: 'certifications' },
 ];
+
+// Native smooth-scroll — each section carries a `scroll-mt-*` class so it
+// lands clear of the sticky header instead of relying on a third-party
+// library's own scroll math.
+const scrollToSection = (id) => {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
 
 const Navbar = ({ toggleSidebar, activeSection, isScrolled, toggleTheme, isDarkMode }) => {
   return (
@@ -21,26 +28,29 @@ const Navbar = ({ toggleSidebar, activeSection, isScrolled, toggleTheme, isDarkM
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-container-max items-center justify-between px-4 sm:px-6 md:px-10">
-        <Link to="home" smooth duration={500} className="flex cursor-pointer items-center gap-2 sm:gap-2.5">
+        <button
+          type="button"
+          onClick={() => scrollToSection('home')}
+          className="flex cursor-pointer items-center gap-2 sm:gap-2.5"
+        >
           <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-primary-container/60 text-primary sm:h-9 sm:w-9">
             <FaCode className="text-sm sm:text-base" />
           </span>
           <span className="whitespace-nowrap text-base font-bold font-display text-on-surface sm:text-lg md:text-xl">Urooj Fatima</span>
-        </Link>
+        </button>
 
         <div className="hidden items-center gap-5 lg:flex xl:gap-8">
           {navItems.map((item) => (
-            <Link
+            <button
               key={item.to}
-              to={item.to}
-              smooth
-              duration={500}
+              type="button"
+              onClick={() => scrollToSection(item.to)}
               className={`min-h-11 cursor-pointer text-sm font-medium tracking-wide transition-colors inline-flex items-center ${
                 activeSection === item.to ? 'text-primary' : 'text-on-surface-variant hover:text-on-surface'
               }`}
             >
               {item.label}
-            </Link>
+            </button>
           ))}
         </div>
 

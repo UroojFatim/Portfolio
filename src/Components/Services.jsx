@@ -48,7 +48,7 @@ const Services = () => {
   return (
     <section
       id="services"
-      className="mx-auto max-w-container-max rounded-[2.5rem] bg-surface-container-low/60 px-4 py-16 backdrop-blur-md sm:rounded-[4rem] sm:px-6 sm:py-20 md:px-10 md:py-24"
+      className="scroll-mt-24 mx-auto max-w-container-max rounded-[2.5rem] bg-surface-container-low/60 px-4 py-16 backdrop-blur-md sm:rounded-[4rem] sm:px-6 sm:py-20 md:px-10 md:py-24"
     >
       <div className="mb-10 text-center sm:mb-16">
         <span className="section-eyebrow text-primary">Offerings</span>

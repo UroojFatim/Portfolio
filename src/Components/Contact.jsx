@@ -4,7 +4,7 @@ import ScrollReveal from './ScrollReveal';
 
 const Contact = () => {
   return (
-    <section id="contact" className="mx-auto max-w-container-max px-4 py-16 sm:px-6 sm:py-20 md:px-10">
+    <section id="contact" className="scroll-mt-24 mx-auto max-w-container-max px-4 py-16 sm:px-6 sm:py-20 md:px-10">
       <ScrollReveal>
         <div className="glass-card grid grid-cols-1 overflow-hidden rounded-[2.5rem] shadow-2xl sm:rounded-[4rem] lg:grid-cols-2">
           {/* Info side */}

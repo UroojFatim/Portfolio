@@ -31,7 +31,7 @@ const experiences = [
 
 const Experience = () => {
   return (
-    <section id="experience" className="mx-auto max-w-container-max px-4 py-16 sm:px-6 sm:py-20 md:px-10">
+    <section id="experience" className="scroll-mt-24 mx-auto max-w-container-max px-4 py-16 sm:px-6 sm:py-20 md:px-10">
       <div className="mb-10 text-center sm:mb-16">
         <span className="section-eyebrow text-secondary">Career Path</span>
         <h2 className="section-heading">Work Experience</h2>

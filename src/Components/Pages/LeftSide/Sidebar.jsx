@@ -1,15 +1,20 @@
 import CV from "../../../assets/CV.pdf";
-import { Link } from 'react-scroll';
 import { FaGithub, FaLinkedin, FaEnvelope, FaSun, FaMoon, FaTimes } from 'react-icons/fa';
 import { SiUpwork } from 'react-icons/si';
 
 const navItems = [
-  { label: 'Certifications', to: 'certifications' },
   { label: 'Skills', to: 'skills' },
   { label: 'Experience', to: 'experience' },
-  { label: 'Services', to: 'services' },
   { label: 'Projects', to: 'projects' },
+  { label: 'Services', to: 'services' },
+  { label: 'Certifications', to: 'certifications' },
 ];
+
+// Native smooth-scroll — see matching note in Navbar.jsx.
+const scrollToSection = (id) => {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+};
 
 const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar, activeSection }) => {
   return (
@@ -50,20 +55,23 @@ const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar, activeSe
 
         <nav className="mt-8 space-y-2">
           {navItems.map((item) => (
-            <Link
+            <button
               key={item.to}
-              to={item.to}
-              smooth
-              duration={500}
-              onClick={toggleSidebar}
-              className={`flex min-h-11 items-center rounded-xl border px-4 py-3 text-sm font-semibold transition ${
+              type="button"
+              onClick={() => {
+                toggleSidebar();
+                // Let the drawer close first so scrollIntoView measures the
+                // final (non-clipped) layout.
+                window.setTimeout(() => scrollToSection(item.to), 300);
+              }}
+              className={`flex min-h-11 w-full items-center rounded-xl border px-4 py-3 text-left text-sm font-semibold transition ${
                 activeSection === item.to
                   ? 'border-primary/40 bg-primary-container/40 text-on-primary-container'
                   : 'border-outline-variant/40 bg-surface-container-low text-on-surface-variant'
               }`}
             >
               {item.label}
-            </Link>
+            </button>
           ))}
         </nav>
 

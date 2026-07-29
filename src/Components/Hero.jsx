@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import ProfileImage from '../assets/ProfileImage.jpeg';
-import { Link } from "react-scroll";
 import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaDatabase, FaReact } from 'react-icons/fa';
 import { SiUpwork } from 'react-icons/si';
 import CV from '../assets/CV.pdf';
@@ -78,11 +77,13 @@ const Hero = () => {
                         >
                             Download Resume
                         </a>
-                        <Link to="projects" smooth duration={600} className="inline-block">
-                            <button className="glass-card min-h-11 w-full rounded-xl px-6 py-3 font-bold text-on-surface transition hover:border-primary/40 sm:w-auto">
-                                View Projects
-                            </button>
-                        </Link>
+                        <button
+                            type="button"
+                            onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
+                            className="glass-card min-h-11 w-full rounded-xl px-6 py-3 font-bold text-on-surface transition hover:border-primary/40 sm:w-auto"
+                        >
+                            View Projects
+                        </button>
                     </div>
 
                     <div className="mt-10 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
