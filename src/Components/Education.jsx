@@ -1,4 +1,3 @@
-import React from 'react';
 import { FaUniversity, FaSchool, FaBook } from 'react-icons/fa';
 import ScrollReveal from './ScrollReveal';
 

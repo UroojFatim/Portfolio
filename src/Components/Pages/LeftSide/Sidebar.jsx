@@ -80,7 +80,7 @@ const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar, activeSe
           <a href="https://github.com/UroojFatim" target="_blank" rel="noreferrer" aria-label="GitHub" className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-outline-variant text-on-surface-variant hover:border-primary/50 hover:text-primary">
             <FaGithub />
           </a>
-          <a href="https://www.linkedin.com/in/uroojfatima-588ba2296" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-outline-variant text-on-surface-variant hover:border-primary/50 hover:text-primary">
+          <a href="https://www.linkedin.com/in/urooj-fatima-588ba2296" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-outline-variant text-on-surface-variant hover:border-primary/50 hover:text-primary">
             <FaLinkedin />
           </a>
           <a href="https://www.upwork.com/freelancers/~018b2cb9ef43a154ba?mp_source=share" target="_blank" rel="noreferrer" aria-label="Upwork" className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-outline-variant text-on-surface-variant hover:border-primary/50 hover:text-primary">

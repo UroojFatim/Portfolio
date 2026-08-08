@@ -177,14 +177,36 @@
   background: rgb(var(--color-surface-container-low) / var(--panel-bg-alpha));
   border: 1px solid rgb(var(--color-outline-variant) / var(--panel-border-alpha));
   border-radius: 0.875rem;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 0.03);
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.14), 0 16px 32px -18px rgb(0 0 0 / 0.4);
   transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.3s ease, background-color 0.3s ease;
 }
 
 .hover-glow:hover {
-  transform: translateY(-3px);
-  border-color: rgb(var(--color-primary) / 0.45) !important;
-  box-shadow: 0 18px 34px -18px rgb(0 0 0 / 0.3);
+  transform: translateY(-4px);
+  border-color: rgb(var(--color-primary) / 0.5) !important;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.2), 0 26px 46px -20px rgb(0 0 0 / 0.45);
+}
+
+/* ==========================================================================
+   Full-bleed section bands — used to break the "everything floats on the
+   same flat background" monotony. Plain band = neutral step up in surface;
+   tint band = adds a real (if restrained) wash of the secondary/tertiary
+   accents so the palette reads as more than just ink + copper.
+   ========================================================================== */
+.section-band {
+  position: relative;
+  background: rgb(var(--color-surface-container-low));
+  border-top: 1px solid rgb(var(--color-outline-variant));
+  border-bottom: 1px solid rgb(var(--color-outline-variant));
+}
+.section-band-tint {
+  position: relative;
+  background:
+    radial-gradient(ellipse 60% 90% at 100% 0%, rgb(var(--color-secondary) / 0.1), transparent 60%),
+    radial-gradient(ellipse 60% 90% at 0% 100%, rgb(var(--color-tertiary) / 0.08), transparent 60%),
+    rgb(var(--color-surface-container-low));
+  border-top: 1px solid rgb(var(--color-outline-variant));
+  border-bottom: 1px solid rgb(var(--color-outline-variant));
 }
 
 /* Scroll reveal (used by ScrollReveal.jsx) — default fade+rise variant. */
@@ -205,6 +227,15 @@
   opacity: 1;
   clip-path: inset(0 0 0% 0);
 }
+
+/* Scroll reveal — draw variant (vertical line/spine growing from the top,
+   e.g. the Experience timeline). */
+.reveal-draw {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal-draw.reveal-visible { transform: scaleY(1); }
 
 /* Section heading — eyebrow label (mono, ledger-style) + serif headline. */
 .section-heading {
@@ -249,11 +280,13 @@
   z-index: -2;
   background-color: rgb(var(--color-background));
   background-image:
-    linear-gradient(rgb(var(--color-on-background) / 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(var(--color-on-background) / 0.05) 1px, transparent 1px);
-  background-size: 64px 64px;
-  -webkit-mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, black 35%, transparent 88%);
-  mask-image: radial-gradient(ellipse 80% 55% at 50% 0%, black 35%, transparent 88%);
+    linear-gradient(rgb(var(--color-outline-variant) / 0.55) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--color-outline-variant) / 0.55) 1px, transparent 1px),
+    linear-gradient(rgb(var(--color-outline-variant) / 0.9) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(var(--color-outline-variant) / 0.9) 1px, transparent 1px);
+  background-size: 16px 16px, 16px 16px, 128px 128px, 128px 128px;
+  -webkit-mask-image: radial-gradient(ellipse 95% 80% at 50% 0%, black 25%, transparent 96%);
+  mask-image: radial-gradient(ellipse 95% 80% at 50% 0%, black 25%, transparent 96%);
   transition: background-color 0.3s ease;
 }
 .noise {
@@ -398,9 +431,10 @@
   .marquee-content { animation: none; }
   .floating { animation: none; }
   .reveal-base, .reveal-clip { opacity: 1; transform: none; clip-path: none; transition: none; }
+  .reveal-draw { transform: none; transition: none; }
   .blinking-cursor { animation: none; }
   .trace-draw { animation: none; stroke-dashoffset: 0; }
-  .animate-pulse { animation: none; }
+  .animate-pulse, .animate-ping { animation: none; }
   *, *::before, *::after {
     scroll-behavior: auto !important;
   }

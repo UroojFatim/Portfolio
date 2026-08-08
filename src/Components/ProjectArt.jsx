@@ -3,23 +3,15 @@ import React, { useId } from 'react';
 /**
  * Generative, theme-aware placeholder artwork for projects that don't have a
  * real screenshot on file. Each "kind" is a small hand-built abstract scene
- * (browser chrome + shapes) chosen to represent what that project actually
- * does, using the site's live primary/secondary/tertiary color tokens so it
- * re-themes automatically between light and dark.
+ * chosen to represent what that project actually does, using the site's live
+ * primary/secondary/tertiary color tokens so it re-themes automatically
+ * between light and dark. Rendered under a real BrowserBar (see
+ * Components/BrowserBar.jsx) in Projects.jsx, so the scene itself no longer
+ * draws its own illustrated chrome strip.
  */
 
 const Stop = ({ offset, colorClass, opacity }) => (
   <stop offset={offset} stopColor="currentColor" stopOpacity={opacity} className={colorClass} />
-);
-
-const BrowserChrome = () => (
-  <g>
-    <rect x="0" y="0" width="400" height="26" className="fill-on-surface/10" />
-    <circle cx="16" cy="13" r="3.2" className="fill-on-surface/25" />
-    <circle cx="28" cy="13" r="3.2" className="fill-on-surface/25" />
-    <circle cx="40" cy="13" r="3.2" className="fill-on-surface/25" />
-    <rect x="60" y="7" width="120" height="12" rx="6" className="fill-on-surface/10" />
-  </g>
 );
 
 const Dashboard = ({ gid }) => (
@@ -236,7 +228,6 @@ const ProjectArt = ({ kind = 'dashboard', className = '' }) => {
       <rect width="400" height="240" className="fill-surface-container-low" />
       <rect width="400" height="240" fill={`url(#bg-${gid})`} />
       <Scene gid={gid} />
-      <BrowserChrome />
     </svg>
   );
 };

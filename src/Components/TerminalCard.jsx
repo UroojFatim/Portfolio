@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import BrowserBar from './BrowserBar';
 
 const LINES = [
   { tokens: [['const', 'kw'], [' dev', 'var'], [' = ', 'op'], ['{', 'punc']] },
@@ -81,12 +82,7 @@ const TerminalCard = ({ className = '' }) => {
 
   return (
     <div className={`glass-card w-full min-w-0 max-w-full overflow-hidden rounded-lg text-left shadow-soft ${className}`}>
-      <div className="flex min-w-0 items-center gap-2 border-b border-outline-variant bg-on-surface/5 px-4 py-3">
-        <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-rose-400/70" />
-        <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-amber-400/70" />
-        <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-emerald-400/70" />
-        <span className="ml-3 truncate font-mono text-[11px] text-on-surface-variant">profile.js</span>
-      </div>
+      <BrowserBar label="profile.js" />
       <pre className="max-w-full overflow-x-auto px-5 py-4 font-mono text-[12.5px] leading-6 sm:text-sm">
         {renderedLines.map((tokens, i) => (
           <div key={i} className="whitespace-pre">

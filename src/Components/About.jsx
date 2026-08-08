@@ -1,7 +1,7 @@
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import ScrollReveal from './ScrollReveal';
 
-const StatRow = ({ label, value, suffix = '', decimals = 0, trigger }) => {
+const StatCell = ({ label, value, suffix = '', decimals = 0, trigger }) => {
     const [count, setCount] = useState(0);
     const rafRef = useRef();
 
@@ -24,14 +24,20 @@ const StatRow = ({ label, value, suffix = '', decimals = 0, trigger }) => {
     }, [trigger]);
 
     return (
-        <div className="flex w-full items-center justify-between rounded-md border border-outline-variant p-5 transition-colors hover:border-primary/40">
-            <div className="font-mono text-xs uppercase tracking-[0.15em] text-on-surface-variant">{label}</div>
-            <div className="font-display text-3xl font-semibold text-primary">
+        <div className="min-w-0 px-1 py-6 text-center sm:px-6 sm:py-8 sm:text-left">
+            <div className="font-display text-4xl font-semibold text-primary sm:text-5xl">
                 {count}{suffix}
             </div>
+            <div className="mt-1.5 font-mono text-[10px] uppercase tracking-[0.15em] text-on-surface-variant sm:text-xs">{label}</div>
         </div>
     );
 };
+
+const EDUCATION = [
+    { years: '2022 – 2026', school: 'B.E. Software Engineering — MAJU', note: 'CGPA: 3.5' },
+    { years: '2022', school: 'FSC Pre-Engineering — Govt. Degree Girls Science College, Karachi', note: '' },
+    { years: '2020', school: 'Matric Science — M.E Model School', note: '' },
+];
 
 const About = () => {
     const statsRef = useRef();
@@ -51,60 +57,62 @@ const About = () => {
 
     return (
         <section id="about" className="scroll-mt-24 mx-auto max-w-container-max px-4 py-16 sm:px-6 sm:py-20 md:px-10">
-            <div className="mb-10">
+            <div className="mb-10 md:mb-16">
                 <span className="section-eyebrow text-primary">Get to know me</span>
                 <h2 className="section-heading">About</h2>
             </div>
 
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                {/* Left: Stat ledger */}
-                <div className="min-w-0 space-y-3" ref={statsRef}>
-                    <ScrollReveal delay={0}>
-                        <StatRow label="Projects Shipped" value={5} suffix="+" trigger={visible} />
-                    </ScrollReveal>
-                    <ScrollReveal delay={80}>
-                        <StatRow label="Users Served" value={250} suffix="+" trigger={visible} />
-                    </ScrollReveal>
-                    <ScrollReveal delay={160}>
-                        <StatRow label="Years Experience" value={2} suffix="+" trigger={visible} />
-                    </ScrollReveal>
-                    <ScrollReveal delay={240}>
-                        <StatRow label="CGPA" value={3.5} decimals={2} trigger={visible} />
-                    </ScrollReveal>
-                </div>
+            {/* Editorial lede + bio — asymmetric columns instead of a bordered card */}
+            <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-8">
+                <ScrollReveal delay={0} className="min-w-0 lg:col-span-5">
+                    <p className="font-display text-3xl italic leading-snug text-on-surface sm:text-4xl">
+                        Building software that <span className="text-primary">ships</span> — not just demos.
+                    </p>
+                </ScrollReveal>
 
-                {/* Right: Bio + Education */}
-                <div className="min-w-0 space-y-6">
-                    <ScrollReveal delay={80}>
-                        <div className="glass-card w-full min-w-0 p-6">
-                            <h3 className="font-display text-2xl font-semibold text-on-surface">Biography</h3>
-                            <p className="mt-3 break-words text-on-surface-variant">
-                                Full Stack Developer with 2+ years of production experience building scalable SaaS platforms, AI-driven applications, and e-commerce systems. Expertise in MERN stack, Next.js, TypeScript, and cloud-integrated architectures. Delivered 5+ live products serving 250+ active users across US and UAE clients.
-                            </p>
-                        </div>
-                    </ScrollReveal>
+                <ScrollReveal delay={80} className="min-w-0 lg:col-span-7">
+                    <p className="break-words text-base leading-8 text-on-surface-variant sm:text-lg">
+                        Full Stack Developer with 2+ years of production experience building scalable SaaS platforms, AI-driven applications, and e-commerce systems. Expertise in MERN stack, Next.js, TypeScript, and cloud-integrated architectures. Delivered 5+ live products serving 250+ active users across US and UAE clients.
+                    </p>
+                </ScrollReveal>
+            </div>
 
-                    <ScrollReveal delay={160}>
-                        <div className="glass-card w-full min-w-0 p-6">
-                            <h3 className="font-display text-2xl font-semibold text-on-surface">Education</h3>
-                            <div className="mt-4 divide-y divide-outline-variant">
-                                <div className="min-w-0 pb-4">
-                                    <div className="break-words font-semibold text-on-surface">B.E. Software Engineering — MAJU</div>
-                                    <div className="font-mono text-xs text-on-surface-variant">(2022–2026) · CGPA: 3.5</div>
+            {/* Stat strip — one continuous ledger, not four separate boxes */}
+            <div ref={statsRef} className="mt-14 grid grid-cols-2 gap-x-4 gap-y-2 border-y border-outline-variant sm:grid-cols-4 sm:divide-x sm:divide-outline-variant">
+                <ScrollReveal delay={0}>
+                    <StatCell label="Projects Shipped" value={5} suffix="+" trigger={visible} />
+                </ScrollReveal>
+                <ScrollReveal delay={80}>
+                    <StatCell label="Users Served" value={250} suffix="+" trigger={visible} />
+                </ScrollReveal>
+                <ScrollReveal delay={160}>
+                    <StatCell label="Years Experience" value={2} suffix="+" trigger={visible} />
+                </ScrollReveal>
+                <ScrollReveal delay={240}>
+                    <StatCell label="CGPA" value={3.5} decimals={2} trigger={visible} />
+                </ScrollReveal>
+            </div>
+
+            {/* Education — timeline spine, not a matching bordered card */}
+            <div className="mt-14 md:mt-20">
+                <h3 className="mb-8 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-on-surface-variant">
+                    <span className="text-primary">//</span> Education
+                </h3>
+                <div className="border-l border-outline-variant pl-7">
+                    {EDUCATION.map((item, i) => (
+                        <ScrollReveal key={item.school} delay={i * 80}>
+                            <div className="relative min-w-0 pb-9 last:pb-0">
+                                <span className="absolute -left-8 top-1 h-3 w-3 rounded-full border-2 border-primary bg-background" />
+                                <div className="font-mono text-xs text-on-surface-variant">{item.years}</div>
+                                <div className="mt-1.5 break-words font-display text-lg font-semibold text-on-surface sm:text-xl">
+                                    {item.school}
                                 </div>
-
-                                <div className="min-w-0 py-4">
-                                    <div className="break-words font-semibold text-on-surface">FSC Pre-Engineering — Govt. Degree Girls Science College, Karachi</div>
-                                    <div className="font-mono text-xs text-on-surface-variant">(2022)</div>
-                                </div>
-
-                                <div className="min-w-0 pt-4">
-                                    <div className="break-words font-semibold text-on-surface">Matric Science — M.E Model School</div>
-                                    <div className="font-mono text-xs text-on-surface-variant">(2020)</div>
-                                </div>
+                                {item.note && (
+                                    <div className="mt-1 font-mono text-xs text-primary">{item.note}</div>
+                                )}
                             </div>
-                        </div>
-                    </ScrollReveal>
+                        </ScrollReveal>
+                    ))}
                 </div>
             </div>
         </section>

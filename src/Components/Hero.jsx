@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ProfileImage from '../assets/ProfileImage.png';
 import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaDatabase, FaReact } from 'react-icons/fa';
 import { SiUpwork } from 'react-icons/si';
 import CV from '../assets/CV.pdf';
 import TerminalCard from './TerminalCard';
 import CornerMarks from './CornerMarks';
+import BrowserBar from './BrowserBar';
 import useMagnetic from '../hooks/useMagnetic';
 
 const Hero = () => {
@@ -49,10 +50,6 @@ const Hero = () => {
             <div className="mx-auto grid max-w-container-max grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-16">
                 {/* Left Content */}
                 <div className="min-w-0 text-center lg:text-left">
-                    <div className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.25em] text-on-surface-variant">
-                        Full-Stack Engineer <span className="text-primary">·</span> Karachi, PK
-                    </div>
-
                     <span className="mb-8 inline-flex items-center gap-2 rounded-full border border-outline-variant px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-widest text-on-surface-variant">
                         <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-secondary" />
                         Available for Opportunities
@@ -61,8 +58,8 @@ const Hero = () => {
                     <div className="relative">
                         <span
                             aria-hidden="true"
-                            className="pointer-events-none absolute -left-1 -top-9 hidden select-none font-display text-[6rem] italic text-transparent sm:-top-12 sm:block sm:text-[8rem] lg:-left-2 lg:-top-9 lg:text-[7rem] xl:-top-12 xl:text-[8rem]"
-                            style={{ WebkitTextStroke: '1px rgb(var(--color-outline-variant))' }}
+                            className="pointer-events-none absolute -left-1 -top-9 hidden select-none font-display text-[7rem] font-bold italic text-transparent sm:-top-12 sm:block sm:text-[9rem] lg:-left-2 lg:-top-9 lg:text-[8rem] xl:-top-12 xl:text-[9rem]"
+                            style={{ WebkitTextStroke: '1.5px rgb(var(--color-primary) / 0.5)' }}
                         >
                             UF
                         </span>
@@ -108,7 +105,7 @@ const Hero = () => {
                     <div className="mt-10 flex flex-wrap items-center justify-center gap-3 lg:justify-start">
                         {[
                             { href: 'https://github.com/UroojFatim', icon: FaGithub, label: 'GitHub' },
-                            { href: 'https://www.linkedin.com/in/uroojfatima-588ba2296', icon: FaLinkedin, label: 'LinkedIn' },
+                            { href: 'https://www.linkedin.com/in/urooj-fatima-588ba2296', icon: FaLinkedin, label: 'LinkedIn' },
                             { href: 'https://www.upwork.com/freelancers/~018b2cb9ef43a154ba?mp_source=share', icon: SiUpwork, label: 'Upwork' },
                             { href: 'mailto:urooj.fatim2004@gmail.com', icon: FaEnvelope, label: 'Email' },
                         ].map(({ href, icon: Icon, label }) => (
@@ -142,26 +139,33 @@ const Hero = () => {
 
                 {/* Right Visual */}
                 <div className="relative mx-auto hidden max-w-md lg:block">
-                    <div className="group relative aspect-square overflow-hidden rounded-xl border border-outline-variant bg-surface-container-low p-3">
-                        <div className="relative h-full w-full overflow-hidden rounded-lg">
-                            <img
-                                src={ProfileImage}
-                                alt="Urooj Fatima"
-                                decoding="async"
-                                fetchpriority="high"
-                                className="relative h-full w-full max-w-full object-cover"
-                            />
-                        </div>
-                        <CornerMarks active accent="primary" />
+                    <div className="relative">
+                        <div aria-hidden="true" className="absolute inset-0 translate-x-4 translate-y-4 rounded-xl border border-primary/30 bg-primary/5" />
 
-                        <div className="floating absolute left-5 top-5 z-20 rounded-md border border-outline-variant bg-surface px-3 py-2 shadow-soft" style={{ animationDelay: '0.2s' }}>
-                            <FaCode className="text-lg text-primary" />
-                        </div>
-                        <div className="floating absolute bottom-16 right-4 z-20 rounded-md border border-outline-variant bg-surface px-3 py-2 shadow-soft" style={{ animationDelay: '0.8s' }}>
-                            <FaDatabase className="text-lg text-secondary" />
-                        </div>
-                        <div className="floating absolute right-3 top-1/2 z-20 rounded-md border border-outline-variant bg-surface px-3 py-2 shadow-soft" style={{ animationDelay: '0.5s' }}>
-                            <FaReact className="text-lg text-tertiary" />
+                        <div className="group relative overflow-hidden rounded-xl border border-outline-variant bg-surface-container-low shadow-soft">
+                            <BrowserBar label="urooj.dev — profile.jpg" />
+                            <div className="relative aspect-square p-3">
+                                <div className="relative h-full w-full overflow-hidden rounded-lg">
+                                    <img
+                                        src={ProfileImage}
+                                        alt="Urooj Fatima"
+                                        decoding="async"
+                                        fetchpriority="high"
+                                        className="relative h-full w-full max-w-full object-cover"
+                                    />
+                                </div>
+                                <CornerMarks active accent="primary" />
+
+                                <div className="floating absolute left-5 top-5 z-20 rounded-md border border-outline-variant bg-surface px-3 py-2 shadow-soft" style={{ animationDelay: '0.2s' }}>
+                                    <FaCode className="text-lg text-primary" />
+                                </div>
+                                <div className="floating absolute bottom-16 right-4 z-20 rounded-md border border-outline-variant bg-surface px-3 py-2 shadow-soft" style={{ animationDelay: '0.8s' }}>
+                                    <FaDatabase className="text-lg text-secondary" />
+                                </div>
+                                <div className="floating absolute right-3 top-1/2 z-20 rounded-md border border-outline-variant bg-surface px-3 py-2 shadow-soft" style={{ animationDelay: '0.5s' }}>
+                                    <FaReact className="text-lg text-tertiary" />
+                                </div>
+                            </div>
                         </div>
                     </div>
 

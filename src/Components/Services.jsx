@@ -90,14 +90,24 @@ const Services = () => {
         })}
       </div>
 
-      <div className="mt-10 flex justify-center sm:mt-16">
-        <a
-          href="#contact"
-          className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-6 py-3 font-bold text-on-primary shadow-glow transition hover:brightness-110"
-        >
-          Let&apos;s Work Together →
-        </a>
-      </div>
+      <ScrollReveal variant="clip" className="mt-14 sm:mt-20">
+        <div className="relative overflow-hidden rounded-lg bg-primary px-8 py-16 text-center sm:px-12 sm:py-20 md:py-24">
+          <span className="font-mono text-xs font-bold uppercase tracking-[0.3em] text-on-primary/70">
+            Let&apos;s Talk
+          </span>
+          <h3 className="mx-auto mt-4 max-w-3xl font-display text-4xl font-bold leading-[1.05] text-on-primary sm:text-5xl md:text-6xl">
+            Got a project in mind? Let&apos;s build it together.
+          </h3>
+          <div className="mt-10">
+            <a
+              href="#contact"
+              className="inline-flex min-h-11 items-center justify-center gap-2 rounded-md bg-on-primary px-8 py-4 text-base font-bold text-primary shadow-soft transition hover:brightness-95"
+            >
+              Let&apos;s Work Together <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </ScrollReveal>
     </section>
   );
 };

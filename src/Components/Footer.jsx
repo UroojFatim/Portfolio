@@ -4,7 +4,7 @@ import { SiUpwork } from 'react-icons/si';
 
 const links = [
   { href: 'https://github.com/UroojFatim', label: 'GitHub' },
-  { href: 'https://www.linkedin.com/in/uroojfatima-588ba2296', label: 'LinkedIn' },
+  { href: 'https://www.linkedin.com/in/urooj-fatima-588ba2296', label: 'LinkedIn' },
   { href: 'https://www.upwork.com/freelancers/~018b2cb9ef43a154ba?mp_source=share', label: 'Upwork' },
   { href: 'mailto:urooj.fatim2004@gmail.com', label: 'Email' },
 ];
