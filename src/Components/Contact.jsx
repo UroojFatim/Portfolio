@@ -8,9 +8,9 @@ const Contact = () => {
   const magneticRef = useMagnetic(10);
 
   return (
-    <section id="contact" className="scroll-mt-24 relative overflow-hidden bg-primary py-20 sm:py-28">
+    <section id="contact" className="scroll-mt-24 relative overflow-hidden bg-primary py-16 sm:py-20">
       <div className="relative mx-auto max-w-container-max px-4 sm:px-6 md:px-10">
-        <ScrollReveal variant="clip">
+        <ScrollReveal>
           <div className="text-center">
             <span className="font-mono text-xs font-bold uppercase tracking-[0.3em] text-on-primary/70">Get In Touch</span>
             <h2 className="mx-auto mt-4 max-w-4xl font-display text-5xl font-bold leading-[1.03] text-on-primary sm:text-6xl md:text-7xl">
@@ -19,7 +19,7 @@ const Contact = () => {
             <p className="mx-auto mt-6 max-w-md text-on-primary/80">
               I&apos;m always open to discussing new projects, freelance work, or full-time opportunities. Reach out and let&apos;s talk.
             </p>
-            <div className="mt-8 flex justify-center">
+            <div className="mt-6 flex justify-center">
               <svg width="120" height="12" viewBox="0 0 120 12" className="text-on-primary/50" aria-hidden="true">
                 <path d="M1 6 H113" stroke="currentColor" strokeWidth="1.5" fill="none" className="trace-draw" />
                 <circle cx="117" cy="6" r="3" fill="currentColor" />
@@ -28,7 +28,7 @@ const Contact = () => {
           </div>
         </ScrollReveal>
 
-        <ScrollReveal delay={120} className="mt-12 sm:mt-16">
+        <ScrollReveal delay={120} className="mt-8 sm:mt-10">
           <div className="glass-card group relative overflow-hidden rounded-md">
             <CornerMarks active accent="primary" />
             <div className="grid grid-cols-1 lg:grid-cols-[1.3fr_1fr]">

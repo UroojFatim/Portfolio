@@ -72,7 +72,7 @@ const About = () => {
 
                 <ScrollReveal delay={80} className="min-w-0 lg:col-span-7">
                     <p className="break-words text-base leading-8 text-on-surface-variant sm:text-lg">
-                        Full Stack Developer with 2+ years of production experience building scalable SaaS platforms, AI-driven applications, and e-commerce systems. Expertise in MERN stack, Next.js, TypeScript, and cloud-integrated architectures. Delivered 5+ live products serving 250+ active users across US and UAE clients.
+                        Full Stack Developer with 2+ years of production experience building scalable SaaS platforms, AI-driven applications, and e-commerce systems. Expertise in MERN stack, Next.js, TypeScript, Power Automate, and cloud-integrated architectures. Delivered 5+ live products serving 250+ active users across US and UAE clients.
                     </p>
                 </ScrollReveal>
             </div>

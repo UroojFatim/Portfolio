@@ -12,7 +12,7 @@ const groups = [
     { title: 'Database', icon: FaDatabase, level: 82, items: ['MongoDB', 'PostgreSQL', 'SQL'] },
     { title: 'AI / ML', icon: FaBrain, level: 76, items: ['LangChain / LangGraph', 'RAG Systems', 'Streamlit', 'OpenCV'] },
     { title: 'Auth', icon: FaShieldAlt, level: 85, items: ['JWT', 'Role-Based Access Control'] },
-    { title: 'DevOps', icon: FaTools, level: 80, items: ['Git / GitHub', 'Vercel', 'Docker', 'Twilio'] },
+    { title: 'DevOps', icon: FaTools, level: 80, items: ['Power Automate', 'Git / GitHub', 'Vercel', 'Docker', 'Twilio'] },
 ];
 
 const marqueeItems = [
@@ -62,12 +62,20 @@ const Skills = () => {
                                 {g.title}
                             </h4>
                             <ul className="space-y-3 text-sm font-medium text-on-surface-variant">
-                                {g.items.map((item, i) => (
-                                    <li key={i} className="flex items-center gap-2">
-                                        <span className="h-1 w-1 shrink-0 rounded-full bg-primary/60" />
-                                        {item}
-                                    </li>
-                                ))}
+                                {g.items.map((item, i) => {
+                                    const isNew = item === 'Power Automate';
+                                    return (
+                                        <li key={i} className={`flex items-center gap-2 ${isNew ? 'font-bold text-tertiary' : ''}`}>
+                                            <span className={`h-1 w-1 shrink-0 rounded-full ${isNew ? 'bg-tertiary' : 'bg-primary/60'}`} />
+                                            {item}
+                                            {/* {isNew && (
+                                                <span className="ml-auto shrink-0 rounded-full border border-tertiary/40 bg-tertiary/10 px-2 py-0.5 text-[9px] font-bold uppercase tracking-wider text-tertiary">
+                                                    Learning
+                                                </span>
+                                            )} */}
+                                        </li>
+                                    );
+                                })}
                             </ul>
 
                             <div className="mt-6 sm:mt-8">

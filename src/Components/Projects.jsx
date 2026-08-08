@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { FaExternalLinkAlt, FaGithub } from 'react-icons/fa';
 import { projects } from '../data/projects';
 import ProjectArt from './ProjectArt';
@@ -8,6 +8,7 @@ import BrowserBar from './BrowserBar';
 
 const FILTERS = [
   'All',
+  'Featured',
   'MERN Stack',
   'Next.js',
   'AI/ML',
@@ -72,8 +73,10 @@ const ProjectLinks = ({ project }) => (
 );
 
 const Projects = () => {
-  const [activeFilter, setActiveFilter] = useState('All');
-  const [displayedProjects, setDisplayedProjects] = useState(projects);
+  const [activeFilter, setActiveFilter] = useState('Featured');
+  const [displayedProjects, setDisplayedProjects] = useState(() =>
+    projects.filter((project) => project.tags?.includes('Featured'))
+  );
   const [transitionStage, setTransitionStage] = useState('idle');
 
   const filteredProjects = useMemo(() => {
@@ -161,7 +164,7 @@ const Projects = () => {
                             alt={`${project.name} screenshot`}
                             loading="lazy"
                             decoding="async"
-                            className="h-full w-full max-w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                            className={`h-full w-full max-w-full transition-transform duration-700 group-hover:scale-105 ${project.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
                           />
                         ) : (
                           <div className="h-full w-full transition-transform duration-700 group-hover:scale-105">
@@ -223,7 +226,7 @@ const Projects = () => {
                             alt={`${project.name} screenshot`}
                             loading="lazy"
                             decoding="async"
-                            className="h-full w-full max-w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            className={`h-full w-full max-w-full transition-transform duration-700 group-hover:scale-110 ${project.imageFit === 'contain' ? 'object-contain' : 'object-cover'}`}
                           />
                         ) : (
                           <div className="h-full w-full transition-transform duration-700 group-hover:scale-110">

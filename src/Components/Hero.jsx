@@ -80,7 +80,7 @@ const Hero = () => {
                     </h2>
 
                     <p className="mx-auto mt-6 max-w-xl text-sm leading-7 text-on-surface-variant sm:text-base lg:mx-0">
-                        Full Stack Developer with 2+ years of production experience building scalable SaaS platforms, AI-driven applications, and e-commerce systems. Expertise in MERN stack, Next.js, TypeScript, and cloud-integrated architectures. Delivered 5+ live products serving 250+ active users across US and UAE clients.
+                        Full Stack Developer with 2+ years of production experience building scalable SaaS platforms, AI-driven applications, and e-commerce systems. Expertise in MERN stack, Next.js, TypeScript, Power Automate, and cloud-integrated architectures. Delivered 5+ live products serving 250+ active users across US and UAE clients.
                     </p>
 
                     <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center lg:justify-start">
