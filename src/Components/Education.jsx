@@ -11,7 +11,7 @@ const Education = () => {
             icon: FaUniversity,
             degree: 'B.E. Software Engineering',
             institution: 'Mohammad Ali Jinnah University (MAJU)',
-            duration: 'Sep 2022 – July 2026 | CGPA: 3.48',
+            duration: 'Sep 2022 – July 2026 | CGPA: 3.5',
             location: 'Karachi, Pakistan',
             badge: 'Currently Enrolled',
             badgeClass: 'border-secondary/40 text-secondary',

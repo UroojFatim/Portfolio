@@ -41,7 +41,7 @@ const Hero = () => {
         { label: 'Projects', value: '5+' },
         { label: 'Users', value: '250+' },
         { label: 'Years Exp', value: '2+' },
-        { label: 'CGPA', value: '3.48' },
+        { label: 'CGPA', value: '3.5' },
     ];
 
     return (

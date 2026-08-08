@@ -69,7 +69,7 @@ const About = () => {
                         <StatRow label="Years Experience" value={2} suffix="+" trigger={visible} />
                     </ScrollReveal>
                     <ScrollReveal delay={240}>
-                        <StatRow label="CGPA" value={3.48} decimals={2} trigger={visible} />
+                        <StatRow label="CGPA" value={3.5} decimals={2} trigger={visible} />
                     </ScrollReveal>
                 </div>
 
@@ -90,7 +90,7 @@ const About = () => {
                             <div className="mt-4 divide-y divide-outline-variant">
                                 <div className="min-w-0 pb-4">
                                     <div className="break-words font-semibold text-on-surface">B.E. Software Engineering — MAJU</div>
-                                    <div className="font-mono text-xs text-on-surface-variant">(2022–2026) · CGPA: 3.48</div>
+                                    <div className="font-mono text-xs text-on-surface-variant">(2022–2026) · CGPA: 3.5</div>
                                 </div>
 
                                 <div className="min-w-0 py-4">
