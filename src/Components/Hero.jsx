@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import ProfileImage from '../assets/ProfileImage.jpeg';
+import ProfileImage from '../assets/ProfileImage.png';
 import { FaGithub, FaLinkedin, FaEnvelope, FaCode, FaDatabase, FaReact } from 'react-icons/fa';
 import { SiUpwork } from 'react-icons/si';
 import CV from '../assets/CV.pdf';
 import TerminalCard from './TerminalCard';
+import CornerMarks from './CornerMarks';
+import useMagnetic from '../hooks/useMagnetic';
 
 const Hero = () => {
     const roles = [
@@ -15,6 +17,7 @@ const Hero = () => {
     const [text, setText] = useState('');
     const [index, setIndex] = useState(0);
     const [isDeleting, setIsDeleting] = useState(false);
+    const resumeRef = useMagnetic(10);
 
     useEffect(() => {
         let typingSpeed = isDeleting ? 40 : 120;
@@ -46,20 +49,35 @@ const Hero = () => {
             <div className="mx-auto grid max-w-container-max grid-cols-1 items-center gap-14 lg:grid-cols-2 lg:gap-16">
                 {/* Left Content */}
                 <div className="min-w-0 text-center lg:text-left">
-                    <span className="glass-card mb-8 inline-flex items-center gap-2 rounded-full px-4 py-1.5 text-xs font-semibold text-on-surface-variant">
-                        <span className="h-2 w-2 animate-pulse rounded-full bg-emerald-400" />
+                    <div className="mb-4 font-mono text-xs font-medium uppercase tracking-[0.25em] text-on-surface-variant">
+                        Full-Stack Engineer <span className="text-primary">·</span> Karachi, PK
+                    </div>
+
+                    <span className="mb-8 inline-flex items-center gap-2 rounded-full border border-outline-variant px-4 py-1.5 font-mono text-[11px] font-medium uppercase tracking-widest text-on-surface-variant">
+                        <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-secondary" />
                         Available for Opportunities
                     </span>
 
-                    {/* Steps back down at lg because that's where the layout goes
-                        two-column and the left column narrows — jumping straight
-                        to the 64px size there was tight enough to risk wrapping
-                        on ~1024px tablets; xl+ has room for it again. */}
-                    <h1 className="text-display-xl-mobile font-display leading-tight text-on-surface md:text-display-xl lg:text-display-xl-mobile xl:text-display-xl">
-                        Urooj Fatima
-                    </h1>
+                    <div className="relative">
+                        <span
+                            aria-hidden="true"
+                            className="pointer-events-none absolute -left-1 -top-9 hidden select-none font-display text-[6rem] italic text-transparent sm:-top-12 sm:block sm:text-[8rem] lg:-left-2 lg:-top-9 lg:text-[7rem] xl:-top-12 xl:text-[8rem]"
+                            style={{ WebkitTextStroke: '1px rgb(var(--color-outline-variant))' }}
+                        >
+                            UF
+                        </span>
 
-                    <h2 className="mt-3 min-h-[1.4em] text-headline-md font-display text-gradient sm:text-headline-lg">
+                        {/* Steps back down at lg because that's where the layout goes
+                            two-column and the left column narrows — jumping straight
+                            to the 64px size there was tight enough to risk wrapping
+                            on ~1024px tablets; xl+ has room for it again. */}
+                        <h1 className="relative text-display-xl-mobile font-display leading-tight text-on-surface md:text-display-xl lg:text-display-xl-mobile xl:text-display-xl">
+                            Urooj Fatima
+                        </h1>
+                    </div>
+
+                    <h2 className="mt-3 flex min-h-[1.4em] items-center justify-center gap-2 font-mono text-lg text-primary sm:text-2xl lg:justify-start">
+                        <span className="text-on-surface-variant/50" aria-hidden="true">&gt;</span>
                         <span>{text}</span>
                         <span className="blinking-cursor text-primary">|</span>
                     </h2>
@@ -70,17 +88,18 @@ const Hero = () => {
 
                     <div className="mt-8 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center lg:justify-start">
                         <a
+                            ref={resumeRef}
                             href={CV}
                             target="_blank"
                             rel="noreferrer"
-                            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-primary px-6 py-3 font-bold text-on-primary shadow-glow transition hover:brightness-110"
+                            className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-6 py-3 font-bold text-on-primary shadow-glow transition hover:brightness-110"
                         >
                             Download Resume
                         </a>
                         <button
                             type="button"
                             onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' })}
-                            className="glass-card min-h-11 w-full rounded-xl px-6 py-3 font-bold text-on-surface transition hover:border-primary/40 sm:w-auto"
+                            className="min-h-11 w-full rounded-md border border-outline-variant px-6 py-3 font-bold text-on-surface transition hover:border-primary/50 hover:text-primary sm:w-auto"
                         >
                             View Projects
                         </button>
@@ -99,18 +118,18 @@ const Hero = () => {
                                 target={href.startsWith('mailto') ? undefined : '_blank'}
                                 rel={href.startsWith('mailto') ? undefined : 'noreferrer'}
                                 aria-label={label}
-                                className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-lg text-on-surface-variant transition hover:text-primary"
+                                className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-outline-variant text-lg text-on-surface-variant transition hover:border-primary/50 hover:text-primary"
                             >
                                 <Icon />
                             </a>
                         ))}
                     </div>
 
-                    <div className="mt-12 grid grid-cols-2 gap-3 sm:grid-cols-4">
+                    <div className="mt-12 grid grid-cols-2 gap-2 sm:grid-cols-4">
                         {stats.map((stat) => (
-                            <div key={stat.label} className="glass-card hover-glow rounded-2xl p-4 text-center">
-                                <div className="text-headline-md font-bold text-primary">{stat.value}</div>
-                                <div className="mt-1 text-[10px] font-semibold uppercase tracking-[0.1em] text-on-surface-variant">{stat.label}</div>
+                            <div key={stat.label} className="rounded-md border border-outline-variant p-4 text-center transition-colors hover:border-primary/40">
+                                <div className="font-display text-headline-md font-semibold text-primary">{stat.value}</div>
+                                <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.15em] text-on-surface-variant">{stat.label}</div>
                             </div>
                         ))}
                     </div>
@@ -123,26 +142,32 @@ const Hero = () => {
 
                 {/* Right Visual */}
                 <div className="relative mx-auto hidden max-w-md lg:block">
-                    <div className="absolute inset-0 rounded-full bg-primary/25 blur-[100px]" aria-hidden="true" />
-                    <div className="glass-card relative flex aspect-square items-center justify-center overflow-hidden rounded-[2.5rem] p-8">
-                        <div className="hero-mesh float-particles" aria-hidden="true" />
-                        <img
-                            src={ProfileImage}
-                            alt="Urooj Fatima"
-                            decoding="async"
-                            fetchpriority="high"
-                            className="relative z-10 h-full w-full max-w-full rounded-3xl border-4 border-surface object-cover shadow-xl"
-                        />
+                    <div className="group relative aspect-square overflow-hidden rounded-xl border border-outline-variant bg-surface-container-low p-3">
+                        <div className="relative h-full w-full overflow-hidden rounded-lg">
+                            <img
+                                src={ProfileImage}
+                                alt="Urooj Fatima"
+                                decoding="async"
+                                fetchpriority="high"
+                                className="relative h-full w-full max-w-full object-cover"
+                            />
+                        </div>
+                        <CornerMarks active accent="primary" />
 
-                        <div className="glass-card floating absolute left-6 top-6 z-20 rounded-2xl p-4 shadow-xl" style={{ animationDelay: '0.2s' }}>
-                            <FaCode className="text-3xl text-primary" />
+                        <div className="floating absolute left-5 top-5 z-20 rounded-md border border-outline-variant bg-surface px-3 py-2 shadow-soft" style={{ animationDelay: '0.2s' }}>
+                            <FaCode className="text-lg text-primary" />
                         </div>
-                        <div className="glass-card floating absolute bottom-14 right-4 z-20 rounded-2xl p-4 shadow-xl" style={{ animationDelay: '0.8s' }}>
-                            <FaDatabase className="text-3xl text-secondary" />
+                        <div className="floating absolute bottom-16 right-4 z-20 rounded-md border border-outline-variant bg-surface px-3 py-2 shadow-soft" style={{ animationDelay: '0.8s' }}>
+                            <FaDatabase className="text-lg text-secondary" />
                         </div>
-                        <div className="glass-card floating absolute right-2 top-1/2 z-20 rounded-2xl p-4 shadow-xl" style={{ animationDelay: '0.5s' }}>
-                            <FaReact className="text-3xl text-tertiary" />
+                        <div className="floating absolute right-3 top-1/2 z-20 rounded-md border border-outline-variant bg-surface px-3 py-2 shadow-soft" style={{ animationDelay: '0.5s' }}>
+                            <FaReact className="text-lg text-tertiary" />
                         </div>
+                    </div>
+
+                    <div className="mt-3 flex items-center justify-between font-mono text-[10px] uppercase tracking-widest text-on-surface-variant">
+                        <span>Fig. 01 — Portrait</span>
+                        <span>24.8607°N, 67.0011°E</span>
                     </div>
 
                     <div className="mt-6">

@@ -2,6 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import Sidebar from "./Components/Pages/LeftSide/Sidebar";
 import Home from "./Components/Pages/RightSide/Home";
 import Navbar from "./Components/Navbar";
+import CustomCursor from "./Components/CustomCursor";
 
 const getInitialTheme = () => {
   if (typeof window === 'undefined') return false;
@@ -114,8 +115,9 @@ const App = () => {
 
   return (
     <div className="relative flex min-h-screen w-full flex-col overflow-x-hidden">
-      <div className="mesh-bg" aria-hidden="true" />
+      <div className="grid-field" aria-hidden="true" />
       <div className="noise" aria-hidden="true" />
+      <CustomCursor />
 
       <Navbar
         toggleSidebar={toggleSidebar}
@@ -133,7 +135,8 @@ const App = () => {
 
       <a
         href="mailto:urooj.fatim2004@gmail.com"
-        className="fixed bottom-5 right-5 z-50 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-on-primary shadow-glow transition hover:brightness-110 animate-pulse"
+        data-cursor-hover
+        className="fixed bottom-5 right-5 z-50 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full bg-primary px-5 py-3 text-sm font-semibold text-on-primary shadow-glow transition hover:brightness-110"
       >
         Hire Me
       </a>
@@ -142,7 +145,8 @@ const App = () => {
         <button
           type="button"
           onClick={scrollToTop}
-          className="glass-card fixed bottom-20 right-5 z-50 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-4 py-3 text-sm font-semibold text-on-surface shadow-lg transition hover:border-primary/40"
+          data-cursor-hover
+          className="glass-card fixed bottom-20 right-5 z-50 inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-4 py-3 text-sm font-semibold text-on-surface shadow-soft transition hover:border-primary/40"
           aria-label="Back to top"
         >
           ↑

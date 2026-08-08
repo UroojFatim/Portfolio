@@ -19,11 +19,11 @@ const iconFor = {
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <footer className="mx-auto max-w-container-max border-t border-outline-variant/30 px-4 py-12 sm:px-6 md:px-10">
+    <footer className="mx-auto max-w-container-max border-t border-outline-variant px-4 py-12 sm:px-6 md:px-10">
       <div className="flex flex-col items-center justify-between gap-8 md:flex-row">
         <div className="text-center md:text-left">
-          <div className="text-xl font-bold font-display text-on-surface">Urooj Fatima</div>
-          <div className="mt-1 text-sm text-on-surface-variant">© {year} · Built with React &amp; Tailwind CSS</div>
+          <div className="font-display text-xl font-semibold text-on-surface">Urooj Fatima</div>
+          <div className="mt-1 font-mono text-xs text-on-surface-variant">© {year} · Built with React &amp; Tailwind CSS</div>
         </div>
 
         <div className="flex items-center gap-3">
@@ -36,7 +36,7 @@ const Footer = () => {
                 target={href.startsWith('mailto') ? undefined : '_blank'}
                 rel={href.startsWith('mailto') ? undefined : 'noreferrer'}
                 aria-label={label}
-                className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface-variant transition hover:text-primary"
+                className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-outline-variant text-on-surface-variant transition hover:border-primary/50 hover:text-primary"
               >
                 <Icon />
               </a>

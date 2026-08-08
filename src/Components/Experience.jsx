@@ -42,12 +42,13 @@ const Experience = () => {
           <ScrollReveal key={index} delay={index * 80}>
             <div className="relative flex flex-col gap-4 sm:gap-6 md:flex-row">
               <div className="md:w-1/4">
-                <span className="text-xs font-bold uppercase tracking-widest text-primary sm:text-sm">{item.period}</span>
+                <span className="font-mono text-[11px] text-on-surface-variant/50">{String(index + 1).padStart(2, '0')}</span>
+                <div className="mt-1 text-xs font-bold uppercase tracking-widest text-primary sm:text-sm">{item.period}</div>
                 <div className="mt-2 text-xs font-medium text-on-surface-variant">{item.location}</div>
               </div>
-              <div className="glass-card hover-glow relative rounded-3xl p-6 sm:p-8 md:w-3/4">
+              <div className="glass-card hover-glow relative rounded-md p-6 sm:p-8 md:w-3/4">
                 <span
-                  className="absolute left-6 top-8 hidden h-4 w-4 -translate-x-[3.25rem] rounded-full bg-primary shadow-[0_0_0_6px_rgb(var(--color-primary-container)/0.35)] md:block"
+                  className="absolute left-6 top-8 hidden h-3 w-3 -translate-x-[3.25rem] border-2 border-primary bg-background md:block"
                   aria-hidden="true"
                 />
                 <h3 className="text-headline-md font-bold font-display text-on-surface">{item.role}</h3>
@@ -59,14 +60,9 @@ const Experience = () => {
                   ))}
                 </ul>
 
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="skill-badges mt-6">
                   {item.stack.map((tech, techIndex) => (
-                    <span
-                      key={techIndex}
-                      className="rounded-lg border border-secondary/20 bg-secondary-container/30 px-3 py-1.5 text-[11px] font-medium text-secondary"
-                    >
-                      {tech}
-                    </span>
+                    <span key={techIndex} className="skill-badge">{tech}</span>
                   ))}
                 </div>
               </div>

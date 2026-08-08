@@ -55,28 +55,22 @@ export default {
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
-        display: ['Geist', 'Inter', 'system-ui', '-apple-system', 'sans-serif'],
+        display: ['Fraunces', 'Georgia', 'ui-serif', 'serif'],
         mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
       },
       fontSize: {
-        'display-xl': ['64px', { lineHeight: '1.1', letterSpacing: '-0.04em', fontWeight: '800' }],
-        'display-xl-mobile': ['40px', { lineHeight: '1.2', letterSpacing: '-0.02em', fontWeight: '800' }],
-        'headline-lg': ['32px', { lineHeight: '1.3', letterSpacing: '-0.02em', fontWeight: '700' }],
-        'headline-md': ['24px', { lineHeight: '1.4', fontWeight: '600' }],
+        // Pixel sizes are intentionally unchanged from the previous system — they
+        // were hand-tuned against specific breakpoints (see project memory) to
+        // avoid wrapping at the lg: two-column transition. Only weight/tracking/
+        // line-height change here to suit the new Fraunces display serif.
+        'display-xl': ['64px', { lineHeight: '1.08', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'display-xl-mobile': ['40px', { lineHeight: '1.12', letterSpacing: '-0.005em', fontWeight: '600' }],
+        'headline-lg': ['32px', { lineHeight: '1.25', letterSpacing: '-0.01em', fontWeight: '600' }],
+        'headline-md': ['24px', { lineHeight: '1.35', fontWeight: '600' }],
         'body-lg': ['18px', { lineHeight: '1.6', fontWeight: '400' }],
         'body-md': ['16px', { lineHeight: '1.6', fontWeight: '400' }],
         'label-md': ['14px', { lineHeight: '1.4', letterSpacing: '0.05em', fontWeight: '500' }],
         code: ['14px', { lineHeight: '1.5', fontWeight: '400' }],
-      },
-      borderRadius: {
-        // Matches stitch/code.html's own tailwind.config: only these four are
-        // remapped, 2xl/3xl are left at Tailwind's stock 1rem/1.5rem so the
-        // rounded-[2rem|2.5rem|3.5rem|4rem] arbitrary values used across
-        // sections read the same as the reference design.
-        DEFAULT: '0.25rem',
-        lg: '0.5rem',
-        xl: '0.75rem',
-        full: '9999px',
       },
       spacing: {
         base: '4px',
@@ -91,7 +85,10 @@ export default {
         'container-max': '1200px',
       },
       boxShadow: {
-        glow: '0 10px 40px -10px rgb(var(--color-primary-container) / 0.35)',
+        // Tinted by the live --color-primary var, so it re-themes (and re-colors
+        // away from purple) automatically with no class-name changes anywhere.
+        glow: '0 8px 24px -10px rgb(var(--color-primary) / 0.4)',
+        soft: '0 1px 2px rgb(0 0 0 / 0.04), 0 12px 28px -14px rgb(0 0 0 / 0.22)',
       },
     },
   },

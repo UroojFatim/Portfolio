@@ -20,13 +20,6 @@ const certifications = [
   { name: 'Python Essentials 1', issuer: 'Cisco', date: 'Oct 2023', icon: FaPython, url: 'https://www.credly.com/badges/2f9eca56-4547-403c-a2ee-ca7a8277170c/linked_in_profile' },
 ];
 
-const accents = ['primary', 'secondary', 'tertiary'];
-const accentClass = {
-  primary: { box: 'border-primary/20 bg-primary-container/20 text-primary', ring: 'group-hover:ring-primary/30' },
-  secondary: { box: 'border-secondary/20 bg-secondary-container/30 text-secondary', ring: 'group-hover:ring-secondary/30' },
-  tertiary: { box: 'border-tertiary/20 bg-tertiary-container/25 text-tertiary', ring: 'group-hover:ring-tertiary/30' },
-};
-
 const Certifications = () => {
   return (
     <section id="certifications" className="scroll-mt-24 mx-auto max-w-container-max px-4 py-16 sm:px-6 sm:py-20 md:px-10">
@@ -38,44 +31,39 @@ const Certifications = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="divide-y divide-outline-variant border-y border-outline-variant">
         {certifications.map((cert, index) => {
           const Icon = cert.icon ?? FaCertificate;
-          const accent = accentClass[accents[index % accents.length]];
           return (
-            <ScrollReveal key={index} delay={index * 60}>
-              <article className="glass-card hover-glow group flex h-full flex-col rounded-[1.75rem] p-6">
-                <div className="flex items-start gap-4">
-                  <div className={`ring-0 flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl border text-xl transition-all ${accent.box} ${accent.ring} group-hover:ring-4`}>
-                    <Icon />
-                  </div>
-                  <div className="min-w-0 flex-1">
-                    <h3 className="text-lg font-bold leading-tight text-on-surface">{cert.name}</h3>
-                    <p className="mt-1 text-sm text-on-surface-variant">{cert.issuer}</p>
-                  </div>
+            <ScrollReveal key={index} delay={Math.min(index * 30, 300)}>
+              <article className="group flex flex-col gap-3 py-5 sm:flex-row sm:items-center sm:gap-4">
+                <span className="shrink-0 font-mono text-xs text-on-surface-variant/50 sm:w-8">
+                  {String(index + 1).padStart(2, '0')}
+                </span>
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-md border border-outline-variant text-lg text-primary transition-colors group-hover:border-primary/50">
+                  <Icon />
                 </div>
+                <div className="min-w-0 flex-1">
+                  <h3 className="break-words text-sm font-bold leading-snug text-on-surface sm:text-base">{cert.name}</h3>
+                  <p className="mt-0.5 text-xs text-on-surface-variant sm:text-sm">{cert.issuer}</p>
+                </div>
+                <span className="shrink-0 font-mono text-xs text-on-surface-variant">{cert.date}</span>
 
-                <div className="mt-4 flex flex-1 items-end justify-between gap-3">
-                  <span className="inline-flex rounded-full border border-outline-variant/40 bg-surface-container-low px-3 py-1 text-xs font-semibold text-on-surface-variant">
-                    {cert.date}
+                {cert.url ? (
+                  <a
+                    href={cert.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label={`View certificate for ${cert.name}`}
+                    className="inline-flex min-h-11 shrink-0 items-center gap-1.5 rounded-md border border-primary/30 px-3 py-1.5 text-xs font-bold text-primary transition hover:bg-primary/10"
+                  >
+                    View <FaExternalLinkAlt className="text-[10px]" />
+                  </a>
+                ) : (
+                  <span className="shrink-0 text-[11px] font-medium italic text-on-surface-variant/50">
+                    Link coming soon
                   </span>
-
-                  {cert.url ? (
-                    <a
-                      href={cert.url}
-                      target="_blank"
-                      rel="noreferrer"
-                      aria-label={`View certificate for ${cert.name}`}
-                      className="inline-flex min-h-11 items-center gap-1.5 rounded-full border border-primary/30 px-3 py-1.5 text-xs font-bold text-primary transition hover:bg-primary-container/20"
-                    >
-                      View <FaExternalLinkAlt className="text-[10px]" />
-                    </a>
-                  ) : (
-                    <span className="text-[11px] font-medium italic text-on-surface-variant/50">
-                      Link coming soon
-                    </span>
-                  )}
-                </div>
+                )}
               </article>
             </ScrollReveal>
           );

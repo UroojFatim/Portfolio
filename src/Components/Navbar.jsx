@@ -1,13 +1,13 @@
 import React from 'react';
-import { FaCode, FaSun, FaMoon, FaBars } from 'react-icons/fa';
+import { FaSun, FaMoon, FaBars } from 'react-icons/fa';
 import CV from '../assets/CV.pdf';
 
 const navItems = [
-  { label: 'Skills', to: 'skills' },
-  { label: 'Experience', to: 'experience' },
-  { label: 'Projects', to: 'projects' },
-  { label: 'Services', to: 'services' },
-  { label: 'Certifications', to: 'certifications' },
+  { idx: '01', label: 'Skills', to: 'skills' },
+  { idx: '02', label: 'Experience', to: 'experience' },
+  { idx: '03', label: 'Projects', to: 'projects' },
+  { idx: '04', label: 'Services', to: 'services' },
+  { idx: '05', label: 'Certifications', to: 'certifications' },
 ];
 
 // Native smooth-scroll — each section carries a `scroll-mt-*` class so it
@@ -23,8 +23,8 @@ const Navbar = ({ toggleSidebar, activeSection, isScrolled, toggleTheme, isDarkM
     <header
       className={`sticky top-0 z-40 border-b transition-all duration-300 ${
         isScrolled
-          ? 'border-outline-variant/40 bg-background/80 shadow-lg shadow-on-background/5 backdrop-blur-xl'
-          : 'border-transparent bg-background/40 backdrop-blur-md'
+          ? 'border-outline-variant/60 bg-background/85 shadow-soft backdrop-blur-md'
+          : 'border-transparent bg-transparent'
       }`}
     >
       <nav className="mx-auto flex h-16 max-w-container-max items-center justify-between px-4 sm:px-6 md:px-10">
@@ -33,23 +33,32 @@ const Navbar = ({ toggleSidebar, activeSection, isScrolled, toggleTheme, isDarkM
           onClick={() => scrollToSection('home')}
           className="flex cursor-pointer items-center gap-2 sm:gap-2.5"
         >
-          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-primary-container/60 text-primary sm:h-9 sm:w-9">
-            <FaCode className="text-sm sm:text-base" />
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-outline-variant font-mono text-[11px] font-bold text-primary sm:h-9 sm:w-9">
+            UF
           </span>
-          <span className="whitespace-nowrap text-base font-bold font-display text-on-surface sm:text-lg md:text-xl">Urooj Fatima</span>
+          <span className="whitespace-nowrap font-display text-base font-semibold text-on-surface sm:text-lg md:text-xl">Urooj Fatima</span>
         </button>
 
-        <div className="hidden items-center gap-5 lg:flex xl:gap-8">
+        <div className="hidden items-center gap-6 lg:flex xl:gap-9">
           {navItems.map((item) => (
             <button
               key={item.to}
               type="button"
               onClick={() => scrollToSection(item.to)}
-              className={`min-h-11 cursor-pointer text-sm font-medium tracking-wide transition-colors inline-flex items-center ${
-                activeSection === item.to ? 'text-primary' : 'text-on-surface-variant hover:text-on-surface'
+              className={`group relative inline-flex min-h-11 cursor-pointer items-center gap-2 text-sm font-medium tracking-wide transition-colors ${
+                activeSection === item.to ? 'text-on-surface' : 'text-on-surface-variant hover:text-on-surface'
               }`}
             >
+              <span className={`font-mono text-[10px] ${activeSection === item.to ? 'text-primary' : 'text-on-surface-variant/50'}`}>
+                {item.idx}
+              </span>
               {item.label}
+              <span
+                aria-hidden="true"
+                className={`absolute -bottom-1.5 left-0 h-px w-full origin-left bg-primary transition-transform duration-300 ${
+                  activeSection === item.to ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                }`}
+              />
             </button>
           ))}
         </div>
@@ -59,7 +68,7 @@ const Navbar = ({ toggleSidebar, activeSection, isScrolled, toggleTheme, isDarkM
             type="button"
             onClick={toggleTheme}
             aria-label={isDarkMode ? 'Switch to light theme' : 'Switch to dark theme'}
-            className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface-variant transition hover:text-primary"
+            className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-outline-variant text-on-surface-variant transition hover:border-primary/50 hover:text-primary"
           >
             {isDarkMode ? <FaSun /> : <FaMoon />}
           </button>
@@ -68,7 +77,7 @@ const Navbar = ({ toggleSidebar, activeSection, isScrolled, toggleTheme, isDarkM
             href={CV}
             target="_blank"
             rel="noreferrer"
-            className="hidden min-h-11 items-center justify-center rounded-lg bg-primary-container px-5 text-sm font-bold text-on-primary-container transition hover:brightness-110 sm:inline-flex"
+            className="hidden min-h-11 items-center justify-center rounded-md border border-outline-variant px-5 text-sm font-semibold text-on-surface transition hover:border-primary/50 hover:text-primary sm:inline-flex"
           >
             Resume
           </a>
@@ -76,7 +85,7 @@ const Navbar = ({ toggleSidebar, activeSection, isScrolled, toggleTheme, isDarkM
           <button
             onClick={toggleSidebar}
             aria-label="Open menu"
-            className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface lg:hidden"
+            className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-outline-variant text-on-surface lg:hidden"
           >
             <FaBars />
           </button>

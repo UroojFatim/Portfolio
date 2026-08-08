@@ -80,8 +80,8 @@ const TerminalCard = ({ className = '' }) => {
   }
 
   return (
-    <div className={`glass-card w-full min-w-0 max-w-full overflow-hidden rounded-2xl text-left shadow-xl ${className}`}>
-      <div className="flex min-w-0 items-center gap-2 border-b border-outline-variant/20 bg-on-surface/5 px-4 py-3">
+    <div className={`glass-card w-full min-w-0 max-w-full overflow-hidden rounded-lg text-left shadow-soft ${className}`}>
+      <div className="flex min-w-0 items-center gap-2 border-b border-outline-variant bg-on-surface/5 px-4 py-3">
         <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-rose-400/70" />
         <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-amber-400/70" />
         <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-emerald-400/70" />

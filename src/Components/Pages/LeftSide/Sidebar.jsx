@@ -3,11 +3,11 @@ import { FaGithub, FaLinkedin, FaEnvelope, FaSun, FaMoon, FaTimes } from 'react-
 import { SiUpwork } from 'react-icons/si';
 
 const navItems = [
-  { label: 'Skills', to: 'skills' },
-  { label: 'Experience', to: 'experience' },
-  { label: 'Projects', to: 'projects' },
-  { label: 'Services', to: 'services' },
-  { label: 'Certifications', to: 'certifications' },
+  { idx: '01', label: 'Skills', to: 'skills' },
+  { idx: '02', label: 'Experience', to: 'experience' },
+  { idx: '03', label: 'Projects', to: 'projects' },
+  { idx: '04', label: 'Services', to: 'services' },
+  { idx: '05', label: 'Certifications', to: 'certifications' },
 ];
 
 // Native smooth-scroll — see matching note in Navbar.jsx.
@@ -27,26 +27,26 @@ const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar, activeSe
         />
       )}
       <div
-        className={`fixed right-0 top-0 z-50 h-screen w-[88vw] max-w-sm transform border-l border-outline-variant/40 bg-surface p-6 text-on-surface shadow-2xl transition-transform duration-300 lg:hidden ${
+        className={`fixed right-0 top-0 z-50 h-screen w-[88vw] max-w-sm transform border-l border-outline-variant bg-surface p-6 text-on-surface shadow-2xl transition-transform duration-300 lg:hidden ${
           sidebarOpen ? 'translate-x-0' : 'pointer-events-none translate-x-full'
         }`}
         style={{ transform: sidebarOpen ? 'translateX(0)' : 'translateX(100%)' }}
         aria-hidden={!sidebarOpen}
       >
         <div className="flex items-center justify-between">
-          <span className="text-lg font-bold font-display">Menu</span>
+          <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-on-surface-variant">Menu</span>
           <div className="flex items-center gap-2">
             <button
               onClick={toggleTheme}
               aria-label={isDarkMode ? 'Switch to light theme' : 'Switch to dark theme'}
-              className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface-variant"
+              className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-outline-variant text-on-surface-variant"
             >
               {isDarkMode ? <FaSun /> : <FaMoon />}
             </button>
             <button
               onClick={toggleSidebar}
               aria-label="Close menu"
-              className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface"
+              className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-outline-variant text-on-surface"
             >
               <FaTimes />
             </button>
@@ -64,28 +64,29 @@ const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar, activeSe
                 // final (non-clipped) layout.
                 window.setTimeout(() => scrollToSection(item.to), 300);
               }}
-              className={`flex min-h-11 w-full items-center rounded-xl border px-4 py-3 text-left text-sm font-semibold transition ${
+              className={`flex min-h-11 w-full items-center gap-3 rounded-md border px-4 py-3 text-left text-sm font-semibold transition ${
                 activeSection === item.to
-                  ? 'border-primary/40 bg-primary-container/40 text-on-primary-container'
-                  : 'border-outline-variant/40 bg-surface-container-low text-on-surface-variant'
+                  ? 'border-primary/50 bg-primary-container/40 text-on-primary-container'
+                  : 'border-outline-variant bg-surface-container-low text-on-surface-variant'
               }`}
             >
+              <span className="font-mono text-[10px] opacity-60">{item.idx}</span>
               {item.label}
             </button>
           ))}
         </nav>
 
-        <div className="mt-8 flex items-center justify-center gap-4 text-xl">
-          <a href="https://github.com/UroojFatim" target="_blank" rel="noreferrer" aria-label="GitHub" className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface-variant hover:text-primary">
+        <div className="mt-8 flex items-center justify-center gap-3 text-lg">
+          <a href="https://github.com/UroojFatim" target="_blank" rel="noreferrer" aria-label="GitHub" className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-outline-variant text-on-surface-variant hover:border-primary/50 hover:text-primary">
             <FaGithub />
           </a>
-          <a href="https://www.linkedin.com/in/uroojfatima-588ba2296" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface-variant hover:text-primary">
+          <a href="https://www.linkedin.com/in/uroojfatima-588ba2296" target="_blank" rel="noreferrer" aria-label="LinkedIn" className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-outline-variant text-on-surface-variant hover:border-primary/50 hover:text-primary">
             <FaLinkedin />
           </a>
-          <a href="https://www.upwork.com/freelancers/~018b2cb9ef43a154ba?mp_source=share" target="_blank" rel="noreferrer" aria-label="Upwork" className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface-variant hover:text-primary">
+          <a href="https://www.upwork.com/freelancers/~018b2cb9ef43a154ba?mp_source=share" target="_blank" rel="noreferrer" aria-label="Upwork" className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-outline-variant text-on-surface-variant hover:border-primary/50 hover:text-primary">
             <SiUpwork />
           </a>
-          <a href="mailto:urooj.fatim2004@gmail.com" aria-label="Email" className="glass-card flex min-h-11 min-w-11 items-center justify-center rounded-xl text-on-surface-variant hover:text-primary">
+          <a href="mailto:urooj.fatim2004@gmail.com" aria-label="Email" className="flex min-h-11 min-w-11 items-center justify-center rounded-md border border-outline-variant text-on-surface-variant hover:border-primary/50 hover:text-primary">
             <FaEnvelope />
           </a>
         </div>
@@ -93,7 +94,7 @@ const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar, activeSe
         <div className="mt-8 space-y-3">
           <a
             href="mailto:urooj.fatim2004@gmail.com"
-            className="flex min-h-11 w-full items-center justify-center rounded-full bg-primary px-6 py-3 text-center text-sm font-bold text-on-primary transition hover:brightness-110"
+            className="flex min-h-11 w-full items-center justify-center rounded-md bg-primary px-6 py-3 text-center text-sm font-bold text-on-primary transition hover:brightness-110"
           >
             Hire Me
           </a>
@@ -101,7 +102,7 @@ const Sidebar = ({ toggleTheme, isDarkMode, sidebarOpen, toggleSidebar, activeSe
             href={CV}
             target="_blank"
             rel="noreferrer"
-            className="glass-card flex min-h-11 w-full items-center justify-center rounded-full px-6 py-3 text-center text-sm font-bold text-on-surface"
+            className="flex min-h-11 w-full items-center justify-center rounded-md border border-outline-variant px-6 py-3 text-center text-sm font-bold text-on-surface"
           >
             Download Resume
           </a>

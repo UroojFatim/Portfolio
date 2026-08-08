@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import ScrollReveal from './ScrollReveal';
 
-const StatCard = ({ label, value, suffix = '', decimals = 0, trigger }) => {
+const StatRow = ({ label, value, suffix = '', decimals = 0, trigger }) => {
     const [count, setCount] = useState(0);
     const rafRef = useRef();
 
@@ -24,11 +24,11 @@ const StatCard = ({ label, value, suffix = '', decimals = 0, trigger }) => {
     }, [trigger]);
 
     return (
-        <div className="glass-card hover-glow w-full p-6">
-            <div className="text-3xl font-bold text-primary">
+        <div className="flex w-full items-center justify-between rounded-md border border-outline-variant p-5 transition-colors hover:border-primary/40">
+            <div className="font-mono text-xs uppercase tracking-[0.15em] text-on-surface-variant">{label}</div>
+            <div className="font-display text-3xl font-semibold text-primary">
                 {count}{suffix}
             </div>
-            <div className="mt-2 text-sm text-on-surface-variant">{label}</div>
         </div>
     );
 };
@@ -57,27 +57,27 @@ const About = () => {
             </div>
 
             <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-                {/* Left: Stat cards */}
-                <div className="min-w-0 space-y-4" ref={statsRef}>
+                {/* Left: Stat ledger */}
+                <div className="min-w-0 space-y-3" ref={statsRef}>
                     <ScrollReveal delay={0}>
-                        <StatCard label="Projects Shipped" value={5} suffix="+" trigger={visible} />
+                        <StatRow label="Projects Shipped" value={5} suffix="+" trigger={visible} />
                     </ScrollReveal>
                     <ScrollReveal delay={80}>
-                        <StatCard label="Users Served" value={250} suffix="+" trigger={visible} />
+                        <StatRow label="Users Served" value={250} suffix="+" trigger={visible} />
                     </ScrollReveal>
                     <ScrollReveal delay={160}>
-                        <StatCard label="Years Experience" value={2} suffix="+" trigger={visible} />
+                        <StatRow label="Years Experience" value={2} suffix="+" trigger={visible} />
                     </ScrollReveal>
                     <ScrollReveal delay={240}>
-                        <StatCard label="CGPA" value={3.48} decimals={2} trigger={visible} />
+                        <StatRow label="CGPA" value={3.48} decimals={2} trigger={visible} />
                     </ScrollReveal>
                 </div>
 
                 {/* Right: Bio + Education */}
                 <div className="min-w-0 space-y-6">
                     <ScrollReveal delay={80}>
-                        <div className="glass-card hover-glow w-full min-w-0 p-6">
-                            <h3 className="text-2xl font-bold font-display text-on-surface">Biography</h3>
+                        <div className="glass-card w-full min-w-0 p-6">
+                            <h3 className="font-display text-2xl font-semibold text-on-surface">Biography</h3>
                             <p className="mt-3 break-words text-on-surface-variant">
                                 Full Stack Developer with 2+ years of production experience building scalable SaaS platforms, AI-driven applications, and e-commerce systems. Expertise in MERN stack, Next.js, TypeScript, and cloud-integrated architectures. Delivered 5+ live products serving 250+ active users across US and UAE clients.
                             </p>
@@ -85,22 +85,22 @@ const About = () => {
                     </ScrollReveal>
 
                     <ScrollReveal delay={160}>
-                        <div className="glass-card hover-glow w-full min-w-0 p-6">
-                            <h3 className="text-2xl font-bold font-display text-on-surface">Education</h3>
-                            <div className="mt-4">
-                                <div className="mb-4 min-w-0">
+                        <div className="glass-card w-full min-w-0 p-6">
+                            <h3 className="font-display text-2xl font-semibold text-on-surface">Education</h3>
+                            <div className="mt-4 divide-y divide-outline-variant">
+                                <div className="min-w-0 pb-4">
                                     <div className="break-words font-semibold text-on-surface">B.E. Software Engineering — MAJU</div>
-                                    <div className="text-sm text-on-surface-variant">(2022–2026) | CGPA: 3.48</div>
+                                    <div className="font-mono text-xs text-on-surface-variant">(2022–2026) · CGPA: 3.48</div>
                                 </div>
 
-                                <div className="mb-4 min-w-0">
+                                <div className="min-w-0 py-4">
                                     <div className="break-words font-semibold text-on-surface">FSC Pre-Engineering — Govt. Degree Girls Science College, Karachi</div>
-                                    <div className="text-sm text-on-surface-variant">(2022)</div>
+                                    <div className="font-mono text-xs text-on-surface-variant">(2022)</div>
                                 </div>
 
-                                <div className="min-w-0">
+                                <div className="min-w-0 pt-4">
                                     <div className="break-words font-semibold text-on-surface">Matric Science — M.E Model School</div>
-                                    <div className="text-sm text-on-surface-variant">(2020)</div>
+                                    <div className="font-mono text-xs text-on-surface-variant">(2020)</div>
                                 </div>
                             </div>
                         </div>

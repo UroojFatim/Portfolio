@@ -46,12 +46,17 @@ const Skills = () => {
                 <h2 className="section-heading">Technical Skillset</h2>
             </div>
 
-            <div className="mb-10 grid grid-cols-1 gap-6 sm:mb-16 sm:grid-cols-2 lg:grid-cols-3">
+            <div className="mb-10 grid grid-cols-1 gap-5 sm:mb-16 sm:grid-cols-2 lg:grid-cols-3">
                 {groups.map((g, idx) => (
                     <ScrollReveal key={idx} delay={idx * 60}>
-                        <div className="glass-card hover-glow group h-full rounded-[2.5rem] p-8 sm:p-10">
-                            <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-container/25 text-primary transition-transform group-hover:rotate-12 sm:mb-8">
-                                <g.icon className="text-3xl" />
+                        <div className="glass-card hover-glow group h-full rounded-md p-7 sm:p-8">
+                            <div className="mb-6 flex items-start justify-between sm:mb-8">
+                                <div className="flex h-12 w-12 items-center justify-center rounded-md border border-outline-variant text-primary transition-transform group-hover:rotate-6">
+                                    <g.icon className="text-2xl" />
+                                </div>
+                                <span className="font-mono text-[11px] text-on-surface-variant/50">
+                                    {String(idx + 1).padStart(2, '0')} / {String(groups.length).padStart(2, '0')}
+                                </span>
                             </div>
                             <h4 className="mb-5 text-xs font-bold uppercase tracking-widest text-on-surface sm:mb-6 sm:text-sm">
                                 {g.title}
@@ -59,7 +64,7 @@ const Skills = () => {
                             <ul className="space-y-3 text-sm font-medium text-on-surface-variant">
                                 {g.items.map((item, i) => (
                                     <li key={i} className="flex items-center gap-2">
-                                        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary/40" />
+                                        <span className="h-1 w-1 shrink-0 rounded-full bg-primary/60" />
                                         {item}
                                     </li>
                                 ))}
@@ -68,7 +73,7 @@ const Skills = () => {
                             <div className="mt-6 sm:mt-8">
                                 <div className="mb-2 flex items-center justify-between text-[11px] font-bold uppercase tracking-widest text-on-surface-variant">
                                     <span>Proficiency</span>
-                                    <span className="text-primary">{g.level}%</span>
+                                    <span className="font-mono text-primary">{g.level}%</span>
                                 </div>
                                 <div className="skill-bar-track">
                                     <div className="skill-bar-fill" style={{ '--bar-width': `${g.level}%` }} />
@@ -79,7 +84,7 @@ const Skills = () => {
                 ))}
             </div>
 
-            <div className="glass-card marquee rounded-3xl border-y border-outline-variant/20 py-10 sm:py-12">
+            <div className="marquee border-y border-outline-variant py-10 sm:py-12">
                 <MarqueeRow />
                 <MarqueeRow ariaHidden />
             </div>

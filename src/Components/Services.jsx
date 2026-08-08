@@ -46,10 +46,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section
-      id="services"
-      className="scroll-mt-24 mx-auto max-w-container-max rounded-[2.5rem] bg-surface-container-low/60 px-4 py-16 backdrop-blur-md sm:rounded-[4rem] sm:px-6 sm:py-20 md:px-10 md:py-24"
-    >
+    <section id="services" className="scroll-mt-24 mx-auto max-w-container-max px-4 py-16 sm:px-6 sm:py-20 md:px-10">
       <div className="mb-10 text-center sm:mb-16">
         <span className="section-eyebrow text-primary">Offerings</span>
         <h2 className="section-heading">Specialized Services</h2>
@@ -58,27 +55,32 @@ const Services = () => {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 sm:gap-10 md:grid-cols-2 xl:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
         {services.map((service, index) => {
           const Icon = service.icon;
           const accent = accentText[accents[index % accents.length]];
           return (
             <ScrollReveal key={service.title} delay={index * 70}>
-              <article className="glass-card hover-glow group h-full rounded-[2.5rem] p-8 sm:rounded-[3.5rem] sm:p-12">
-                <div className={`mb-6 w-fit transition-transform group-hover:scale-110 sm:mb-10 ${accent}`}>
-                  <Icon className="text-5xl sm:text-6xl" />
+              <article className="glass-card hover-glow group flex h-full flex-col rounded-md p-7 sm:p-8">
+                <div className="mb-6 flex items-start justify-between sm:mb-8">
+                  <div className={`flex h-12 w-12 items-center justify-center rounded-md border border-outline-variant transition-transform group-hover:scale-110 ${accent}`}>
+                    <Icon className="text-2xl" />
+                  </div>
+                  <span className="font-mono text-[11px] text-on-surface-variant/50">
+                    {String(index + 1).padStart(2, '0')} / {String(services.length).padStart(2, '0')}
+                  </span>
                 </div>
                 <h3 className="text-headline-md font-bold font-display leading-tight text-on-surface">
                   {service.title}
                 </h3>
-                <p className="mt-4 text-sm leading-relaxed text-on-surface-variant sm:mb-10">
+                <p className="mt-4 text-sm leading-relaxed text-on-surface-variant">
                   {service.description}
                 </p>
 
-                <ul className={`space-y-2.5 text-[11px] font-semibold ${accent} opacity-80`}>
+                <ul className={`mt-6 space-y-2.5 text-[11px] font-semibold sm:mt-auto sm:pt-6 ${accent} opacity-90`}>
                   {service.tags.map((tag) => (
                     <li key={tag} className="flex items-center gap-2">
-                      <span aria-hidden="true">•</span> {tag}
+                      <span aria-hidden="true">—</span> {tag}
                     </li>
                   ))}
                 </ul>
@@ -91,7 +93,7 @@ const Services = () => {
       <div className="mt-10 flex justify-center sm:mt-16">
         <a
           href="#contact"
-          className="inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-6 py-3 font-bold text-on-primary shadow-glow transition hover:brightness-110"
+          className="inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-6 py-3 font-bold text-on-primary shadow-glow transition hover:brightness-110"
         >
           Let&apos;s Work Together →
         </a>
