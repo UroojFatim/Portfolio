@@ -12,7 +12,7 @@ import Footer from '../../Footer';
 
 const Home = () => {
   return (
-    <div className="space-y-16 sm:space-y-20">
+    <div>
       <Hero />
       <About />
       <Skills />
