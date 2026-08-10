@@ -131,16 +131,13 @@ const Hero = () => {
                         ))}
                     </div>
 
-                    {/* Mobile/tablet: code widget shown inline since the profile visual is desktop-only */}
-                    <div className="mt-8 lg:hidden">
-                        <TerminalCard className="mx-auto max-w-md" />
-                    </div>
                 </div>
 
-                {/* Right Visual */}
-                <div className="relative mx-auto hidden max-w-md lg:block">
+                {/* Right Visual — shown at every breakpoint; on mobile it stacks
+                    under the copy and carries the portrait + code widget. */}
+                <div className="relative mx-auto w-full max-w-md">
                     <div className="relative">
-                        <div aria-hidden="true" className="absolute inset-0 translate-x-4 translate-y-4 rounded-xl border border-primary/30 bg-primary/5" />
+                        <div aria-hidden="true" className="absolute inset-0 translate-x-2 translate-y-2 rounded-xl border border-primary/30 bg-primary/5 sm:translate-x-4 sm:translate-y-4" />
 
                         <div className="group relative overflow-hidden rounded-xl border border-outline-variant bg-surface-container-low shadow-soft">
                             <BrowserBar label="urooj.dev — profile.jpg" />
@@ -150,7 +147,7 @@ const Hero = () => {
                                         src={ProfileImage}
                                         alt="Urooj Fatima"
                                         decoding="async"
-                                        fetchpriority="high"
+                                        fetchPriority="high"
                                         className="relative h-full w-full max-w-full object-cover"
                                     />
                                 </div>

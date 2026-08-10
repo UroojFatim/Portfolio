@@ -83,9 +83,12 @@ const TerminalCard = ({ className = '' }) => {
   return (
     <div className={`glass-card w-full min-w-0 max-w-full overflow-hidden rounded-lg text-left shadow-soft ${className}`}>
       <BrowserBar label="profile.js" />
+      {/* Every line keeps a fixed 24px box (h-6 === leading-6) whether or not it
+          has typed characters yet, so the card's height is constant across the
+          whole type/delete cycle and nothing below it (About, etc.) reflows. */}
       <pre className="max-w-full overflow-x-auto px-5 py-4 font-mono text-[12.5px] leading-6 sm:text-sm">
         {renderedLines.map((tokens, i) => (
-          <div key={i} className="whitespace-pre">
+          <div key={i} className="h-6 whitespace-pre">
             {tokens.map(([text, kind], j) => (
               <span key={j} className={TOKEN_CLASS[kind]}>{text}</span>
             ))}
