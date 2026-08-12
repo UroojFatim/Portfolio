@@ -3,7 +3,7 @@ import ScrollReveal from './ScrollReveal';
 const experiences = [
   {
     company: 'AItek Solutions',
-    role: 'Software Engineer',
+    role: 'Full Stack Developer',
     year: '2025',
     period: 'Feb 2025 – Apr 2026',
     location: 'Remote, USA',
@@ -18,7 +18,7 @@ const experiences = [
   },
   {
     company: 'Neplen (UAE)',
-    role: 'Full Stack Developer',
+    role: 'MERN Stack Developer',
     year: '2024',
     period: 'Aug 2024 – Jun 2025',
     location: 'Remote',
